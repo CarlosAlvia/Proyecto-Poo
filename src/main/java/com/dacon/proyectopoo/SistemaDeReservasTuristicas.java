@@ -11,4 +11,11 @@ import Personas.Usuario;
  */
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
+    
+    public ArrayList<Usuario> getListaUsuario(){
+        return this.listaUsuario;
+    }
+    public void setListaUsuario(ArrayList<Usuario> listaUsuario){
+        this.listaUsuario=listaUsuario;
+    }
 }
