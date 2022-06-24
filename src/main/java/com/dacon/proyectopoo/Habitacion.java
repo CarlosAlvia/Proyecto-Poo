@@ -8,7 +8,7 @@ import Enum.TipoHabitacion;
  *
  * @author User
  */
-public class Habitacion {
+public class Habitacion extends Hotel{
     protected TipoHabitacion tipoHabitacion;
     protected double precio;
     protected int capacidad;
