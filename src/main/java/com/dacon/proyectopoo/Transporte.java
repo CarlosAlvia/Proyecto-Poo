@@ -8,6 +8,7 @@ package com.dacon.proyectopoo;
  *
  * @author User
  */
-public class Transporte {
+public class Transporte extends Servicio {
+    private Vehiculo vehiculo;
     
 }
