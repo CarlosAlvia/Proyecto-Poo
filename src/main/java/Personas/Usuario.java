@@ -8,7 +8,7 @@ package Personas;
  *
  * @author User
  */
-public class Usuario {
+public abstract class Usuario {
     protected String cedula;
     protected String nombres;
     protected String apellidos;
