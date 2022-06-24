@@ -8,6 +8,28 @@ package Personas;
  *
  * @author User
  */
-public class Cliente {
+public class Cliente extends Usuario{
+    private int edad;
+    private int tarjetaDeCredito;
+    private char tipoCliente;
+    
+    public int GetEdad(){
+        return this.edad;
+    }
+    public int GetTarjetaDeCredito(){
+        return this.tarjetaDeCredito;
+    }
+    public char GetTipoCliente(){
+        return this.tipoCliente;
+    }
+    public void setEdad(int edad){
+        this.edad=edad;
+    }
+    public void setTarjetaDeCredito(int tarjetaDeCredito){
+        this.tarjetaDeCredito=tarjetaDeCredito;
+    }
+    public void setTipoCliente(char tipoCliente){
+        this.tipoCliente=tipoCliente;
+    }
     
 }
