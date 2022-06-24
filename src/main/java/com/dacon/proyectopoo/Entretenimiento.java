@@ -8,7 +8,7 @@ package com.dacon.proyectopoo;
  *
  * @author User
  */
-public class Entretenimiento {
+public class Entretenimiento extends Servicio {
     protected int dias;
     protected String actividades;
     protected String paquetes;
