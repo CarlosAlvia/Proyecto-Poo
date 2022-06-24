@@ -9,5 +9,5 @@ package Enum;
  * @author CJAA
  */
 public enum TipoHabitacion {
-    
+    INDIVIDUAL,DOBLE,FAMILIAR
 }
