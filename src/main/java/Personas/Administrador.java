@@ -8,6 +8,6 @@ package Personas;
  *
  * @author User
  */
-public class Administrador {
+public class Administrador extends Usuario {
     
 }
