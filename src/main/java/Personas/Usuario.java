@@ -8,6 +8,7 @@ package Personas;
  *
  * @author User
  */
+import java.util.Scanner;
 public abstract class Usuario {
     protected String cedula;
     protected String nombres;
@@ -52,4 +53,5 @@ public abstract class Usuario {
     public void setCelular(int celular){
         this.celular=celular;
     }
+    
 }
