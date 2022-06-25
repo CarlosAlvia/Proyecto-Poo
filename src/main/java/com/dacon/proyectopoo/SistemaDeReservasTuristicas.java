@@ -40,8 +40,7 @@ public class SistemaDeReservasTuristicas {
         System.out.println("5. Consultar reserva");
         System.out.println("6. Salir");
         System.out.println("\n");
-        System.out.println("Elija una opción: ");
-        String op=sc.nextLine();
+        
   
     }
     public void iniciar(){
@@ -55,6 +54,18 @@ public class SistemaDeReservasTuristicas {
                     //llamamos a metodo realizartest()
                     break;
                 case "2":
+                    //llamamos a metodo realizartest()
+                    break;
+                case "3":
+                    //llamamos a metodo realizartest()
+                    break;
+                case "4":
+                    //llamamos a metodo realizartest()
+                    break;
+                case "5":
+                    //llamamos a metodo realizartest()
+                    break; 
+                case "6":
                     //mostramos mensaje de finalizacion
                     System.out.println("Adios");
                     break;
@@ -64,7 +75,7 @@ public class SistemaDeReservasTuristicas {
                     break;
                         
             }
-        }while(!entrada.equals("2"));
+        }while(!entrada.equals("6"));
     }
     
     public ArrayList<Usuario> getListaUsuario(){
