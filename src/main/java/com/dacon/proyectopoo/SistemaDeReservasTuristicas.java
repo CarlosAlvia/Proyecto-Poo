@@ -12,10 +12,18 @@ import Personas.Usuario;
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
     
+    public void iniciarSistema(){
+        String signo="++++++++++++++++++++++++++++++++++++++++";
+        System.out.println(signo);
+        
+    }
+    
+    
     public ArrayList<Usuario> getListaUsuario(){
         return this.listaUsuario;
     }
     public void setListaUsuario(ArrayList<Usuario> listaUsuario){
         this.listaUsuario=listaUsuario;
     }
+    
 }
