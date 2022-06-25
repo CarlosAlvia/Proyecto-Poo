@@ -76,7 +76,14 @@ public class Reserva {
     public void setcliente(Cliente cliente){
         this.cliente=cliente;
     }
-    
+    public static void encabezado(){
+        String abajo="++++++++++++++++++++++++++++++++++++++++";
+        String arriba="+++++++++++++++RESERVACION+++++++++++++++++";
+        String medio="+                                     +";
+        System.out.println(arriba);
+        System.out.println(medio);
+        System.out.println(abajo);
+    }
         
 }
 
