@@ -26,7 +26,24 @@ public class SistemaDeReservasTuristicas {
         System.out.println("CONTRASEÑA: ");
         String contrasenaIngresada=sc.nextLine();
     }
-    
+    public void menu(){
+        String abajo="++++++++++++++++++++++++++++++++++++++++";
+        String arriba="+++++++++++++++++menu+++++++++++++++++";
+        String medio="+                                     +";
+        System.out.println(arriba);
+        System.out.println(medio);
+        System.out.println(abajo);
+        System.out.println("1. Reservar hospedaje");
+        System.out.println("2. Reservar Transporte");
+        System.out.println("3. Reservar entretenimiento");
+        System.out.println("4. Pagar reserva");
+        System.out.println("5. Consultar reserva");
+        System.out.println("6. Salir");
+        System.out.println("\n");
+        System.out.println("Elija una opción: ");
+        String op=sc.nextLine();
+  
+    }
     
     public ArrayList<Usuario> getListaUsuario(){
         return this.listaUsuario;
