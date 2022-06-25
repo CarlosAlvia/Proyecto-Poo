@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
     Scanner sc=new Scanner(System.in);
-    public void ingresar(){
+    public void mostrarBienvenida(){
         String signo="++++++++++++++++++++++++++++++++++++++++";
         System.out.println(signo);
         System.out.println("");
@@ -26,7 +26,7 @@ public class SistemaDeReservasTuristicas {
         System.out.println("CONTRASEÑA: ");
         String contrasenaIngresada=sc.nextLine();
     }
-    public void menu(){
+    public void mostrarMenu(){
         String abajo="++++++++++++++++++++++++++++++++++++++++";
         String arriba="+++++++++++++++++menu+++++++++++++++++";
         String medio="+                                     +";
@@ -43,6 +43,28 @@ public class SistemaDeReservasTuristicas {
         System.out.println("Elija una opción: ");
         String op=sc.nextLine();
   
+    }
+    public void iniciar(){
+        String entrada = "";
+        do{
+            mostrarMenu();
+            System.out.print("Ingrese opcion:");
+            entrada = sc.nextLine();
+            switch(entrada){
+                case "1":
+                    //llamamos a metodo realizartest()
+                    break;
+                case "2":
+                    //mostramos mensaje de finalizacion
+                    System.out.println("Adios");
+                    break;
+                default:
+                    //la opcion ingreada no esta dentro de las opciones del menu
+                    System.out.println("Opcion invalida");
+                    break;
+                        
+            }
+        }while(!entrada.equals("2"));
     }
     
     public ArrayList<Usuario> getListaUsuario(){
