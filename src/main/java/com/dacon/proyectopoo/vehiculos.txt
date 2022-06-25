@@ -1,0 +1,2 @@
+códigoVehículo,marca,modelo,placa,color,capacidad,estado,costo por día,tipo transmision
+9273,Hyundai,Creta,GJH-372,PLATA,5,DISPONIBLE,150.00,MANUAL
