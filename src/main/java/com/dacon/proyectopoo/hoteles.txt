@@ -1,0 +1,2 @@
+códigoHotel,nombre,rating,dirección,incluye desayuno,incluye parqueo,permite cancelación gratis
+3645,Four Points by Sheraton Cuenca,5,Centro histórico de Cuenca,true,true,false
