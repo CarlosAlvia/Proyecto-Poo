@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
-    
-    public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    public void ingresar(){
         String signo="++++++++++++++++++++++++++++++++++++++++";
         System.out.println(signo);
         System.out.println("");
@@ -22,7 +22,6 @@ public class SistemaDeReservasTuristicas {
         System.out.println(signo);
         System.out.println("");
         System.out.println("USUARIO: ");
-        Scanner sc=new Scanner(System.in);
         String usuarioIngresado=sc.nextLine();
         System.out.println("CONTRASEÑA: ");
         String contrasenaIngresada=sc.nextLine();
