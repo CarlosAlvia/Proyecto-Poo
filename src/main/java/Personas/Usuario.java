@@ -13,6 +13,7 @@ public abstract class Usuario {
     protected String nombres;
     protected String apellidos;
     protected String user;
+    protected String contraseña;
     protected int celular;
     
     public String GetCedula(){
@@ -23,6 +24,9 @@ public abstract class Usuario {
     }
     public String GetApellidos(){
         return this.apellidos;
+    }
+    public String GetContraseña(){
+        return this.contraseña;
     }
     public String GetUser(){
         return this.user;
@@ -38,6 +42,9 @@ public abstract class Usuario {
     }
     public void setApellidos(String apellidos){
         this.apellidos=apellidos;
+    }
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
     public void setUser(String user){
         this.user=user;
