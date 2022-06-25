@@ -5,6 +5,7 @@
 package com.dacon.proyectopoo;
 import java.util.ArrayList;
 import Personas.Usuario;
+import java.util.Scanner;
 /**
  *
  * @author CJAA
@@ -12,10 +13,19 @@ import Personas.Usuario;
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
     
-    public void iniciarSistema(){
+    public static void main(String[] args){
         String signo="++++++++++++++++++++++++++++++++++++++++";
         System.out.println(signo);
-        
+        System.out.println("");
+        System.out.println("        BIENVENIDO AL SISTEMA         ");
+        System.out.println("");
+        System.out.println(signo);
+        System.out.println("");
+        System.out.println("USUARIO: ");
+        Scanner sc=new Scanner(System.in);
+        String usuarioIngresado=sc.nextLine();
+        System.out.println("CONTRASEÑA: ");
+        String contrasenaIngresada=sc.nextLine();
     }
     
     
