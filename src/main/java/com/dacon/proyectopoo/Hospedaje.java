@@ -26,4 +26,5 @@ public class Hospedaje extends Servicio{
     public void setfechaSalida(String fechaSalida){
         this.fechaSalida=fechaSalida;
     }
+    
 }
