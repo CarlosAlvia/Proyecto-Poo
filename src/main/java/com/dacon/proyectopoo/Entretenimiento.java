@@ -34,4 +34,8 @@ public class Entretenimiento extends Servicio {
     public void setpaquetes(String paquetes){
         this.paquetes=paquetes;
     }
+    
+    public void reservarEntretenimiento(){
+        Reserva.encabezado();
+    }
 }
