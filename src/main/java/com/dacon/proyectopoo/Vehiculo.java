@@ -10,7 +10,7 @@ import Enum.Transmision;
  * @author User
  */
 public class Vehiculo extends Transporte{
-    private int id;
+    private String id;
     private String marca;
     private String modelo;
     private String placa;
@@ -21,7 +21,7 @@ public class Vehiculo extends Transporte{
     private Transmision transmision;
     
     
-    public int getId(){
+    public String getId(){
         return this.id;
     }
     public String getMarca(){
@@ -48,7 +48,7 @@ public class Vehiculo extends Transporte{
     public Transmision getTransmision(){
         return this.transmision;
     }
-    public void setId(int id){
+    public void setId(String id){
         this.id=id;
     }
     public void setMarca(String marca){
