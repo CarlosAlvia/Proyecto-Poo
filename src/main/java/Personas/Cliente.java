@@ -9,6 +9,8 @@ import com.dacon.proyectopoo.Vehiculo;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import com.dacon.proyectopoo.Reserva;
+import ManejoArchivos.ManejoArchivos;
 /**
  *
  * @author User
@@ -83,6 +85,23 @@ public class Cliente extends Usuario{
                 op=sc.nextInt();
             }
             System.out.println("Usted ha elegido un "+opciones.get(op).getMarca()+" "+opciones.get(op).getModelo()+" por "+diasReserva+" días");
+            double valorPagar=diasReserva*opciones.get(op).getCostoPorDia();
+            System.out.println("El costo a pagar es de "+valorPagar+" dólares");
+            System.out.println("¿Desea reservar?");
+            String deseaReserva=sc.nextLine().toLowerCase();
+            if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
+                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,this,"transporte");
+                ManejoArchivos.EscribirArchivo("reservas.txt", "");
+                ManejoArchivos.EscribirArchivo("reservas.txt", reservaTransporte.toString());
+                String lineaTransporte;
+                lineaTransporte=reservaTransporte.getNumeroReserva()+","+opciones.get(op).getId()+","+valorPagar;
+                ManejoArchivos.EscribirArchivo("reservasTransporte.txt", "");
+                ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
+                //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
+                //objeto servicio o si servicio debe tener un objeto reserva
+            }
+        }else{
+            System.out.println("No hay vehículos disponibles");
         }
         
     }
