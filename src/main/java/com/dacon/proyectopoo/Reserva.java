@@ -10,17 +10,31 @@ import Personas.Cliente;
  * @author CJAA
  */
 public class Reserva {
-    protected int numeroReserva;
+    private int numeroReserva;
     protected String fechaReserva;
     protected String desde;
     protected String hasta;
     protected double valorPagar;
     protected int contadorReserva;
-    protected Servicio servicio;
+    protected String tipoReserva;
+    //protected Servicio servicio;
     protected Cliente cliente;
     
+    public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
+        this.desde=desde;
+        this.hasta=hasta;
+        this.valorPagar=valorPagar;
+        this.cliente=cliente;
+        this.tipoReserva=tipoReserva;
+    }public String getTipoReserva() {
+        return tipoReserva;
+    }
+
     
-    public int GetnumeroReserva(){
+    public void setTipoReserva(String tipoReserva) {
+        this.tipoReserva = tipoReserva;
+    }
+    public int getNumeroReserva(){
         return this.numeroReserva;
     }
     
@@ -44,10 +58,10 @@ public class Reserva {
         return this.contadorReserva;
     }
     
-    public Servicio Getservicio(){
-        return this.servicio;
-    }
-    public Cliente Getcliente(){
+    //public Servicio Getservicio(){
+    //    return this.servicio;
+    //}
+    public Cliente getCliente(){
         return this.cliente;
     }
     
@@ -70,9 +84,9 @@ public class Reserva {
     public void setcontadorReserva(int contadorReserva){
         this.contadorReserva=contadorReserva;
     }
-    public void setservicio(Servicio servicio){
-        this.servicio=servicio;
-    }
+//    public void setservicio(Servicio servicio){
+//        this.servicio=servicio;
+//    }
     public void setcliente(Cliente cliente){
         this.cliente=cliente;
     }
@@ -84,6 +98,10 @@ public class Reserva {
         System.out.println(medio);
         System.out.println(abajo);
     }
-        
+    @Override
+    public String toString(){
+        //numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
+        return this.numeroReserva+","+this.fechaReserva+","+this.tipoReserva+","+this.cliente.GetNombres()+" "+this.cliente.GetApellidos()+","+this.desde+","+this.hasta+","+this.valorPagar;
+    }
 }
 
