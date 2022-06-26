@@ -4,6 +4,7 @@
  */
 package com.dacon.proyectopoo;
 import Enum.Estado;
+import Enum.Transmision;
 /**
  *
  * @author User
@@ -17,34 +18,34 @@ public class Vehiculo extends Transporte{
     private int capacidad;
     private Estado estado;
     private double costoPorDia;
-    private String transmision;
+    private Transmision transmision;
     
     
-    public int GetId(){
+    public int getId(){
         return this.id;
     }
-    public String GetMarca(){
+    public String getMarca(){
         return this.marca;
     }
-    public String GetModelo(){
+    public String getModelo(){
         return this.modelo;
     }
-    public String GetPlaca(){
+    public String getPlaca(){
         return this.placa;
     }
-    public String GetColor(){
+    public String getColor(){
         return this.color;
     }
-    public int GetCapacidad(){
+    public int getCapacidad(){
         return this.capacidad;
     }
-    public Estado GetEstado(){
+    public Estado getEstado(){
         return this.estado;
     }
-    public double GetCostoPorDia(){
+    public double getCostoPorDia(){
         return this.costoPorDia;
     }
-    public String GetTransmision(){
+    public Transmision getTransmision(){
         return this.transmision;
     }
     public void setId(int id){
@@ -71,7 +72,11 @@ public class Vehiculo extends Transporte{
     public void setCostoPorDia(double costoPorDia){
         this.costoPorDia=costoPorDia;
     }
-    public void setTransmision(String transmision){
+    public void setTransmision(Transmision transmision){
         this.transmision=transmision;
+    }
+    @Override
+    public String toString(){
+        return this.marca+" "+this.modelo+" "+this.color+" con transmisión: "+this.transmision+" costo por día: "+this.costoPorDia;
     }
 }
