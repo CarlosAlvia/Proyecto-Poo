@@ -6,6 +6,8 @@ package Personas;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+
+import ManejoArchivos.ManejoArchivos;
 /**
  *
  * @author CJAA
@@ -17,5 +19,9 @@ public class Prueba {
         LocalDate fechaIni=LocalDate.of(2021,Month.of(2),27);
         LocalDate fechaFinal=LocalDate.of(2021,Month.of(3),2);
         System.out.println(ChronoUnit.DAYS.between(fechaIni,fechaFinal));
+        ManejoArchivos.LeeFichero("hoteles.txt");
+//        ManejoArchivos.EscribirArchivo("hoteles.txt", "");
+//        ManejoArchivos.EscribirArchivo("reservas.txt", "");
+//        ManejoArchivos.EscribirArchivo("hoteles.txt", "hola");
     }
 }
