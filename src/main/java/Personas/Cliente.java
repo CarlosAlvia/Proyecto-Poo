@@ -11,6 +11,7 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import com.dacon.proyectopoo.Reserva;
 import ManejoArchivos.ManejoArchivos;
+import com.dacon.proyectopoo.Transporte;
 /**
  *
  * @author User
@@ -99,6 +100,9 @@ public class Cliente extends Usuario{
                 ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
                 //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
                 //objeto servicio o si servicio debe tener un objeto reserva
+                Transporte transporte=new Transporte();
+                //Falta crear el constructor de servicio y el transporte
+                transporte.mostrarReserva();
             }
         }else{
             System.out.println("No hay vehículos disponibles");
