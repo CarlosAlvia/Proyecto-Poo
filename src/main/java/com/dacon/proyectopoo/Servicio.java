@@ -9,11 +9,22 @@ package com.dacon.proyectopoo;
  * @author CJAA
  */
 public class Servicio {
-    protected String ciudad;
+  protected String ciudad;
     protected double valor;
     protected Reserva reserva;
     protected double puntuacion;
     protected int identificador;
+    
+    public Servicio(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador) {
+        this.ciudad = ciudad;
+        this.valor = valor;
+        this.reserva = reserva;
+        this.puntuacion = puntuacion;
+        this.identificador = identificador;
+    }
+  
+    
+  
     
     public void mostrarReserva(){
         String simbolo="/**************RESERVA GENERADA*************/";
