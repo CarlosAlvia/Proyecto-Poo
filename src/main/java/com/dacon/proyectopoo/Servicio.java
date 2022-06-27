@@ -15,10 +15,9 @@ public class Servicio {
     protected double puntuacion;
     protected int identificador;
     
-    public Servicio(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador) {
+    public Servicio(String ciudad, double valor, double puntuacion, int identificador) {
         this.ciudad = ciudad;
         this.valor = valor;
-        this.reserva = reserva;
         this.puntuacion = puntuacion;
         this.identificador = identificador;
     }
