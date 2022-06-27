@@ -20,6 +20,16 @@ public class Vehiculo extends Transporte{
     private double costoPorDia;
     private Transmision transmision;
     
+    public Vehiculo(String id,String marca,String modelo,String placa, String color, int capacidad, Estado estado,double costoPorDia, Transmision transmision ){
+        this.id=id;
+        this.marca=marca;
+        this.modelo=modelo;
+        this.color=color;
+        this.capacidad=capacidad;
+        this.estado=estado;
+        this.costoPorDia=costoPorDia;
+        this.transmision=transmision;
+    }
     
     public String getId(){
         return this.id;
