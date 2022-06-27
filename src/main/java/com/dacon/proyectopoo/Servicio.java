@@ -22,7 +22,9 @@ public class Servicio {
         this.puntuacion = puntuacion;
         this.identificador = identificador;
     }
-  
+    public Servicio(){
+        
+    }
     
   
     
