@@ -20,7 +20,7 @@ public class Cliente extends Usuario{
     private int edad;
     private int tarjetaDeCredito;
     private char tipoCliente;
-    Scanner sc=new Scanner(System.in);
+    
 //    protected String cedula;
 //    protected String nombres;
 //    protected String apellidos;
@@ -31,7 +31,10 @@ public class Cliente extends Usuario{
         super(cedula,nombres,apellidos,user,contraseña,celular);
         this.tipoCliente=tipoCliente;
     }
-    
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, int celular){
+        super(cedula,nombres,apellidos,user,contraseña,celular);
+        
+    }
     public int GetEdad(){
         return this.edad;
     }
@@ -51,6 +54,7 @@ public class Cliente extends Usuario{
         this.tipoCliente=tipoCliente;
     }
     public void reservarTransporte(String nombreArchivo,ArrayList<Vehiculo> vehiculos){
+        Scanner sc=new Scanner(System.in);
         String simbolo="/***************RESERVACIÓN***************/";
         String simbolo1="/*                                       */";
         String simbolo2="/*****************************************/";
@@ -58,6 +62,8 @@ public class Cliente extends Usuario{
         System.out.println(simbolo1);
         System.out.println(simbolo2);
         System.out.println("");
+        System.out.println("Ingrese la ciudad de reserva: ");
+        String ciudad=sc.nextLine();
         System.out.println("Ingrese la fecha desde la reserva del vehículo: ");
         String fechaInicio=sc.nextLine();
         System.out.println("Ingrese la fecha hasta la reserva del vehículo: ");
@@ -111,9 +117,11 @@ public class Cliente extends Usuario{
                 ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
                 //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
                 //objeto servicio o si servicio debe tener un objeto reserva
-                //Transporte transporte=new Transporte();
+                Transporte transporte=new Transporte(ciudad,valorPagar,reservaTransporte,5.0,4,opciones.get(op));
+                transporte.mostrarReserva();
                 //Falta crear el constructor de servicio y el transporte
-                //transporte.mostrarReserva();
+                //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
+                
             }
         }else{
             System.out.println("No hay vehículos disponibles");
