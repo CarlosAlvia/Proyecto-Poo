@@ -8,19 +8,23 @@ package com.dacon.proyectopoo;
  *
  * @author User
  */
-public class Paquete extends Entretenimiento{
+public class Paquete {
+    
     String informacion;
     double costo; 
     String diasSalida;
     String fechaDisponible;
     int numeroPersonas;
-    public Paquete(Paquete paquete) {
-        super(paquete);
+    public Paquete(String informacion, double costo, String diasSalida, String fechaDisponible, int numeroPersonas) {
+        this.informacion = informacion;
+        this.costo = costo;
+        this.diasSalida = diasSalida;
+        this.fechaDisponible = fechaDisponible;
+        this.numeroPersonas = numeroPersonas;
     }
+    
+   
 
-    public Paquete(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador) {
-        super(ciudad, valor, reserva, puntuacion, identificador);
-    }
    
 
     public Paquete() {
