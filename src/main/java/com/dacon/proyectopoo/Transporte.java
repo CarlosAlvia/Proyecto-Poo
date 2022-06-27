@@ -10,6 +10,10 @@ package com.dacon.proyectopoo;
  */
 public class Transporte extends Servicio {
     private Vehiculo vehiculo;
+    public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo){
+        super(ciudad,valor,reserva,puntuacion,identificador);
+        this.vehiculo=vehiculo;
+    }
     @Override
     public void mostrarReserva(){
         super.mostrarReserva();
