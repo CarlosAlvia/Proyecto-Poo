@@ -9,5 +9,7 @@ package Personas;
  * @author User
  */
 public class Administrador extends Usuario {
-    
+    public Administrador(String cedula, String nombres, String apellidos, String user, String contraseña, int celular){
+        super(cedula,nombres,apellidos,user,contraseña,celular);
+    }
 }

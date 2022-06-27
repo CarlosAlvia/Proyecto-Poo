@@ -21,6 +21,17 @@ public class Cliente extends Usuario{
     private int tarjetaDeCredito;
     private char tipoCliente;
     Scanner sc=new Scanner(System.in);
+//    protected String cedula;
+//    protected String nombres;
+//    protected String apellidos;
+//    protected String user;
+//    protected String contraseña;
+//    protected int celular;
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, int celular,char tipoCliente){
+        super(cedula,nombres,apellidos,user,contraseña,celular);
+        this.tipoCliente=tipoCliente;
+    }
+    
     public int GetEdad(){
         return this.edad;
     }
@@ -100,9 +111,9 @@ public class Cliente extends Usuario{
                 ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
                 //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
                 //objeto servicio o si servicio debe tener un objeto reserva
-                Transporte transporte=new Transporte();
+                //Transporte transporte=new Transporte();
                 //Falta crear el constructor de servicio y el transporte
-                transporte.mostrarReserva();
+                //transporte.mostrarReserva();
             }
         }else{
             System.out.println("No hay vehículos disponibles");
