@@ -14,9 +14,7 @@ public class Transporte extends Servicio {
         super(ciudad,valor,reserva,puntuacion,identificador);
         this.vehiculo=vehiculo;
     }
-    public Transporte(){
-        
-    }
+    
     @Override
     public void mostrarReserva(){
         super.mostrarReserva();
