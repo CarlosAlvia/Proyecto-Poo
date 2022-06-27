@@ -118,7 +118,7 @@ public class Prueba {
                 opciones.add(vehiculo);
             }
         }
-        if (opciones.size()>0){
+        if (!opciones.isEmpty()){
             System.out.println("Elija una opción");
             int op=sc.nextInt();
             while (op<1||op>opciones.size()){
@@ -132,14 +132,16 @@ public class Prueba {
             System.out.println("¿Desea reservar?");
             String deseaReserva=sc.nextLine().toLowerCase();
             if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
+                Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op-1));
                 Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,cliente,"transporte");
+                transporte.setReserva(reservaTransporte);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaTransporte.toString());
                 String lineaTransporte;
                 lineaTransporte=reservaTransporte.getNumeroReserva()+","+opciones.get(op-1).getId()+","+valorPagar;
                 ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
                 //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
                 //objeto servicio o si servicio debe tener un objeto reserva
-                Transporte transporte=new Transporte(ciudad,valorPagar,reservaTransporte,5.0,4,opciones.get(op-1));
+                
                 transporte.mostrarReserva();
                 //Falta crear el constructor de servicio y el transporte
                 //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
