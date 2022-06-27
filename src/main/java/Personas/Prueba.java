@@ -34,7 +34,7 @@ public class Prueba {
         ArrayList<String[] > arregloFinal= new ArrayList();
         variableGenerado=ManejoArchivos.LeeFichero(nombreArchivo);
         int filas=0;
-        int columnas=0;
+        int columnas=variableGenerado.get(0).split(",").length;
         
         for(int a=1;a<variableGenerado.size();a++){
             filas++;
