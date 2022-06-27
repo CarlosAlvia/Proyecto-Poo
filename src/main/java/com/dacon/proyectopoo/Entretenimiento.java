@@ -17,41 +17,21 @@ import com.dacon.proyectopoo.Transporte;
  * @author User
  */
 public class Entretenimiento extends Servicio {
-    protected int dias;
-    protected String actividades;
-    protected String paquetes;
-    
-    //Getters
-    public int Getdias(){
-        return this.dias;
+    private Paquete paquete;
+    public Paquete getPaquete() {
+        return paquete;
     }
-    public String Getactividades(){
-        return this.actividades;
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
     }
-    public String Getpaquetes(){
-        return this.paquetes;
+    public Entretenimiento(Paquete paquete){
+        this.paquete=paquete;
     }
-    
-    //Setters
-    public void setdias(int dias){
-        this.dias=dias;
+    public Entretenimiento(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador){
+        super(ciudad,valor,reserva, puntuacion,identificador);
     }
-    public void setactividades(String actividades){
-        this.actividades=actividades;
+    public Entretenimiento(){
+        
     }
-    public void setpaquetes(String paquetes){
-        this.paquetes=paquetes;
-    }
-    
-    public void reservarEntretenimiento(){
-        Scanner sc=new Scanner(System.in);
-        Reserva.encabezado();
-        System.out.print("Ingrese el nombre de la ciudad donde se alojará");
-//        String ciudad=sc.nextLine();
-//        ArrayList<Entretenimiento>=ManejoArchivos.LeeFichero("entretenimiento.txt");
-//        for(Entretenimiento entretenimiento:)
-//        
-    }
-    
     
 }
