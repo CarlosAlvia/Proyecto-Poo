@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dacon.proyectopoo;
-
+import java.util.Scanner;
+import java.util.ArrayList;
+import com.dacon.proyectopoo.Vehiculo;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
+import com.dacon.proyectopoo.Reserva;
+import ManejoArchivos.ManejoArchivos;
+import com.dacon.proyectopoo.Transporte;
 /**
  *
  * @author User
@@ -36,6 +44,14 @@ public class Entretenimiento extends Servicio {
     }
     
     public void reservarEntretenimiento(){
+        Scanner sc=new Scanner(System.in);
         Reserva.encabezado();
+        System.out.print("Ingrese el nombre de la ciudad donde se alojará");
+//        String ciudad=sc.nextLine();
+//        ArrayList<Entretenimiento>=ManejoArchivos.LeeFichero("entretenimiento.txt");
+//        for(Entretenimiento entretenimiento:)
+//        
     }
+    
+    
 }
