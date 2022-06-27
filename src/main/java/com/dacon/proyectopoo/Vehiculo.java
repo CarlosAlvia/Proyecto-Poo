@@ -9,7 +9,7 @@ import Enum.Transmision;
  *
  * @author User
  */
-public class Vehiculo extends Transporte{
+public class Vehiculo {
     private String id;
     private String marca;
     private String modelo;
@@ -24,6 +24,7 @@ public class Vehiculo extends Transporte{
         this.id=id;
         this.marca=marca;
         this.modelo=modelo;
+        this.placa=placa;
         this.color=color;
         this.capacidad=capacidad;
         this.estado=estado;
