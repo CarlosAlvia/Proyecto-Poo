@@ -117,7 +117,7 @@ public class Cliente extends Usuario{
                 ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
                 //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
                 //objeto servicio o si servicio debe tener un objeto reserva
-                Transporte transporte=new Transporte(ciudad,valorPagar,reservaTransporte,5.0,4,opciones.get(op));
+                Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op));
                 transporte.mostrarReserva();
                 //Falta crear el constructor de servicio y el transporte
                 //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
