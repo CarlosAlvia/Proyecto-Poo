@@ -17,6 +17,15 @@ public abstract class Usuario {
     protected String contraseña;
     protected int celular;
     
+    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, int celular){
+        this.cedula=cedula;
+        this.nombres=nombres;
+        this.apellidos=apellidos;
+        this.user=user;
+        this.contraseña=contraseña;
+        this.celular=celular;
+    }
+    
     public String GetCedula(){
         return this.cedula;
     }
