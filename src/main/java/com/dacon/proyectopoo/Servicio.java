@@ -30,14 +30,15 @@ public class Servicio {
     
     public void mostrarReserva(){
         String simbolo="/**************RESERVA GENERADA*************/";
-        String simbolo1="/*                                       */";
-        String simbolo2="/*****************************************/";
+        String simbolo1="/*                                         */";
+        String simbolo2="/*******************************************/";
         System.out.println(simbolo);
         System.out.println(simbolo1);
         System.out.println(simbolo2);
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
-        System.out.println("CÓDIGO RESERVA: "+this.reserva.getCliente().GetNombres()+" "+this.reserva.getCliente().GetApellidos());
-        System.out.println("CÓDIGO RESERVA: "+this.reserva.getTipoReserva());
+        System.out.println("CLIENTE: "+this.reserva.getCliente().GetNombres()+" "+this.reserva.getCliente().GetApellidos());
+        System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
+        //TIPO RESERVA ES UN ENUM
     }
     
     public String getCiudad(){
