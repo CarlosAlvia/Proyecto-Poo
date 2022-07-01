@@ -19,6 +19,11 @@ import com.dacon.proyectopoo.Transporte;
 public class Entretenimiento extends Servicio {
     private Paquete paquete;
     
+    public Entretenimiento(Reserva reserva){
+        this.reserva=reserva;
+    }
+    
+    
     @Override
      public void mostrarReserva(){
         super.mostrarReserva();
