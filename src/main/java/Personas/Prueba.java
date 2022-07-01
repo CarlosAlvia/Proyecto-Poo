@@ -14,7 +14,7 @@ import com.dacon.proyectopoo.Vehiculo;
 import java.util.Scanner;
 import Enum.Estado;
 import Enum.Transmision;
-
+import Herramientas.Funcion;
 /**
  *
  * @author CJAA
@@ -87,30 +87,32 @@ public class Prueba {
         System.out.println("");
         System.out.println("Ingrese la ciudad de reserva: ");
         String ciudad=sc.nextLine();
-        long diasReserva;
-        String fechaInicio;
-        String fechaFin;
-        do{
-        System.out.println("Ingrese la fecha desde la reserva del vehículo: ");
-        fechaInicio=sc.nextLine();
-        System.out.println("Ingrese la fecha hasta la reserva del vehículo: ");
-        fechaFin=sc.nextLine();
-        //Calcular cuántos días se reserva 
-        String[] arrFecha1=fechaInicio.split("/");
-        String[] arrFecha2=fechaFin.split("/");
-        int año1=Integer.valueOf(arrFecha1[2]);
-        int año2=Integer.valueOf(arrFecha2[2]);
-        int dia1=Integer.valueOf(arrFecha1[0]);
-        int dia2=Integer.valueOf(arrFecha2[0]);
-        int mes1=Integer.valueOf(arrFecha1[1]);
-        int mes2=Integer.valueOf(arrFecha2[1]);
-        LocalDate fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
-        LocalDate fechaFinal=LocalDate.of(año2,Month.of(mes2),dia2);
-        diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
-        if (diasReserva<=0){
-            System.out.println("Ingrese fechas válidas");
-        }
-        }while(diasReserva<=0);
+        ArrayList datos=Funcion.calcularDias();
+        
+//        long diasReserva;
+//        String fechaInicio;
+//        String fechaFin;
+//        do{
+//        System.out.println("Ingrese la fecha desde la reserva del vehículo: ");
+//        fechaInicio=sc.nextLine();
+//        System.out.println("Ingrese la fecha hasta la reserva del vehículo: ");
+//        fechaFin=sc.nextLine();
+//        //Calcular cuántos días se reserva 
+//        String[] arrFecha1=fechaInicio.split("/");
+//        String[] arrFecha2=fechaFin.split("/");
+//        int año1=Integer.valueOf(arrFecha1[2]);
+//        int año2=Integer.valueOf(arrFecha2[2]);
+//        int dia1=Integer.valueOf(arrFecha1[0]);
+//        int dia2=Integer.valueOf(arrFecha2[0]);
+//        int mes1=Integer.valueOf(arrFecha1[1]);
+//        int mes2=Integer.valueOf(arrFecha2[1]);
+//        LocalDate fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
+//        LocalDate fechaFinal=LocalDate.of(año2,Month.of(mes2),dia2);
+//        diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
+//        if (diasReserva<=0){
+//            System.out.println("Ingrese fechas válidas");
+//        }
+//        }while(diasReserva<=0);
          
         //fin de calcular cuántos días se reserva
         System.out.println("Elija la capacidad del vehículo");
@@ -135,14 +137,14 @@ public class Prueba {
                 op=sc.nextInt();
             }
             sc.nextLine();
-            System.out.println("Usted ha elegido un "+opciones.get(op-1).getMarca()+" "+opciones.get(op-1).getModelo()+" por "+diasReserva+" días");
-            double valorPagar=diasReserva*opciones.get(op-1).getCostoPorDia();
+            System.out.println("Usted ha elegido un "+opciones.get(op-1).getMarca()+" "+opciones.get(op-1).getModelo()+" por "+(Long)datos.get(0)+" días");
+            double valorPagar=(Long)datos.get(0)*opciones.get(op-1).getCostoPorDia();
             System.out.println("El costo a pagar es de "+valorPagar+" dólares");
             System.out.println("¿Desea reservar?");
             String deseaReserva=sc.nextLine().toLowerCase();
             if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
                 Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op-1));
-                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,cliente,"transporte");
+                Reserva reservaTransporte=new Reserva((String)datos.get(1),(String)datos.get(2),valorPagar,cliente,"transporte");
                 transporte.setReserva(reservaTransporte);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaTransporte.toString());
                 String lineaTransporte;
