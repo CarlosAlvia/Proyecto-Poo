@@ -21,16 +21,10 @@ public class Entretenimiento extends Servicio {
     
     @Override
      public void mostrarReserva(){
-        String simbolo="/**************RESERVA GENERADA*************/";
-        String simbolo1="/*                                         */";
-        String simbolo2="/*******************************************/";
-        System.out.println(simbolo);
-        System.out.println(simbolo1);
-        System.out.println(simbolo2);
-        System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
-        System.out.println("CLIENTE: "+this.reserva.getCliente().GetNombres()+" "+this.reserva.getCliente().GetApellidos()); 
-        System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
-        System.out.println("CIUDAD: "+this.paquete);
+        super.mostrarReserva();
+        System.out.println("CIUDAD: "+this.paquete.getCiudadPa());
+        System.out.println("PAQUETE: "+this.paquete.getNombrePaquete());
+        System.out.println("VALOR PAGAR: "+this.paquete.getCostoP()*this.paquete.getNumeroPersonas());
      }
     
     public Paquete getPaquete() {
