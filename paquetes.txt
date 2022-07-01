@@ -1,0 +1,4 @@
+ciudad,nombrePaquete,informacion,costo,diasSalida,fechaDisponible
+cuenca,Escuersión de día completo al parque nacional de Cajar desde Cuenca, Explora uno de los más espectaculares parques del Ecuador con frio,90, Martes y Jueves, 07/12/2022
+cuenca,Ida a la mejor panaderia de cuenca los Santos, A comer uno de los panes más ricos de todo cuencta,15, Miercoles Viernes, 05/07/2022 
+quito,Ida panesillo,a unos de los mejores lugares de la capital,4000, Miercoles Viernes, 07/07/2022
