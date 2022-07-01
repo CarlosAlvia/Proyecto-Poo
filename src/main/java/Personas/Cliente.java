@@ -159,7 +159,7 @@ public class Cliente extends Usuario{
             }
         }
         String reservo="";
-        while(reservo!="Si"){
+        if(!(reservo.equals("Si"))){
         System.out.println("Eleija una opción para conocer más: ");
         int seleccion =sc.nextInt();
         Paquete packelegido=new Paquete();
