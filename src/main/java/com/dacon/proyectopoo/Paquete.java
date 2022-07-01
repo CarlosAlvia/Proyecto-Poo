@@ -23,7 +23,7 @@ public class Paquete {
         this.numeroPersonas = numeroPersonas;
     }
     
-   
+   //s
 
    
 
