@@ -19,6 +19,12 @@ import com.dacon.proyectopoo.Transporte;
 public class Entretenimiento extends Servicio {
     private Paquete paquete;
     
+    public Entretenimiento(Paquete paquete, String ciudad, double valor, double puntuacion, int identificador) {
+        super(ciudad, valor, puntuacion, identificador);
+        this.paquete = paquete;
+    }
+    
+    
     public Entretenimiento(Reserva reserva){
         this.reserva=reserva;
     }
