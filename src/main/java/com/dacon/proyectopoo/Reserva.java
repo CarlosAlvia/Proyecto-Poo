@@ -4,13 +4,14 @@
  */
 package com.dacon.proyectopoo;
 import Personas.Cliente;
+import java.util.Random;
 
 /**
  *
  * @author CJAA
  */
 public class Reserva {
-    private int numeroReserva;
+    private String numeroReserva;
     protected String fechaReserva;
     protected String desde;
     protected String hasta;
@@ -26,9 +27,23 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
-        this.numeroReserva=2;
+        this.numeroReserva="1";
         this.fechaReserva="a";
     }
+//    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
+//        this.desde=desde;
+//        this.hasta=hasta;
+//        this.valorPagar=valorPagar;
+//        this.cliente=cliente;
+//        this.tipoReserva=tipoReserva;
+//        //crear arreglo de numeros reserva
+//         Random random = new Random();
+//        for(int i = 0; i <=5; i++) {
+//            int value = random.nextInt((10 - 1) + 1) + 1;
+//            this.numeroReserva+=value;
+//        this.fechaReserva="a";
+//    }    
+//    }
     public static void mostrarCabecera(){
         String simbolo="/***************RESERVACIÓN***************/";
         String simbolo1="/*                                       */";
@@ -46,7 +61,7 @@ public class Reserva {
     public void setTipoReserva(String tipoReserva) {
         this.tipoReserva = tipoReserva;
     }
-    public int getNumeroReserva(){
+    public String getNumeroReserva(){
         return this.numeroReserva;
     }
     
@@ -77,7 +92,7 @@ public class Reserva {
         return this.cliente;
     }
     
-    public void setnumeroReserva(int numeroReserva){
+    public void setnumeroReserva(String numeroReserva){
         this.numeroReserva=numeroReserva;
     }
     
