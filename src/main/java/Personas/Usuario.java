@@ -15,9 +15,19 @@ public abstract class Usuario {
     protected String apellidos;
     protected String user;
     protected String contraseña;
-    protected int celular;
+    protected String celular;
+    protected char tipoUsuario;
     
-    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, int celular){
+    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, String celular, char tipoUsuario){
+        this.cedula=cedula;
+        this.nombres=nombres;
+        this.apellidos=apellidos;
+        this.user=user;
+        this.contraseña=contraseña;
+        this.celular=celular;
+        this.tipoUsuario=tipoUsuario;
+    }
+    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, String celular){
         this.cedula=cedula;
         this.nombres=nombres;
         this.apellidos=apellidos;
@@ -25,7 +35,6 @@ public abstract class Usuario {
         this.contraseña=contraseña;
         this.celular=celular;
     }
-    
     public String GetCedula(){
         return this.cedula;
     }
@@ -41,7 +50,7 @@ public abstract class Usuario {
     public String GetUser(){
         return this.user;
     }
-    public int GetCelular(){
+    public String GetCelular(){
         return this.celular;
     }
     public void setCedula(String cedula){
@@ -59,8 +68,16 @@ public abstract class Usuario {
     public void setUser(String user){
         this.user=user;
     }
-    public void setCelular(int celular){
+    public void setCelular(String celular){
         this.celular=celular;
+    }
+
+    public char getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(char tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
     
 }
