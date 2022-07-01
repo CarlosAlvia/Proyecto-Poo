@@ -129,7 +129,7 @@ public class Cliente extends Usuario{
         }
         String reservo="";
         if(!(reservo.equals("Si"))){
-        System.out.println("Eleija una opción para conocer más: ");
+        System.out.println("Elija una opción para conocer más: ");
         int seleccion =sc.nextInt();
         Paquete packelegido=new Paquete();
         int cantPersonas=0;
@@ -160,7 +160,8 @@ public class Cliente extends Usuario{
         if (reservo.equals("si")||reservo.equals("sí")){
             
                 Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
-                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimeinto");
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRETENIMIENTO");
+                //ojo tipo sevicio
                 elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
                 elegido.mostrarReserva();
