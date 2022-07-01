@@ -13,6 +13,7 @@ import com.dacon.proyectopoo.Reserva;
 import Herramientas.ManejoArchivos;
 import com.dacon.proyectopoo.Transporte;
 import com.dacon.proyectopoo.Paquete;
+import Herramientas.Funcion;
 /**
  *
  * @author User
@@ -130,7 +131,7 @@ public class Cliente extends Usuario{
         }
         
     }
-    public void reservarEntretenimiento(String nombreArchivo,Cliente cliente){
+    public void reservarEntretenimiento(String nombreArchivo){
         
         String simbolo="/***************RESERVACIÓN***************/";
         String simbolo1="/*                                       */";
@@ -142,7 +143,7 @@ public class Cliente extends Usuario{
 
          Scanner sc=new Scanner(System.in);
         ArrayList<String[]> paqueteString=new ArrayList();
-        paqueteString=Prueba.llenarArreglo("paquetes.txt");
+        paqueteString=Funcion.generarArreglo("paquetes.txt");
 //        System.out.println(paqueteString);
 //    System.out.println(paqueteString.get(0)[3]);
         System.out.println("Ingrese la ciudad de reserva: ");
@@ -182,7 +183,7 @@ public class Cliente extends Usuario{
         reservo=sc.nextLine();
         double valorPagar=cantPersonas*packelegido.getCostoP();
         if (reservo.equals("si")||reservo.equals("sí")){
-                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,cliente,"Entretenimeinto");
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimeinto");
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
                 
                    
