@@ -13,7 +13,5 @@ public class ProyectoPoo {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");  
-        SistemaDeReservasTuristicas a=new SistemaDeReservasTuristicas();
-        a.mostrarMenu();
     }
 }
