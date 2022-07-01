@@ -108,6 +108,7 @@ public class Cliente extends Usuario{
             System.out.println("El costo a pagar es de "+valorPagar+" dólares");
             System.out.println("¿Desea reservar?");
             String deseaReserva=sc.nextLine().toLowerCase();
+            
             if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
                 Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,this,"transporte");
                 ManejoArchivos.EscribirArchivo("reservas.txt", "");
@@ -175,22 +176,17 @@ public class Cliente extends Usuario{
             }
              
         }
+        String diaInicio=packelegido.getFechaDisponible().split("-")[0];
+        String diaFin=packelegido.getFechaDisponible().split("-")[1];
         System.out.println("¿Desea reservar?: ");
         reservo=sc.nextLine();
-//        double valorPagar=cantPersonas*packelegido.getCostoP();
-//        if (reservo.equals("si")||reservo.equals("sí")){
-//                Reserva reservaEntretenimiento=new Reserva(fechaInicio,fechaFin,valorPagar,cliente,"Entretenimeinto");
-//                ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
-//                String lineaTransporte;
-//                lineaTransporte=reservaTransporte.getNumeroReserva()+","+opciones.get(op-1).getId()+","+valorPagar;
-//                ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
-//                //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
-//                //objeto servicio o si servicio debe tener un objeto reserva
-//                Transporte transporte=new Transporte(ciudad,valorPagar,reservaTransporte,5.0,4,opciones.get(op-1));
-//                transporte.mostrarReserva();
-                //Falta crear el constructor de servicio y el transporte
-                //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)    
-//        }
+        double valorPagar=cantPersonas*packelegido.getCostoP();
+        if (reservo.equals("si")||reservo.equals("sí")){
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,cliente,"Entretenimeinto");
+                ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
+                
+                   
+         }
         }
     }
 }
