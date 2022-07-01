@@ -29,6 +29,15 @@ public class Reserva {
         this.numeroReserva=2;
         this.fechaReserva="a";
     }
+    public static void mostrarCabecera(){
+        String simbolo="/***************RESERVACIÓN***************/";
+        String simbolo1="/*                                       */";
+        String simbolo2="/*****************************************/";
+        System.out.println(simbolo);
+        System.out.println(simbolo1);
+        System.out.println(simbolo2);
+        System.out.println("");
+    }
     public String getTipoReserva() {
         return tipoReserva;
     }
