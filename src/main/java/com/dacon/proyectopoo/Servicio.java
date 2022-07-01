@@ -25,8 +25,6 @@ public class Servicio {
         
     }
     
-  
-    
     public void mostrarReserva(){
         String simbolo="/**************RESERVA GENERADA*************/";
         String simbolo1="/*                                         */";
