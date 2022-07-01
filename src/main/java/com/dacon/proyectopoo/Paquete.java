@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dacon.proyectopoo;
+import Personas.Cliente;
 import java.util.ArrayList;
 /**
  *
  * @author User
  */
 public class Paquete {
-    String ciudad;
+    String ciudadPa;
     ArrayList<Paquete> paquetes;
    String nombrePaquete;
     String informacion;
@@ -17,6 +18,32 @@ public class Paquete {
     String diasSalida;
     String fechaDisponible;
     int numeroPersonas;
+    String ciudadP;
+
+    public String getCiudadPa() {
+        return ciudadPa;
+    }
+
+    public void setCiudadPa(String ciudadPa) {
+        this.ciudadPa = ciudadPa;
+    }
+
+    public ArrayList<Paquete> getPaquetes() {
+        return paquetes;
+    }
+
+    public void setPaquetes(ArrayList<Paquete> paquetes) {
+        this.paquetes = paquetes;
+    }
+
+    public String getCiudadP() {
+        return ciudadP;
+    }
+
+    public void setCiudadP(String ciudadP) {
+        this.ciudadP = ciudadP;
+    }
+    
     
     public String getNombrePaquete() {
         return nombrePaquete;
@@ -76,8 +103,8 @@ public class Paquete {
     }
     
    //s
- public Paquete(String ciudad,String nombrePaquete, String informacion, double costoP, String diasSalida, String fechaDisponible) {
-        this.ciudad=ciudad;
+ public Paquete(String ciudadPa,String nombrePaquete, String informacion, double costoP, String diasSalida, String fechaDisponible) {
+        this.ciudadPa=ciudadPa;
         this.nombrePaquete = nombrePaquete;
         this.informacion = informacion;
         this.costoP = costoP;
