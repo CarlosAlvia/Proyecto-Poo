@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dacon.proyectopoo;
-
+import java.util.ArrayList;
 /**
  *
  * @author User
  */
 public class Paquete {
     String ciudad;
+    ArrayList<Paquete> paquetes;
    String nombrePaquete;
     String informacion;
     double costoP; 
