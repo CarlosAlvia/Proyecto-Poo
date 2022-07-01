@@ -47,4 +47,14 @@ public class Funcion {
         datos.add(fechaFin);
         return datos;
     }
+        public static ArrayList<String[]> generarArreglo(String nombreArchivo){
+        ArrayList<String> variableGenerado= new ArrayList();
+        ArrayList<String[] > arregloFinal= new ArrayList();
+        variableGenerado=ManejoArchivos.LeeFichero(nombreArchivo);
+        for(int a=1;a<variableGenerado.size();a++){
+            String[] linea=variableGenerado.get(a).split(","); 
+            arregloFinal.add(linea);
+        }
+        return arregloFinal;
+    }
 }
