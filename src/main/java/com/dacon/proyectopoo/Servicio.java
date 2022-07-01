@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dacon.proyectopoo;
-
+import Personas.Cliente;
 /**
  *
  * @author CJAA
@@ -34,6 +34,19 @@ public class Servicio {
         System.out.println(simbolo);
         System.out.println(simbolo1);
         System.out.println(simbolo2);
+        System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
+        System.out.println("CLIENTE: "+this.reserva.getCliente().GetNombres()+" "+this.reserva.getCliente().GetApellidos());
+        System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
+        //TIPO RESERVA ES UN ENUM
+    }
+    public void crearReserva(Cliente cliente){
+        String simbolo="/**************RESERVA GENERADA*************/";
+        String simbolo1="/*                                         */";
+        String simbolo2="/*******************************************/";
+        System.out.println(simbolo);
+        System.out.println(simbolo1);
+        System.out.println(simbolo2);
+        
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
         System.out.println("CLIENTE: "+this.reserva.getCliente().GetNombres()+" "+this.reserva.getCliente().GetApellidos());
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
