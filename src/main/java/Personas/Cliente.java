@@ -149,8 +149,8 @@ public class Cliente extends Usuario{
              
         }
         packelegido.setNumeroPersonas(cantPersonas);
-        System.out.println(packelegido.getCostoP());
-        System.out.println(packelegido.getNumeroPersonas());
+//        System.out.println(packelegido.getCostoP());
+//        System.out.println(packelegido.getNumeroPersonas());
         String diaInicio=packelegido.getFechaDisponible().split("-")[0];
         String diaFin=packelegido.getFechaDisponible().split("-")[1];
         System.out.println("¿Desea reservar?: ");
@@ -160,7 +160,7 @@ public class Cliente extends Usuario{
         if (reservo.equals("si")||reservo.equals("sí")){
             
                 Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
-                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRETENIMIENTO");
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRENEMIENTO");
                 //ojo tipo sevicio
                 elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
