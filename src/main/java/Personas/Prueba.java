@@ -23,59 +23,14 @@ public class Prueba {
     public static void main(String[] args){
         ArrayList<String[]> hola=new ArrayList();
         ArrayList<Vehiculo> hola1=new ArrayList();
-        hola=llenarArreglo("vehiculos.txt");
-        
-
+        hola=Funcion.generarArreglo("vehiculos.txt");
         Cliente cliente2=new Cliente("0945698598","Marco","Cárdenas","mcarden","abcde",975342533);
         for (String[] ele:hola){
         Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
         hola1.add(vehiculo);
         }
         reservarTransporte(hola1,cliente2);
-//        String hola="09";
-//        System.out.println(Month.of(Integer.valueOf(hola)));
-//        LocalDate fechaIni=LocalDate.of(2021,Month.of(2),27);
-//        LocalDate fechaFinal=LocalDate.of(2021,Month.of(3),2);
-//        System.out.println(ChronoUnit.DAYS.between(fechaIni,fechaFinal));
-//        ManejoArchivos.LeeFichero("hoteles.txt");
-       
-      
-        
-//        ManejoArchivos.EscribirArchivo("hoteles.txt", "");
-//        ManejoArchivos.EscribirArchivo("reservas.txt", "");
-//        ManejoArchivos.EscribirArchivo("hoteles.txt", "hola");
     }
-    public static ArrayList<String[]> llenarArreglo(String nombreArchivo){
-        //Revisar error de escritura del archivo
-        ArrayList<String> variableGenerado= new ArrayList();
-        ArrayList<String[] > arregloFinal= new ArrayList();
-        variableGenerado=ManejoArchivos.LeeFichero(nombreArchivo);
-        int filas=0;
-        int columnas=variableGenerado.get(0).split(",").length;
-        
-        for(int a=1;a<variableGenerado.size();a++){
-            filas++;
-            String[] linea=variableGenerado.get(a).split(","); 
-            columnas=linea.length;
-            arregloFinal.add(linea);
-        }
-//        for(String[] elemento: arregloFinal ){
-//            for(String elem: elemento){
-//                System.out.println(elem);
-//            }
-        return arregloFinal;
-        }
-        
-        
-//        String [][] matriz=new String[filas][columnas];
-//        for(int i=0; i<filas;i++){
-//            for(int a=0;a<columnas;a++){
-//                matriz[i][a]=
-//            }
-            
-        
-        
-    
     public static void reservarTransporte(ArrayList<Vehiculo> vehiculos, Cliente cliente){
         Scanner sc=new Scanner(System.in);
         Reserva.mostrarCabecera();
