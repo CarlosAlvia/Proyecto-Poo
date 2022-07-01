@@ -14,6 +14,7 @@ import Herramientas.ManejoArchivos;
 import com.dacon.proyectopoo.Transporte;
 import com.dacon.proyectopoo.Paquete;
 import Herramientas.Funcion;
+import com.dacon.proyectopoo.Entretenimiento;
 /**
  *
  * @author User
@@ -153,9 +154,13 @@ public class Cliente extends Usuario{
         if (reservo.equals("si")||reservo.equals("sí")){
                 Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimeinto");
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
-                
+                Entretenimiento elegido=new Entretenimiento(reservaEntretenimiento);
+                elegido.mostrarReserva();
                    
          }
         }
+    }
+    public void mostarReserva(){
+        
     }
 }
