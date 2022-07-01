@@ -87,10 +87,14 @@ public class Prueba {
         System.out.println("");
         System.out.println("Ingrese la ciudad de reserva: ");
         String ciudad=sc.nextLine();
+        long diasReserva;
+        String fechaInicio;
+        String fechaFin;
+        do{
         System.out.println("Ingrese la fecha desde la reserva del vehículo: ");
-        String fechaInicio=sc.nextLine();
+        fechaInicio=sc.nextLine();
         System.out.println("Ingrese la fecha hasta la reserva del vehículo: ");
-        String fechaFin=sc.nextLine();
+        fechaFin=sc.nextLine();
         //Calcular cuántos días se reserva 
         String[] arrFecha1=fechaInicio.split("/");
         String[] arrFecha2=fechaFin.split("/");
@@ -102,7 +106,12 @@ public class Prueba {
         int mes2=Integer.valueOf(arrFecha2[1]);
         LocalDate fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
         LocalDate fechaFinal=LocalDate.of(año2,Month.of(mes2),dia2);
-        long diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
+        diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
+        if (diasReserva<=0){
+            System.out.println("Ingrese fechas válidas");
+        }
+        }while(diasReserva<=0);
+         
         //fin de calcular cuántos días se reserva
         System.out.println("Elija la capacidad del vehículo");
         //El documento decía preguntar tamaño y en este caso se asemeja el atributo capacidad
@@ -112,7 +121,7 @@ public class Prueba {
         int contador=0;
         ArrayList<Vehiculo> opciones=new ArrayList<Vehiculo>();
         for (Vehiculo vehiculo:vehiculos){
-            if(vehiculo.getCapacidad()==capacidadElegida){
+            if(vehiculo.getCapacidad()==capacidadElegida&&vehiculo.getEstado().name().equals("DISPONIBLE")){
                 contador+=1;
                 System.out.println(contador+". "+vehiculo);
                 opciones.add(vehiculo);
