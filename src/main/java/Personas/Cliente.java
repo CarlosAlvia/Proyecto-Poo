@@ -135,26 +135,34 @@ public class Cliente extends Usuario{
         int cantPersonas=0;
         for (Paquete pac:paquetes){
             if(pac==paquetes.get(seleccion-1)){
-            System.out.println(pac.getInformacion()); 
-            System.out.println("Costo por persona: "+ pac.getCostoP()); 
-            System.out.println("Salidas: "+ pac.getDiasSalida()); 
-            System.out.println("Fecha para realizar ruta: "+ pac.getFechaDisponible());
-            System.out.println("Numero de personas: ");
-            cantPersonas=sc.nextInt();
-            packelegido= pac;
+                System.out.println(pac.getInformacion()); 
+                System.out.println("Costo por persona: "+ pac.getCostoP()); 
+                System.out.println("Salidas: "+ pac.getDiasSalida()); 
+                System.out.println("Fecha para realizar ruta: "+ pac.getFechaDisponible());
+                System.out.println("Numero de personas: ");
+                cantPersonas=sc.nextInt();
+                sc.nextLine();
+                packelegido= pac;
+                
         
             }
              
         }
+        packelegido.setNumeroPersonas(cantPersonas);
+        System.out.println(packelegido.getCostoP());
+        System.out.println(packelegido.getNumeroPersonas());
         String diaInicio=packelegido.getFechaDisponible().split("-")[0];
         String diaFin=packelegido.getFechaDisponible().split("-")[1];
         System.out.println("¿Desea reservar?: ");
         reservo=sc.nextLine();
-        double valorPagar=cantPersonas*packelegido.getCostoP();
+        double valorPagar=packelegido.getNumeroPersonas()*packelegido.getCostoP();
+        System.out.println(valorPagar);
         if (reservo.equals("si")||reservo.equals("sí")){
+            
+                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
                 Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimeinto");
+                elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
-                Entretenimiento elegido=new Entretenimiento(reservaEntretenimiento);
                 elegido.mostrarReserva();
                    
          }
