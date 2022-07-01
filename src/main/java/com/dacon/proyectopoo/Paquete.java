@@ -67,9 +67,9 @@ public class Paquete {
     }
     
     
-    public Paquete(String informacion, double costo, String diasSalida, String fechaDisponible, int numeroPersonas) {
+    public Paquete(String informacion, double costoP, String diasSalida, String fechaDisponible, int numeroPersonas) {
         this.informacion = informacion;
-        this.costo = costo;
+        this.costoP = costoP;
         this.diasSalida = diasSalida;
         this.fechaDisponible = fechaDisponible;
         this.numeroPersonas = numeroPersonas;
