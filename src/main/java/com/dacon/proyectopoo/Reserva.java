@@ -28,7 +28,8 @@ public class Reserva {
         this.tipoReserva=tipoReserva;
         this.numeroReserva=2;
         this.fechaReserva="a";
-    }public String getTipoReserva() {
+    }
+    public String getTipoReserva() {
         return tipoReserva;
     }
 
