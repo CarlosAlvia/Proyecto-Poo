@@ -22,14 +22,14 @@ import com.dacon.proyectopoo.Paquete;
  */
 public class Prueba {
     public static void main(String[] args){
-//        ArrayList<String[]> hola=new ArrayList();
-//        ArrayList<Vehiculo> hola1=new ArrayList();
-//        hola=Funcion.generarArreglo("vehiculos.txt");
-//        Cliente cliente2=new Cliente("0945698598","Marco","Cárdenas","mcarden","abcde",975342533);
-//        for (String[] ele:hola){
-//        Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
-//        hola1.add(vehiculo);
-//        }
+        ArrayList<String[]> hola=new ArrayList();
+        ArrayList<Vehiculo> hola1=new ArrayList();
+        hola=Funcion.generarArreglo("vehiculos.txt");
+        Cliente cliente2=new Cliente("0945698598","Marco","Cárdenas","mcarden","abcde","0975342533");
+        for (String[] ele:hola){
+        Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
+        hola1.add(vehiculo);
+        }
 //        reservarTransporte(hola1,cliente2);
  Scanner sc=new Scanner(System.in);
         ArrayList<String[]> paqueteString=new ArrayList();
