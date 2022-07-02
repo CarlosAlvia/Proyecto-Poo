@@ -117,7 +117,7 @@ public class Reserva {
         return this.hasta;
     }
     
-    public double GetvalorPagar(){
+    public double getValorPagar(){
         return this.valorPagar;
     }
     
