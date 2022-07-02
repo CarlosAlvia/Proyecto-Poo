@@ -4,46 +4,67 @@
  */
 package com.dacon.proyectopoo;
 import Enum.TipoHabitacion;
+import Enum.Estado;
 /**
  *
  * @author User
  */
-public class Habitacion extends Hotel{
-    protected TipoHabitacion tipoHabitacion;
-    protected double precio;
-    protected int capacidad;
-    protected int numerodeHabitacion;
-    protected boolean estado;
+public class Habitacion{
+    private String codigoHotel;
+    private TipoHabitacion tipoHabitacion;
+    private double precio;
+    private int capacidad;
+    private int numerodeHabitacion;
+    private Estado estado;
+
+    
+    public Habitacion(String codigoHotel, TipoHabitacion tipoHabitacion, double precio, int capacidad, int numerodeHabitacion, Estado estado) {
+        this.codigoHotel = codigoHotel;
+        this.tipoHabitacion = tipoHabitacion;
+        this.precio = precio;
+        this.capacidad = capacidad;
+        this.numerodeHabitacion = numerodeHabitacion;
+        this.estado = estado;
+    }
+
+    public String getCodigoHotel() {
+        return codigoHotel;
+    }
+
+    public void setCodigoHotel(String codigoHotel) {
+        this.codigoHotel = codigoHotel;
+    }
+
     //Getters
-    public TipoHabitacion GettipoHabitacion(){
+    public TipoHabitacion getTipoHabitacion(){
         return this.tipoHabitacion;
     }
-    public double Getprecio(){
+    public double getPrecio(){
         return this.precio;
     }
-    public int Getcapacidad(){
+    public int getCapacidad(){
         return this.capacidad;
     }
-    public int GetnumerodeHabitacion(){
+    public int getNumerodeHabitacion(){
         return this.numerodeHabitacion;
     }
-    public boolean Getestado(){
+    public Estado getEstado(){
         return this.estado;
     }
     //Setters
-    public void settipoHabitacion(TipoHabitacion tipoHabitacion){
+    public void setTipoHabitacion(TipoHabitacion tipoHabitacion){
         this.tipoHabitacion=tipoHabitacion;
     }
-    public void setprecio(double precio){
+    public void setPrecio(double precio){
         this.precio=precio;
     }
-    public void setcapacidad(int capacidad){
+    public void setCapacidad(int capacidad){
         this.capacidad=capacidad;
     }
-    public void setnumerodeHabitacion(int numerodeHabitacion){
+    public void setNumerodeHabitacion(int numerodeHabitacion){
         this.numerodeHabitacion=numerodeHabitacion;
     }
-    public void setestado(boolean estado){
+    public void setEstado(Estado estado){
         this.estado=estado;
     }
         
