@@ -4,7 +4,9 @@
  */
 package com.dacon.proyectopoo;
 import Personas.Cliente;
+import Personas.Usuario;
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +22,8 @@ public class Reserva {
     protected String tipoReserva;
     //protected Servicio servicio;
     protected Cliente cliente;
+    protected ArrayList<String> identificadores;
+    
     
     public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
         this.desde=desde;
@@ -38,9 +42,14 @@ public class Reserva {
 //        this.tipoReserva=tipoReserva;
 //        //crear arreglo de numeros reserva
 //         Random random = new Random();
+    
+//       while()
 //        for(int i = 0; i <=5; i++) {
 //            int value = random.nextInt((10 - 1) + 1) + 1;
 //            this.numeroReserva+=value;
+//          
+//            indentificadores.add(this.numeroReserva)
+             
 //        this.fechaReserva="a";
 //    }    
 //    }
