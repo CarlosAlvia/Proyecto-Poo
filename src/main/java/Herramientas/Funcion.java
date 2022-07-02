@@ -59,6 +59,27 @@ public class Funcion {
         }
         return arregloFinal;
     }
+        public static long calcularDias(String fechaInicio,String fechaFin){
+        long diasReserva;
+        
+        //Calcular cuántos días se reserva 
+        String[] arrFecha1=fechaInicio.split("/");
+        String[] arrFecha2=fechaFin.split("/");
+        int año1=Integer.valueOf(arrFecha1[2]);
+        int año2=Integer.valueOf(arrFecha2[2]);
+        int dia1=Integer.valueOf(arrFecha1[0]);
+        int dia2=Integer.valueOf(arrFecha2[0]);
+        int mes1=Integer.valueOf(arrFecha1[1]);
+        int mes2=Integer.valueOf(arrFecha2[1]);
+        LocalDate fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
+        LocalDate fechaFinal=LocalDate.of(año2,Month.of(mes2),dia2);
+        diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
+       
+       
+        Long dias=diasReserva;
+        return dias;
+        }
+        
         public static String generadorNumerosReserva(){
            Random a= new Random();
            Integer b= a.nextInt(20000,29999);
