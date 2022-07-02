@@ -8,7 +8,9 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class Hotel extends Hospedaje {
+public class Hotel {
+     private String ciudadH;
+    private String codigoHotel;
     private String nombre;
     private String direccion;
     private int numeroEstrellas;
@@ -17,6 +19,42 @@ public class Hotel extends Hospedaje {
     private ArrayList<Habitacion> listaHabitaciones;
     private boolean cancelacionGratis;
     
+    public Hotel(){
+        
+    }
+    public Hotel(String codigoHotel){
+       this.codigoHotel=codigoHotel;
+    }
+
+    public Hotel(String ciudadH, String codigoHotel, String nombre,int numeroEstrellas, String direccion,  boolean desayuno, boolean parqueo, boolean cancelacionGratis) {
+        this.ciudadH = ciudadH;
+        this.codigoHotel = codigoHotel;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.numeroEstrellas = numeroEstrellas;
+        this.desayuno = desayuno;
+        this.parqueo = parqueo;
+        this.cancelacionGratis = cancelacionGratis;
+    }
+    
+    
+
+    
+    public String getCodigoHotel() {
+        return codigoHotel;
+    }
+
+    public void setCodigoHotel(String codigoHotel) {
+        this.codigoHotel = codigoHotel;
+    }
+  
+    public String getCiudadH() {
+        return ciudadH;
+    }
+
+    public void setCiudadH(String ciudadH) {
+        this.ciudadH = ciudadH;
+    }
     public String getNombre(){
         return this.nombre;
     }
