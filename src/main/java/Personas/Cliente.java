@@ -5,6 +5,7 @@
 package Personas;
 import Enum.Estado;
 import Enum.Transmision;
+import Enum.TipoHabitacion;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.dacon.proyectopoo.Vehiculo;
@@ -19,6 +20,7 @@ import Herramientas.Funcion;
 import com.dacon.proyectopoo.Entretenimiento;
 import com.dacon.proyectopoo.Hospedaje;
 import com.dacon.proyectopoo.Hotel;
+import com.dacon.proyectopoo.Habitacion;
 /**
  *
  * @author User
@@ -55,6 +57,8 @@ public class Cliente extends Usuario{
      String fechaEntrada=sc.nextLine();
      System.out.println("Ingrese la fecha salidad: ");
      String fechaSalida=sc.nextLine();
+     long dias=Funcion.calcularDias(fechaEntrada,fechaSalida);
+     
      System.out.println("¿Qué tipo de hospedaje busca?");
      System.out.println("1. Hotel");
      System.out.println("2. Departamento");
@@ -68,30 +72,53 @@ public class Cliente extends Usuario{
      
         for(int i=0;i<hotelString.size();i++){
             if(hotelString.get(i)[0].equals(ciudad)){
-                System.out.println(indice+". "+ hotelString.get(i)[1]);
-           //creación de objeto hotel    
+                System.out.println(indice+". "+ hotelString.get(i)[2]);
+                Hotel hotelito=new Hotel(hotelString.get(i)[0],hotelString.get(i)[1],hotelString.get(i)[2],Integer.parseInt (hotelString.get(i)[3]), hotelString.get(i)[4], hotelString.get(i)[5].equals("true"), hotelString.get(i)[5].equals("true"),hotelString.get(i)[6].equals("true"));
             indice++;
-//            hoteles.add()
-            
-            
-            
+            hoteles.add(hotelito);
+ 
             }
         }
         
      System.out.println("Elija una opción: ");
      int opcion=sc.nextInt();
      sc.nextLine();
-     Hotel hotElegido;
+     Hotel hotElegido=new Hotel();
      for (Hotel hote: hoteles){
             if(hote==hoteles.get(opcion-1)){
-                System.out.println("Datos de "+"deberia ir el hote");
+                System.out.println("Datos de "+hote.getNombre());
                 System.out.println("/*********************************/");
-                System.out.println("Dirección:"); 
-                System.out.println("Costo por noche: "); 
-                System.out.println("Estrellas: "); 
-                System.out.println("Incluye desayuno: "); 
-                System.out.println("Incluye parqueo: ");
-                System.out.println("Permite canceñación gratis: ");
+                System.out.println("Dirección: "+hote.getDireccion()); 
+                System.out.println("Costo por noche: ");
+                String estrellitas="";
+                for(int b=0;b<hote.getNumeroEstrellas();b++){
+                    estrellitas=estrellitas+"*";
+                }
+                System.out.println("Estrellas: "+estrellitas); 
+                String desa="";
+                if(hote.getDesayuno()){
+                    desa="Sí";
+                }
+                else{
+                    desa="No";
+                }
+                System.out.println("Incluye desayuno: "+desa); 
+                String parq="";
+                if(hote.getDesayuno()){
+                    parq="Sí";
+                }
+                else{
+                    parq="No";
+                }
+                System.out.println("Incluye parqueo: "+parq);
+                String can="";
+                if(hote.getDesayuno()){
+                    can="Sí";
+                }
+                else{
+                    can="No";
+                }
+                System.out.println("Permite cancelación gratis: "+can);
                 System.out.println("/*********************************/");
                 sc.nextLine();
                 hotElegido= hote;
@@ -99,7 +126,37 @@ public class Cliente extends Usuario{
             }
              
         }
+     ArrayList<String[]> habitacionString=new ArrayList();
+     habitacionString=Funcion.generarArreglo("habitaciones.txt");
+     int indice2=1;
      
+     ArrayList<Habitacion> habitaciones=new ArrayList<Habitacion>();
+       System.out.println("Elija el tipo de habitación que prefiere");
+       for(int i=0;i<habitacionString.size();i++){
+            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")){
+                System.out.println(indice2+". "+ habitacionString.get(i)[1]+" - "+habitacionString.get(i)[3]+" persona(s) "+" - "+habitacionString.get(i)[2]);
+                Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
+            indice2++;
+            habitaciones.add(habi);
+ 
+            }
+        }
+       System.out.println("Elija una opción: ");
+       int op=sc.nextInt();
+       System.out.println("Usted ha elegido una habitación "+habitaciones.get(op).getTipoHabitacion()+" para in total de "+dias+ " noche(s).");
+       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(op).getPrecio());
+       
+       System.out.println("¿Desea reservar?: ");
+        String reservo=sc.nextLine();
+        if (reservo.equals("si")||reservo.equals("sí")){
+                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRENEMIENTO");
+                //ojo tipo sevicio
+                elegido.setReserva(reservaEntretenimiento);
+                ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
+                elegido.mostrarReserva();
+                   
+         }
     }
     
     
@@ -161,6 +218,7 @@ public class Cliente extends Usuario{
                 //objeto servicio o si servicio debe tener un objeto reserva
                 
                 transporte.mostrarReserva();
+                
                 //Falta crear el constructor de servicio y el transporte
                 //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
                 
@@ -181,6 +239,7 @@ public class Cliente extends Usuario{
         String ciudad=sc.nextLine();
         int a=1;
         ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
+        
         for(int i=0;i<paqueteString.size();i++){
             if(paqueteString.get(i)[0].equals(ciudad)){
                 System.out.println(a+". "+ paqueteString.get(i)[1]);

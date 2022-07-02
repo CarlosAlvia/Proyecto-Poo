@@ -5,3 +5,4 @@ numeroReserva,códigoVehículo,valorPagar
 1,9273,300.0
 1,9273,300.0
 1,9273,4800.0
+20597,9273,150.0
