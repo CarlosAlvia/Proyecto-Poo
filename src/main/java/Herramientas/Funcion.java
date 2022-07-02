@@ -8,7 +8,9 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
+import java.util.Random;
+//import org.apache.commons.math.random.RandomData;
+//import org.apache.commons.math.random.RandomDataImpl;
 /**
  *
  * @author CJAA
@@ -57,4 +59,12 @@ public class Funcion {
         }
         return arregloFinal;
     }
+        public static String generadorNumerosReserva(){
+           Random a= new Random();
+           Integer b= a.nextInt(20000,29999);
+           return (b.toString());
+        }
+        public static void main(String[] args){
+            
+        }
 }
