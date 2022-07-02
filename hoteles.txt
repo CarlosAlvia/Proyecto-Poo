@@ -1,2 +1,3 @@
-códigoHotel,nombre,rating,dirección,incluye desayuno,incluye parqueo,permite cancelación gratis
-3645,Four Points by Sheraton Cuenca,5,Centro histórico de Cuenca,true,true,false
+ciudad,códigoHotel,nombre,rating,dirección,incluye desayuno,incluye parqueo,permite cancelación gratis
+cuenca,3645,Four Points by Sheraton Cuenca,5,Centro histórico de Cuenca,true,true,false
+cuenca,3675,Delivey Mastery,6,Santa Ana de los Ríos de Cuenca,false,true,false
