@@ -22,63 +22,64 @@ import com.dacon.proyectopoo.Paquete;
  */
 public class Prueba {
     public static void main(String[] args){
-        ArrayList<String[]> hola=new ArrayList();
-        ArrayList<Vehiculo> hola1=new ArrayList();
-        hola=Funcion.generarArreglo("vehiculos.txt");
-        Cliente cliente2=new Cliente("0945698598","Marco","Cárdenas","mcarden","abcde","0975342533");
-        for (String[] ele:hola){
-        Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
-        hola1.add(vehiculo);
-        }
-//        reservarTransporte(hola1,cliente2);
- Scanner sc=new Scanner(System.in);
-        ArrayList<String[]> paqueteString=new ArrayList();
-        paqueteString=Funcion.generarArreglo("paquetes.txt");
-//        System.out.println(paqueteString);
-//    System.out.println(paqueteString.get(0)[3]);
-        System.out.println("Ingrese la ciudad de reserva: ");
-        String ciudad=sc.nextLine();
-        int a=1;
-        ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
-        for(int i=0;i<paqueteString.size();i++){
-            if(paqueteString.get(i)[0].equals(ciudad)){
-                System.out.println(a+". "+ paqueteString.get(i)[1]);
-           Paquete paquete=new Paquete(ciudad,paqueteString.get(i)[1],paqueteString.get(i)[2],Double.parseDouble(paqueteString.get(i)[3]),paqueteString.get(i)[4],paqueteString.get(i)[5]);    
-            a++;
-            paquetes.add(paquete);
-            }
-        }
-        String reservo="";
-        
-        System.out.println("Eleija una opción para conocer más: ");
-        int seleccion =sc.nextInt();
-        Paquete packelegido=new Paquete();
-        int cantPersonas=0;
-        for (Paquete pac:paquetes){
-            if(pac==paquetes.get(seleccion-1)){
-            System.out.println(pac.getInformacion()); 
-            System.out.println("Costo por persona: "+ pac.getCostoP()); 
-            System.out.println("Salidas: "+ pac.getDiasSalida()); 
-            System.out.println("Fecha para realizar ruta: "+ pac.getFechaDisponible());
-            System.out.println("Numero de personas: ");
-            cantPersonas=sc.nextInt();
-            packelegido= pac;
-            sc.nextLine();
-            System.out.println("¿Desea reservar?: ");
-             reservo=sc.nextLine();
-            }
-             
-        }
-        String diaInicio=packelegido.getFechaDisponible().split("-")[0];
-        String diaFin=packelegido.getFechaDisponible().split("-")[1];
-        ;
-        double valorPagar=cantPersonas*packelegido.getCostoP();
-        if (reservo.equals("si")||reservo.equals("sí")){
-                System.out.println("Holaxd");
-                
-                   
-         }
-        
+//        ArrayList<String[]> hola=new ArrayList();
+//        ArrayList<Vehiculo> hola1=new ArrayList();
+//        hola=Funcion.generarArreglo("vehiculos.txt");
+//        Cliente cliente2=new Cliente("0945698598","Marco","Cárdenas","mcarden","abcde","0975342533");
+//        for (String[] ele:hola){
+//        Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
+//        hola1.add(vehiculo);
+//        }
+////        reservarTransporte(hola1,cliente2);
+// Scanner sc=new Scanner(System.in);
+//        ArrayList<String[]> paqueteString=new ArrayList();
+//        paqueteString=Funcion.generarArreglo("paquetes.txt");
+////        System.out.println(paqueteString);
+////    System.out.println(paqueteString.get(0)[3]);
+//        System.out.println("Ingrese la ciudad de reserva: ");
+//        String ciudad=sc.nextLine();
+//        int a=1;
+//        ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
+//        for(int i=0;i<paqueteString.size();i++){
+//            if(paqueteString.get(i)[0].equals(ciudad)){
+//                System.out.println(a+". "+ paqueteString.get(i)[1]);
+//           Paquete paquete=new Paquete(ciudad,paqueteString.get(i)[1],paqueteString.get(i)[2],Double.parseDouble(paqueteString.get(i)[3]),paqueteString.get(i)[4],paqueteString.get(i)[5]);    
+//            a++;
+//            paquetes.add(paquete);
+//            }
+//        }
+//        String reservo="";
+//        
+//        System.out.println("Eleija una opción para conocer más: ");
+//        int seleccion =sc.nextInt();
+//        Paquete packelegido=new Paquete();
+//        int cantPersonas=0;
+//        for (Paquete pac:paquetes){
+//            if(pac==paquetes.get(seleccion-1)){
+//            System.out.println(pac.getInformacion()); 
+//            System.out.println("Costo por persona: "+ pac.getCostoP()); 
+//            System.out.println("Salidas: "+ pac.getDiasSalida()); 
+//            System.out.println("Fecha para realizar ruta: "+ pac.getFechaDisponible());
+//            System.out.println("Numero de personas: ");
+//            cantPersonas=sc.nextInt();
+//            packelegido= pac;
+//            sc.nextLine();
+//            System.out.println("¿Desea reservar?: ");
+//             reservo=sc.nextLine();
+//            }
+//             
+//        }
+//        String diaInicio=packelegido.getFechaDisponible().split("-")[0];
+//        String diaFin=packelegido.getFechaDisponible().split("-")[1];
+//        ;
+//        double valorPagar=cantPersonas*packelegido.getCostoP();
+//        if (reservo.equals("si")||reservo.equals("sí")){
+//                System.out.println("Holaxd");
+//                
+//                   
+//         }
+        LocalDate fechaActual= LocalDate.now();
+        System.out.println(fechaActual);
     
     }
     public static void reservarTransporte(ArrayList<Vehiculo> vehiculos, Cliente cliente){
