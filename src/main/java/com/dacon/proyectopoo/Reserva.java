@@ -33,6 +33,12 @@ public class Reserva {
         this.tipoReserva=tipoReserva;
         this.numeroReserva="1";
         this.fechaReserva="a";
+//        Random a= new Random();
+//        do{
+//        Integer b= a.nextInt(20000,3000);
+//        this.numeroReserva=b.toString();
+//        Funcion.generarArreglo();
+//        }while();
     }
 //    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
 //        this.desde=desde;
