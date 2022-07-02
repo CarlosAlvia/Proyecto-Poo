@@ -8,6 +8,7 @@ import Personas.Usuario;
 import java.util.Random;
 import java.util.ArrayList;
 import Herramientas.Funcion;
+import java.time.LocalDate;
 /**
  *
  * @author CJAA
@@ -31,9 +32,9 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
-        this.fechaReserva="a";
         Random a= new Random();
         String numeroReservaGenerado;
+        //Inicio Generado del numeroReserva y asignación
         boolean generarOtroNumero=false;
         do{
             Long b= a.nextLong(20000,30000);
@@ -48,8 +49,10 @@ public class Reserva {
             }
         }while(generarOtroNumero);
         this.numeroReserva=numeroReservaGenerado;
-        
- 
+        //Fin Generado del numeroReserva y asignación
+        String[] arrFechaActual= LocalDate.now().toString().split("-");
+        String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
+        this.fechaReserva=fechaActual;
     }
 //    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
 //        this.desde=desde;
