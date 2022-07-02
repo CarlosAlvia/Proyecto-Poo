@@ -1,0 +1,4 @@
+ciudad,nombreDepartamento,costo,numeroHabitaciones,Estado,wifi,piscina
+cuenca,Departamento las cuenquitas,180.00,3,DISPONIBLE,true,false
+cuenca,Departamento las aguas del yaniqai,300.00,5,DISPONIBLE,true,true
+cuenca,Departamento los juanes,50.00,5,OCUPADO,false,false
