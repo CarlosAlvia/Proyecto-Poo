@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Personas;
+import Enum.Estado;
+import Enum.Transmision;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.dacon.proyectopoo.Vehiculo;
@@ -104,7 +106,14 @@ public class Cliente extends Usuario{
     
     
     
-    public void reservarTransporte(ArrayList<Vehiculo> vehiculos){
+    public void reservarTransporte(){
+        ArrayList<String[]> datosVehiculos=new ArrayList();
+        ArrayList<Vehiculo> vehiculos=new ArrayList();
+        datosVehiculos=Funcion.generarArreglo("vehiculos.txt");
+        for (String[] ele:datosVehiculos){
+            Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
+            vehiculos.add(vehiculo);
+        }
         Scanner sc=new Scanner(System.in);
         Reserva.mostrarCabecera();
         System.out.println("Ingrese la ciudad de reserva: ");
