@@ -16,6 +16,7 @@ import Enum.Estado;
 import Enum.Transmision;
 import Herramientas.Funcion;
 import com.dacon.proyectopoo.Paquete;
+import com.dacon.proyectopoo.Pago;
 /**
  *
  * @author CJAA
@@ -145,8 +146,9 @@ public class Prueba {
         Reserva reservaAPagar = null;
         Cliente cl=new Cliente("","","","","","");
         Scanner sc=new Scanner(System.in);
-        final double factorDescuento=0.15;
+        final double FACTORDESCUENTO=0.15;
         String tarjetaDeCredito="";
+        String caducidadTarjeta="";
         String numeroCheque="";
         double valorPago;
         boolean probarOtraVez=true;
@@ -209,22 +211,62 @@ public class Prueba {
                     System.out.println("Tarjeta inválida");
                 }else{
                     tarjetaDeCredito=tarjeta;
+                    caducidadTarjeta=caducidad;
                 }
                 }while(repetirTarjeta);
                 if (reservaAPagar.getCliente().getTipoUsuario()=='V'){
                     double subtotal=reservaAPagar.getValorPagar();
                     double recargoTarjeta=0.10;
-                    valorPago=subtotal-(subtotal*factorDescuento)+subtotal*recargoTarjeta;
+                    valorPago=subtotal-(subtotal*FACTORDESCUENTO)+subtotal*recargoTarjeta;
+                    System.out.println("Su valor a pagar final es: "+valorPago);
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,formaPago,tarjetaDeCredito,caducidadTarjeta);
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                    }
                 }else if (reservaAPagar.getCliente().getTipoUsuario()=='C'){
                     double subtotal=reservaAPagar.getValorPagar();
                     double recargoTarjeta=0.10;
                     valorPago=subtotal+subtotal*recargoTarjeta;
+                    System.out.println("Su valor a pagar final es: "+valorPago);
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,formaPago,tarjetaDeCredito,caducidadTarjeta);
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                    }
                 }
             }else if(formaPago.toLowerCase().equals("cheque")){
                 System.out.println("Ingrese el número de cheque");
                 String cheque=sc.nextLine();
                 numeroCheque=cheque;
-                System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
+                if (reservaAPagar.getCliente().getTipoUsuario()=='V'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal-(subtotal*FACTORDESCUENTO);
+                    System.out.println("Su valor a pagar final es: "+valorPago);
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,formaPago,numeroCheque,"12/22");
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                        System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
+                    }    
+                }else if (reservaAPagar.getCliente().getTipoUsuario()=='C'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal;
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,formaPago,numeroCheque,"12/22");
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                        System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
+                    }
+                }
             }
         }
         
