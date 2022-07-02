@@ -15,15 +15,15 @@ import java.time.LocalDate;
  */
 public class Reserva {
     private String numeroReserva;
-    protected String fechaReserva;
-    protected String desde;
-    protected String hasta;
-    protected double valorPagar;
-    protected int contadorReserva;
-    protected String tipoReserva;
+    private String fechaReserva;
+    private String desde;
+    private String hasta;
+    private double valorPagar;
+//    protected int contadorReserva;
+    private String tipoReserva;
     //protected Servicio servicio;
-    protected Cliente cliente;
-    protected ArrayList<String> identificadores;
+    private Cliente cliente;
+//    protected ArrayList<String> identificadores;
     
     
     public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
@@ -54,6 +54,17 @@ public class Reserva {
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
         this.fechaReserva=fechaActual;
     }
+
+    public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar ) {
+        this.numeroReserva = numeroReserva;
+        this.fechaReserva = fechaReserva;
+        this.desde = desde;
+        this.hasta = hasta;
+        this.valorPagar = valorPagar;
+        this.tipoReserva = tipoReserva;
+        this.cliente = cliente;
+    }
+    
 //    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
 //        this.desde=desde;
 //        this.hasta=hasta;
@@ -110,10 +121,6 @@ public class Reserva {
         return this.valorPagar;
     }
     
-    public int GetcontadorReserva(){
-        return this.contadorReserva;
-    }
-    
     //public Servicio Getservicio(){
     //    return this.servicio;
     //}
@@ -136,9 +143,6 @@ public class Reserva {
     }
     public void setvalorPagar(double valorPagar){
         this.valorPagar=valorPagar;
-    }
-    public void setcontadorReserva(int contadorReserva){
-        this.contadorReserva=contadorReserva;
     }
 //    public void setservicio(Servicio servicio){
 //        this.servicio=servicio;
