@@ -172,12 +172,22 @@ public class Cliente extends Usuario{
         for(int i=0;i<hotelString.size();i++){
             if(hotelString.get(i)[0].equals(ciudadDepa)){
                 System.out.println(indiceDepa+". "+ hotelString.get(i)[1]);
-                Hotel hospedajito=new Hotel(hotelString.get(i)[0],hotelString.get(i)[1],hotelString.get(i)[2],Integer.parseInt (hotelString.get(i)[3]), hotelString.get(i)[4], hotelString.get(i)[5].equals("true"), hotelString.get(i)[5].equals("true"),hotelString.get(i)[6].equals("true"));
+               // (String ciudadDepa, String nombreDepa, double costoDepa, Estado estadoDepa, int numeroHabitaciones, boolean wifi, boolean piscina
+                Departamento departamentito=new Departamento(DepaString.get(i)[0],DepaString.get(i)[1],Double.valueOf(DepaString.get(i)[2]),Integer.valueOf(DepaString.get(i)[3]), Estado.valueOf(DepaString.get(i)[4]), DepaString.get(i)[5].equals("true"),DepaString.get(i)[6].equals("true"));
                 indiceDepa++;
-//                departamentos.add(hospedajito);
-// 
+               departamentos.add(departamentito);
             }
         }
+        System.out.println("Elija una opción: ");
+        int opcionDepa=sc.nextInt();
+        sc.nextLine();
+        for (Departamento depa:departamentos){
+            if(depa==departamentos.get(opcionDepa-1)){
+                System.out.println("AAAAAAA"+depa.getNombreDepa());
+            }
+                
+            }
+        
                   
         break;
                 default:
