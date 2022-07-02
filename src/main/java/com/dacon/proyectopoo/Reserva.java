@@ -7,7 +7,7 @@ import Personas.Cliente;
 import Personas.Usuario;
 import java.util.Random;
 import java.util.ArrayList;
-
+import Herramientas.Funcion;
 /**
  *
  * @author CJAA
@@ -31,14 +31,25 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
-        this.numeroReserva="1";
         this.fechaReserva="a";
-//        Random a= new Random();
-//        do{
-//        Integer b= a.nextInt(20000,3000);
-//        this.numeroReserva=b.toString();
-//        Funcion.generarArreglo();
-//        }while();
+        Random a= new Random();
+        String numeroReserva;
+        boolean generarOtroNumero=false;
+        do{
+            Long b= a.nextLong(20000,30000);
+            numeroReserva=b.toString();
+            ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+            if (!datosReservas.isEmpty()){
+                for (String[] atributosReservas:datosReservas){
+                    if ((numeroReserva.equals(atributosReservas[0]))){
+                        generarOtroNumero=true;
+                    }
+                }
+            }
+        }while(generarOtroNumero);
+        this.numeroReserva=numeroReserva;
+        
+ 
     }
 //    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
 //        this.desde=desde;
