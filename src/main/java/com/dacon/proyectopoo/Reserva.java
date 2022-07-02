@@ -33,21 +33,21 @@ public class Reserva {
         this.tipoReserva=tipoReserva;
         this.fechaReserva="a";
         Random a= new Random();
-        String numeroReserva;
+        String numeroReservaGenerado;
         boolean generarOtroNumero=false;
         do{
             Long b= a.nextLong(20000,30000);
-            numeroReserva=b.toString();
+            numeroReservaGenerado=b.toString();
             ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
             if (!datosReservas.isEmpty()){
                 for (String[] atributosReservas:datosReservas){
-                    if ((numeroReserva.equals(atributosReservas[0]))){
+                    if ((atributosReservas[0].equals(numeroReservaGenerado))){
                         generarOtroNumero=true;
                     }
                 }
             }
         }while(generarOtroNumero);
-        this.numeroReserva=numeroReserva;
+        this.numeroReserva=numeroReservaGenerado;
         
  
     }
