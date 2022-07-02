@@ -115,17 +115,11 @@ public class SistemaDeReservasTuristicas {
             entrada = sc.nextLine();
             switch(entrada){
                 case "1":
-                    //llamamos a metodo realizartest()
+                    ((Cliente)this.cliente).reservarHospedaje();
                     break;
                 case "2":
-                    ArrayList<String[]> hola=new ArrayList();
-                    ArrayList<Vehiculo> hola1=new ArrayList();
-                    hola=Funcion.generarArreglo("vehiculos.txt");
-                    for (String[] ele:hola){
-                        Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
-                        hola1.add(vehiculo);
-                    }
-                    ((Cliente)this.cliente).reservarTransporte(hola1);
+
+                    ((Cliente)this.cliente).reservarTransporte();
                     //llamamos a metodo realizartest()
                     break;
                 case "3":
