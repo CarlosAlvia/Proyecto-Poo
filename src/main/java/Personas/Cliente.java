@@ -15,6 +15,8 @@ import com.dacon.proyectopoo.Transporte;
 import com.dacon.proyectopoo.Paquete;
 import Herramientas.Funcion;
 import com.dacon.proyectopoo.Entretenimiento;
+import com.dacon.proyectopoo.Hospedaje;
+import com.dacon.proyectopoo.Hotel;
 /**
  *
  * @author User
@@ -44,6 +46,64 @@ public class Cliente extends Usuario{
     public void setTarjetaDeCredito(String tarjetaDeCredito){
         this.tarjetaDeCredito=tarjetaDeCredito;
     }
+    public void reservarHospedaje(){
+     Reserva.mostrarCabecera();
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Ingrese la fecha entrada: ");
+     String fechaEntrada=sc.nextLine();
+     System.out.println("Ingrese la fecha salidad: ");
+     String fechaSalida=sc.nextLine();
+     System.out.println("¿Qué tipo de hospedaje busca?");
+     System.out.println("1. Hotel");
+     System.out.println("2. Departamento");
+     System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
+     String ciudad=sc.nextLine();
+     
+     ArrayList<String[]> hotelString=new ArrayList();
+     hotelString=Funcion.generarArreglo("hoteles.txt");
+     int indice=1;
+     ArrayList<Hotel> hoteles=new ArrayList<Hotel>();
+     
+        for(int i=0;i<hotelString.size();i++){
+            if(hotelString.get(i)[0].equals(ciudad)){
+                System.out.println(indice+". "+ hotelString.get(i)[1]);
+           //creación de objeto hotel    
+            indice++;
+//            hoteles.add()
+            
+            
+            
+            }
+        }
+        
+     System.out.println("Elija una opción: ");
+     int opcion=sc.nextInt();
+     sc.nextLine();
+     Hotel hotElegido;
+     for (Hotel hote: hoteles){
+            if(hote==hoteles.get(opcion-1)){
+                System.out.println("Datos de "+"deberia ir el hote");
+                System.out.println("/*********************************/");
+                System.out.println("Dirección:"); 
+                System.out.println("Costo por noche: "); 
+                System.out.println("Estrellas: "); 
+                System.out.println("Incluye desayuno: "); 
+                System.out.println("Incluye parqueo: ");
+                System.out.println("Permite canceñación gratis: ");
+                System.out.println("/*********************************/");
+                sc.nextLine();
+                hotElegido= hote;
+
+            }
+             
+        }
+     
+    }
+    
+    
+    
+    
+    
     public void reservarTransporte(ArrayList<Vehiculo> vehiculos){
         Scanner sc=new Scanner(System.in);
         Reserva.mostrarCabecera();
@@ -102,14 +162,7 @@ public class Cliente extends Usuario{
     }
     public void reservarEntretenimiento(String nombreArchivo){
         
-        String simbolo="/***************RESERVACIÓN***************/";
-        String simbolo1="/*                                       */";
-        String simbolo2="/*****************************************/";
-        System.out.println(simbolo);
-        System.out.println(simbolo1);
-        System.out.println(simbolo2);
-        System.out.println("");
-
+         Reserva.mostrarCabecera();
          Scanner sc=new Scanner(System.in);
         ArrayList<String[]> paqueteString=new ArrayList();
         paqueteString=Funcion.generarArreglo("paquetes.txt");
