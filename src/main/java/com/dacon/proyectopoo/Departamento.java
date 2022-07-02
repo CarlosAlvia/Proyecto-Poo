@@ -19,7 +19,7 @@ public class Departamento extends Hospedaje{
     private boolean wifi;
     private boolean piscina;
 
-    public Departamento(String ciudadDepa, String nombreDepa, double costoDepa, Estado estadoDepa, int numeroHabitaciones, boolean wifi, boolean piscina) {
+    public Departamento(String ciudadDepa, String nombreDepa, double costoDepa, int numeroHabitaciones,Estado estadoDepa, boolean wifi, boolean piscina) {
         this.ciudadDepa = ciudadDepa;
         this.nombreDepa = nombreDepa;
         this.costoDepa = costoDepa;
