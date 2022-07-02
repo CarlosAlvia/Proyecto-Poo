@@ -80,62 +80,110 @@ public class Prueba {
 //         }
         LocalDate fechaActual= LocalDate.now();
         System.out.println(fechaActual);
+   }
+//    public static void reservarTransporte(ArrayList<Vehiculo> vehiculos, Cliente cliente){
+//        Scanner sc=new Scanner(System.in);
+//        Reserva.mostrarCabecera();
+//        System.out.println("Ingrese la ciudad de reserva: ");
+//        String ciudad=sc.nextLine();
+//        ArrayList datos=Funcion.calcularDias();
+//        long diasReserva=(Long)datos.get(0);
+//        String fechaInicio=(String)datos.get(1);
+//        String fechaFin=(String)datos.get(2);
+//        System.out.println("Elija la capacidad del vehículo");
+//        //El documento decía preguntar tamaño y en este caso se asemeja el atributo capacidad
+//        int capacidadElegida=sc.nextInt();
+//        sc.nextLine();
+//        System.out.println("Estos son los vehículos disponibles:");
+//        int contador=0;
+//        ArrayList<Vehiculo> opciones=new ArrayList<Vehiculo>();
+//        for (Vehiculo vehiculo:vehiculos){
+//            if(vehiculo.getCapacidad()==capacidadElegida&&vehiculo.getEstado().name().equals("DISPONIBLE")){
+//                contador+=1;
+//                System.out.println(contador+". "+vehiculo);
+//                opciones.add(vehiculo);
+//            }
+//        }
+//        if (!opciones.isEmpty()){
+//            System.out.println("Elija una opción");
+//            int op=sc.nextInt();
+//            while (op<1||op>opciones.size()){
+//                System.out.println("Elija una opción válida");
+//                op=sc.nextInt();
+//            }
+//            sc.nextLine();
+//            System.out.println("Usted ha elegido un "+opciones.get(op-1).getMarca()+" "+opciones.get(op-1).getModelo()+" por "+diasReserva+" días");
+//            double valorPagar=diasReserva*opciones.get(op-1).getCostoPorDia();
+//            System.out.println("El costo a pagar es de "+valorPagar+" dólares");
+//            System.out.println("¿Desea reservar?");
+//            String deseaReserva=sc.nextLine().toLowerCase();
+//            if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
+//                Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op-1));
+//                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,cliente,"transporte");
+//                transporte.setReserva(reservaTransporte);
+//                ManejoArchivos.EscribirArchivo("reservas.txt", reservaTransporte.toString());
+//                String lineaTransporte;
+//                lineaTransporte=reservaTransporte.getNumeroReserva()+","+opciones.get(op-1).getId()+","+valorPagar;
+//                ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
+//                //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
+//                //objeto servicio o si servicio debe tener un objeto reserva
+//                
+//                transporte.mostrarReserva();
+//                //Falta crear el constructor de servicio y el transporte
+//                //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
+//                
+//            }
+//        }else{
+//            System.out.println("No hay vehículos disponibles");
+//        }
+//    }
     
-    }
-    public static void reservarTransporte(ArrayList<Vehiculo> vehiculos, Cliente cliente){
+    //Pagar reserva
+    public void pagarReserva(){
+        
+        Reserva reservaAPagar = null;
+        Cliente cl=new Cliente("","","","","","");
         Scanner sc=new Scanner(System.in);
-        Reserva.mostrarCabecera();
-        System.out.println("Ingrese la ciudad de reserva: ");
-        String ciudad=sc.nextLine();
-        ArrayList datos=Funcion.calcularDias();
-        long diasReserva=(Long)datos.get(0);
-        String fechaInicio=(String)datos.get(1);
-        String fechaFin=(String)datos.get(2);
-        System.out.println("Elija la capacidad del vehículo");
-        //El documento decía preguntar tamaño y en este caso se asemeja el atributo capacidad
-        int capacidadElegida=sc.nextInt();
-        sc.nextLine();
-        System.out.println("Estos son los vehículos disponibles:");
-        int contador=0;
-        ArrayList<Vehiculo> opciones=new ArrayList<Vehiculo>();
-        for (Vehiculo vehiculo:vehiculos){
-            if(vehiculo.getCapacidad()==capacidadElegida&&vehiculo.getEstado().name().equals("DISPONIBLE")){
-                contador+=1;
-                System.out.println(contador+". "+vehiculo);
-                opciones.add(vehiculo);
+        final double factorDescuento=0.85;
+        String tarjetaDeCredito="";
+        int numeroCheque=0;
+        boolean probarOtraVez=true;
+        do{
+            System.out.println("Ingrese el código de la reserva");
+            String codigoReserva=sc.nextLine();
+            ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+            for (String[] datos:datosReservas){
+                if(datos[0].equals(codigoReserva)){
+                  //String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar
+                    Reserva reserva=new Reserva(datos[0],datos[1],datos[2],cl,datos[4],datos[5],Double.valueOf(datos[6]));
+                    reservaAPagar=reserva;
+                }
+            }
+            if(reservaAPagar==null){
+                System.out.println("Número de reserva inválido");
+                System.out.println("Desea probar con otro número de reserva");
+                String respuesta=sc.nextLine();
+                if(!(respuesta.toLowerCase().equals("si")||respuesta.toLowerCase().equals("sí"))){
+                    probarOtraVez=false;
+                }
+            }
+        }while(reservaAPagar!=null&&probarOtraVez);
+        if (reservaAPagar!=null){
+            ArrayList<String[]> reservaServicio=null;
+            switch (reservaAPagar.getTipoReserva().toLowerCase()) {
+                case "hospedaje":
+                    reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
+                    break;
+                case "tranporte":
+                    ArrayList<String[]> reservaTransporte=Funcion.generarArreglo("reservasTransporte.txt");
+                    break;
+                case "transmision":
+                    ArrayList<String[]> reservaEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
+                    break;
+                default:
+                    break;
             }
         }
-        if (!opciones.isEmpty()){
-            System.out.println("Elija una opción");
-            int op=sc.nextInt();
-            while (op<1||op>opciones.size()){
-                System.out.println("Elija una opción válida");
-                op=sc.nextInt();
-            }
-            sc.nextLine();
-            System.out.println("Usted ha elegido un "+opciones.get(op-1).getMarca()+" "+opciones.get(op-1).getModelo()+" por "+diasReserva+" días");
-            double valorPagar=diasReserva*opciones.get(op-1).getCostoPorDia();
-            System.out.println("El costo a pagar es de "+valorPagar+" dólares");
-            System.out.println("¿Desea reservar?");
-            String deseaReserva=sc.nextLine().toLowerCase();
-            if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
-                Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op-1));
-                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,cliente,"transporte");
-                transporte.setReserva(reservaTransporte);
-                ManejoArchivos.EscribirArchivo("reservas.txt", reservaTransporte.toString());
-                String lineaTransporte;
-                lineaTransporte=reservaTransporte.getNumeroReserva()+","+opciones.get(op-1).getId()+","+valorPagar;
-                ManejoArchivos.EscribirArchivo("reservasTransporte.txt", lineaTransporte);
-                //Falta iniciar el código de reserva en el constructor de Reserva y ver si reserva debe tener un
-                //objeto servicio o si servicio debe tener un objeto reserva
-                
-                transporte.mostrarReserva();
-                //Falta crear el constructor de servicio y el transporte
-                //public Transporte(String ciudad, double valor, Reserva reserva, double puntuacion, int identificador,Vehiculo vehiculo)
-                
-            }
-        }else{
-            System.out.println("No hay vehículos disponibles");
-        }
+        
     }
 }
