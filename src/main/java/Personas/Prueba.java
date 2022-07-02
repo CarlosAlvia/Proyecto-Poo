@@ -140,13 +140,15 @@ public class Prueba {
     
     //Pagar reserva
     public void pagarReserva(){
-        
+        String[] arrFechaActual= LocalDate.now().toString().split("-");
+        String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
         Reserva reservaAPagar = null;
         Cliente cl=new Cliente("","","","","","");
         Scanner sc=new Scanner(System.in);
-        final double factorDescuento=0.85;
+        final double factorDescuento=0.15;
         String tarjetaDeCredito="";
-        int numeroCheque=0;
+        String numeroCheque="";
+        double valorPago;
         boolean probarOtraVez=true;
         do{
             System.out.println("Ingrese el código de la reserva");
@@ -175,13 +177,54 @@ public class Prueba {
                     reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
                     break;
                 case "tranporte":
-                    ArrayList<String[]> reservaTransporte=Funcion.generarArreglo("reservasTransporte.txt");
+                    reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
                     break;
                 case "transmision":
-                    ArrayList<String[]> reservaEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
+                    reservaServicio=Funcion.generarArreglo("reservasEntretenimiento.txt");
                     break;
                 default:
                     break;
+            }
+            System.out.println("Seleccione su forma de pago");
+            String formaPago=sc.nextLine();
+            boolean repetirTarjeta=false;
+            if(formaPago.toLowerCase().equals("tarjeta")){
+                do{
+                System.out.println("Ingrese su número de tarjeta");
+                String tarjeta=sc.nextLine();
+                System.out.println("Ingrese el mes y año de caducidad");
+                String caducidad=sc.nextLine();
+                String[] fechaTarjeta=caducidad.split("/");
+                int mesTarjeta=Integer.valueOf(fechaTarjeta[0]);
+                int anoTarjeta=Integer.valueOf(fechaTarjeta[1]);
+                String[] fechaComparacion=fechaActual.split("/");
+                int mesActual=Integer.valueOf(fechaComparacion[1]);
+                int anoActual=Integer.valueOf(fechaComparacion[2]);
+                if(anoTarjeta<anoActual){
+                    repetirTarjeta=true;
+                }else if(anoTarjeta==anoActual&&mesTarjeta<mesActual){
+                    repetirTarjeta=true;
+                }
+                if(repetirTarjeta){
+                    System.out.println("Tarjeta inválida");
+                }else{
+                    tarjetaDeCredito=tarjeta;
+                }
+                }while(repetirTarjeta);
+                if (reservaAPagar.getCliente().getTipoUsuario()=='V'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    double recargoTarjeta=0.10;
+                    valorPago=subtotal-(subtotal*factorDescuento)+subtotal*recargoTarjeta;
+                }else if (reservaAPagar.getCliente().getTipoUsuario()=='C'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    double recargoTarjeta=0.10;
+                    valorPago=subtotal+subtotal*recargoTarjeta;
+                }
+            }else if(formaPago.toLowerCase().equals("cheque")){
+                System.out.println("Ingrese el número de cheque");
+                String cheque=sc.nextLine();
+                numeroCheque=cheque;
+                System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
             }
         }
         
