@@ -21,6 +21,7 @@ import com.dacon.proyectopoo.Entretenimiento;
 import com.dacon.proyectopoo.Hospedaje;
 import com.dacon.proyectopoo.Hotel;
 import com.dacon.proyectopoo.Habitacion;
+import com.dacon.proyectopoo.Departamento;
 /**
  *
  * @author User
@@ -62,6 +63,10 @@ public class Cliente extends Usuario{
      System.out.println("¿Qué tipo de hospedaje busca?");
      System.out.println("1. Hotel");
      System.out.println("2. Departamento");
+     System.out.println("Ingrese una opción: ");
+     String opsi=sc.nextLine();
+     switch(opsi){
+                case "1":
      System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
      String ciudad=sc.nextLine();
      
@@ -120,7 +125,6 @@ public class Cliente extends Usuario{
                 }
                 System.out.println("Permite cancelación gratis: "+can);
                 System.out.println("/*********************************/");
-                sc.nextLine();
                 hotElegido= hote;
 
             }
@@ -143,20 +147,47 @@ public class Cliente extends Usuario{
         }
        System.out.println("Elija una opción: ");
        int op=sc.nextInt();
-       System.out.println("Usted ha elegido una habitación "+habitaciones.get(op).getTipoHabitacion()+" para in total de "+dias+ " noche(s).");
-       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(op).getPrecio());
+       sc.nextLine();
+       System.out.println("Usted ha elegido una habitación "+habitaciones.get(op-1).getTipoHabitacion()+" para in total de "+dias+ " noche(s).");
+       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(op-1).getPrecio());
        
        System.out.println("¿Desea reservar?: ");
         String reservo=sc.nextLine();
-        if (reservo.equals("si")||reservo.equals("sí")){
-                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
-                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRENEMIENTO");
-                //ojo tipo sevicio
-                elegido.setReserva(reservaEntretenimiento);
-                ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
-                elegido.mostrarReserva();
-                   
-         }
+//        if (reservo.equals("si")||reservo.equals("sí")){
+//                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
+//                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRENEMIENTO");
+//                //ojo tipo sevicio
+//                elegido.setReserva(reservaEntretenimiento);
+//                ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
+//                elegido.mostrarReserva();
+        break;
+                case "2":
+              System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
+              String ciudadDepa=sc.nextLine(); 
+                 ArrayList<String[]> DepaString=new ArrayList();
+                hotelString=Funcion.generarArreglo("departamento.txt");
+                 int indiceDepa=1;
+                ArrayList<Departamento> departamentos=new ArrayList<Departamento>();
+     
+        for(int i=0;i<hotelString.size();i++){
+            if(hotelString.get(i)[0].equals(ciudadDepa)){
+                System.out.println(indiceDepa+". "+ hotelString.get(i)[1]);
+                Hotel hospedajito=new Hotel(hotelString.get(i)[0],hotelString.get(i)[1],hotelString.get(i)[2],Integer.parseInt (hotelString.get(i)[3]), hotelString.get(i)[4], hotelString.get(i)[5].equals("true"), hotelString.get(i)[5].equals("true"),hotelString.get(i)[6].equals("true"));
+                indiceDepa++;
+//                departamentos.add(hospedajito);
+// 
+            }
+        }
+                  
+        break;
+                default:
+                    //la opcion ingreada no esta dentro de las opciones del menu
+                    System.out.println("Opcion invalida");
+             
+                    break;
+                        
+            }
+//         }
     }
     
     
