@@ -1,8 +1,1 @@
 numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
-2,a,transporte,Marco Cárdenas,12/04/2020,14/04/2020,300.0
-2,a,transporte,Marco Cárdenas,13/04/2002,15/04/2002,300.0
-2,a,transporte,Marco Cárdenas,13/04/2020,15/04/2020,300.0
-1,a,transporte,Luis Mancero,12/04/2020,14/04/2020,300.0
-1,a,transporte,Luis Mancero,12/04/2020,14/04/2020,300.0
-1,a,transporte,Luis Mancero,14/04/2020,16/05/2020,4800.0
-1,a,ENTRENEMIENTO,Luis Mancero, 05/07/2022,10/07/2022,60.0

@@ -123,7 +123,7 @@ public class SistemaDeReservasTuristicas {
                     //llamamos a metodo realizartest()
                     break;
                 case "3":
-                   ((Cliente)this.cliente).reservarEntretenimiento("paquetes.txt");
+                   ((Cliente)this.cliente).reservarEntretenimiento();
                     break;
                 case "4":
                     //llamamos a metodo realizartest()

@@ -169,7 +169,7 @@ public class Cliente extends Usuario{
             System.out.println("No hay vehículos disponibles");
         }
     }
-    public void reservarEntretenimiento(String nombreArchivo){
+    public void reservarEntretenimiento(){
         
          Reserva.mostrarCabecera();
          Scanner sc=new Scanner(System.in);
