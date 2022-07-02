@@ -94,7 +94,7 @@ public class Reserva {
         return this.numeroReserva;
     }
     
-    public String GetfechaReserva(){
+    public String getFechaReserva(){
         return this.fechaReserva;
     }
     
