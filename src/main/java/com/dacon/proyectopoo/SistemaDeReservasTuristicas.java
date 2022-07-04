@@ -71,7 +71,7 @@ public class SistemaDeReservasTuristicas {
                             edad=sc.nextInt();
                             sc.nextLine();
                             if(edad<=0){
-                            System.out.println("Ingrese una edad válida");
+                                System.out.println("Ingrese una edad válida");
                             }
                         }while(edad<=0);
                         ((Cliente)this.cliente).setEdad(edad);
@@ -81,7 +81,6 @@ public class SistemaDeReservasTuristicas {
                     if(ele[2].equals("sd")){
                             System.out.println("Ingrese su tarjetaDeCredito");
                             tarjetaDeCredito=sc.nextLine();
-                            System.out.println("Ingrese una edad válida");
                         ((Cliente)this.cliente).setTarjetaDeCredito(tarjetaDeCredito);
                     }else{
                         ((Cliente)this.cliente).setTarjetaDeCredito(ele[2]);
