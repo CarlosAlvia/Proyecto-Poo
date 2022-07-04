@@ -130,6 +130,7 @@ public class Cliente extends Usuario{
             }
              
         }
+     
      ArrayList<String[]> habitacionString=new ArrayList();
      habitacionString=Funcion.generarArreglo("habitaciones.txt");
      int indice2=1;
