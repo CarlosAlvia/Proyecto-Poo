@@ -22,6 +22,7 @@ import com.dacon.proyectopoo.Hospedaje;
 import com.dacon.proyectopoo.Hotel;
 import com.dacon.proyectopoo.Habitacion;
 import com.dacon.proyectopoo.Departamento;
+import com.dacon.proyectopoo.Pago;
 /**
  *
  * @author User
@@ -334,5 +335,142 @@ public class Cliente extends Usuario{
     }
     public void mostarReserva(){
         
+    }
+    public void pagarReserva(){
+        String[] arrFechaActual= LocalDate.now().toString().split("-");
+        String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
+        Reserva reservaAPagar = null;
+        Scanner sc=new Scanner(System.in);
+        String tarjetaDeCredito="";
+        String caducidadTarjeta="";
+        String numeroCheque="";
+        boolean probarOtraVez=true;
+        do{
+            System.out.println("Ingrese el código de la reserva");
+            String codigoReserva=sc.nextLine();
+            ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+            for (String[] datos:datosReservas){
+                if(datos[0].equals(codigoReserva)){
+                  //String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar
+                    Reserva reserva=new Reserva(datos[0],datos[1],datos[2],this,datos[4],datos[5],Double.valueOf(datos[6]));
+                    reservaAPagar=reserva;
+                }
+            }
+            if(reservaAPagar==null){
+                System.out.println("Número de reserva inválido");
+                System.out.println("Desea probar con otro número de reserva");
+                String respuesta=sc.nextLine();
+                if(!(respuesta.toLowerCase().equals("si")||respuesta.toLowerCase().equals("sí"))){
+                    probarOtraVez=false;
+                }
+            }
+        }while(reservaAPagar!=null&&probarOtraVez);
+        if (reservaAPagar!=null){
+            ArrayList<String[]> reservaServicio=null;
+            switch (reservaAPagar.getTipoReserva().toLowerCase()) {
+                case "hospedaje":
+                    reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
+                    break;
+                case "tranporte":
+                    reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
+                    break;
+                case "transmision":
+                    reservaServicio=Funcion.generarArreglo("reservasEntretenimiento.txt");
+                    break;
+                default:
+                    break;
+            }
+            System.out.println("Seleccione su forma de pago");
+            String formaPago=sc.nextLine();
+            boolean repetirTarjeta=false;
+            if(formaPago.toLowerCase().equals("tarjeta")){
+                do{
+                System.out.println("Ingrese su número de tarjeta");
+                String tarjeta=sc.nextLine();
+                System.out.println("Ingrese el mes y año de caducidad");
+                String caducidad=sc.nextLine();
+                String[] fechaTarjeta=caducidad.split("/");
+                int mesTarjeta=Integer.valueOf(fechaTarjeta[0]);
+                int anoTarjeta=Integer.valueOf(fechaTarjeta[1]);
+                String[] fechaComparacion=fechaActual.split("/");
+                int mesActual=Integer.valueOf(fechaComparacion[1]);
+                int anoActual=Integer.valueOf(fechaComparacion[2]);
+                if(anoTarjeta<anoActual){
+                    repetirTarjeta=true;
+                }else if(anoTarjeta==anoActual&&mesTarjeta<mesActual){
+                    repetirTarjeta=true;
+                }
+                if(repetirTarjeta){
+                    System.out.println("Tarjeta inválida");
+                }else{
+                    tarjetaDeCredito=tarjeta;
+                    caducidadTarjeta=caducidad;
+                }
+                }while(repetirTarjeta);
+                this.pagar(tarjetaDeCredito,caducidadTarjeta,reservaAPagar,fechaActual);
+            }else if(formaPago.toLowerCase().equals("cheque")){
+                System.out.println("Ingrese el número de cheque");
+                String cheque=sc.nextLine();
+                numeroCheque=cheque;
+                this.pagar(numeroCheque,reservaAPagar,fechaActual);
+            }
+        }
+        
+    }
+    public void pagar(String tarjetaDeCredito,String mesAnoCaducidad,Reserva reservaAPagar,String fechaActual){
+        double valorPago;
+        final double FACTORDESCUENTO=0.15;
+        Scanner sc=new Scanner(System.in);
+                if (this.getTipoUsuario()=='V'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal-(subtotal*FACTORDESCUENTO);
+                    System.out.println("Su valor a pagar final es: "+valorPago);
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",tarjetaDeCredito,mesAnoCaducidad);
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                    }    
+                }else if (this.getTipoUsuario()=='C'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal;
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",tarjetaDeCredito,mesAnoCaducidad);
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                    }
+                }
+    }
+    public void pagar(String cheque,Reserva reservaAPagar,String fechaActual){
+        double valorPago;
+        final double FACTORDESCUENTO=0.15;
+        Scanner sc=new Scanner(System.in);
+                if (this.getTipoUsuario()=='V'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal-(subtotal*FACTORDESCUENTO);
+                    System.out.println("Su valor a pagar final es: "+valorPago);
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",cheque,"12/22");
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                        System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
+                    }    
+                }else if (this.getTipoUsuario()=='C'){
+                    double subtotal=reservaAPagar.getValorPagar();
+                    valorPago=subtotal;
+                    System.out.println("¿Desea confirmar su pago?");
+                    String confirmacion=sc.nextLine().toLowerCase();
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                        Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",cheque,"12/22");
+                        ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
+                        System.out.println("Pago generado");
+                        System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
+                    }
+                }
     }
 }
