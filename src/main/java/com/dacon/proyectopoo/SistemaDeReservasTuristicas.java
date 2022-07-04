@@ -126,7 +126,7 @@ public class SistemaDeReservasTuristicas {
                    ((Cliente)this.cliente).reservarEntretenimiento();
                     break;
                 case "4":
-                    //llamamos a metodo realizartest()
+                    ((Cliente)this.cliente).pagarReserva();
                     break;
                 case "5":
                     //llamamos a metodo realizartest()

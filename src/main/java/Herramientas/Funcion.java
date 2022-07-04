@@ -80,10 +80,24 @@ public class Funcion {
         return dias;
         }
         
-        public static String generadorNumerosReserva(){
-           Random a= new Random();
-           Integer b= a.nextInt(20000,29999);
-           return (b.toString());
+        public static String generarNumerosAleatorios(int inicio,int fin,String nombreArchivo){
+            Random a= new Random();
+            String numeroReservaGenerado;
+            //Inicio Generado del numeroReserva y asignación
+            boolean generarOtroNumero=false;
+            do{
+                Long b= a.nextLong(inicio,fin);
+                numeroReservaGenerado=b.toString();
+                ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+                if (!datosReservas.isEmpty()){
+                    for (String[] atributosArchivo:datosReservas){
+                        if ((atributosArchivo[0].equals(numeroReservaGenerado))){
+                            generarOtroNumero=true;
+                        }
+                    }
+                }
+            }while(generarOtroNumero);
+            return numeroReservaGenerado;
         }
         public static void main(String[] args){
             

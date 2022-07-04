@@ -4,13 +4,17 @@
  */
 package com.dacon.proyectopoo;
 
+import Herramientas.Funcion;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author CJAA
  */
 public class Pago {
     private String fechaDePago;
-    private int identificador;
+    private String identificador;
     private Reserva reserva;
     private double valorAPagar;
     private String MetodoPago;
@@ -24,12 +28,13 @@ public class Pago {
         this.MetodoPago = MetodoPago;
         this.numeroMetodoPago = numeroMetodoPago;
         this.fechaCaducidad = fechaCaducidad;
+        this.identificador=Funcion.generarNumerosAleatorios(30000,40000,"pagos.txt");
     }
     
     public String getFechaDePago(){
         return this.fechaDePago;
     }
-    public int getIdentificador(){
+    public String getIdentificador(){
         return this.identificador;
     }
     public Reserva getReserva(){
@@ -53,7 +58,7 @@ public class Pago {
     public void setFechaDePago(String fechaDePago){
         this.fechaDePago=fechaDePago;
     }
-    public void setIdentificador(int identificador){
+    public void setIdentificador(String identificador){
         this.identificador=identificador;
     }
     public void setReserva(Reserva reserva){

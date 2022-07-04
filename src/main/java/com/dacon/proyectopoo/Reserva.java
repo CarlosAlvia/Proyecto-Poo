@@ -32,23 +32,7 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
-        Random a= new Random();
-        String numeroReservaGenerado;
-        //Inicio Generado del numeroReserva y asignación
-        boolean generarOtroNumero=false;
-        do{
-            Long b= a.nextLong(20000,30000);
-            numeroReservaGenerado=b.toString();
-            ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
-            if (!datosReservas.isEmpty()){
-                for (String[] atributosReservas:datosReservas){
-                    if ((atributosReservas[0].equals(numeroReservaGenerado))){
-                        generarOtroNumero=true;
-                    }
-                }
-            }
-        }while(generarOtroNumero);
-        this.numeroReserva=numeroReservaGenerado;
+        this.numeroReserva=Funcion.generarNumerosAleatorios(20000,30000,"resevas.txt");
         //Fin Generado del numeroReserva y asignación
         String[] arrFechaActual= LocalDate.now().toString().split("-");
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
