@@ -38,7 +38,7 @@ public abstract class Usuario {
     public String GetCedula(){
         return this.cedula;
     }
-    public String GetNombres(){
+    public String getNombres(){
         return this.nombres;
     }
     public String GetApellidos(){
