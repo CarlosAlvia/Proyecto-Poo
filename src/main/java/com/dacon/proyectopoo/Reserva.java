@@ -145,7 +145,7 @@ public class Reserva {
     @Override
     public String toString(){
         //numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
-        return this.numeroReserva+","+this.fechaReserva+","+this.tipoReserva+","+this.cliente.GetNombres()+" "+this.cliente.GetApellidos()+","+this.desde+","+this.hasta+","+this.valorPagar;
+        return this.numeroReserva+","+this.fechaReserva+","+this.tipoReserva+","+this.cliente.getNombres()+" "+this.cliente.GetApellidos()+","+this.desde+","+this.hasta+","+this.valorPagar;
     }
 }
 
