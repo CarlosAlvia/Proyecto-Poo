@@ -70,7 +70,7 @@ public class Departamento extends Hospedaje{
         this.numeroHabitaciones = numeroHabitaciones;
     }
 
-    public boolean isWifi() {
+    public boolean getWifi() {
         return wifi;
     }
 
@@ -78,14 +78,16 @@ public class Departamento extends Hospedaje{
         this.wifi = wifi;
     }
 
-    public boolean isPiscina() {
+    public boolean getPiscina() {
         return piscina;
     }
 
     public void setPiscina(boolean piscina) {
         this.piscina = piscina;
     }
-    
+    public Departamento(){
+        
+    }
    
     
 }
