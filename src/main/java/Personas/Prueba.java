@@ -13,10 +13,15 @@ import com.dacon.proyectopoo.Transporte;
 import com.dacon.proyectopoo.Vehiculo;
 import java.util.Scanner;
 import Enum.Estado;
+import Enum.TipoHabitacion;
 import Enum.Transmision;
 import Herramientas.Funcion;
+import com.dacon.proyectopoo.Departamento;
+import com.dacon.proyectopoo.Habitacion;
+import com.dacon.proyectopoo.Hotel;
 import com.dacon.proyectopoo.Paquete;
 import com.dacon.proyectopoo.Pago;
+import com.dacon.proyectopoo.Hospedaje;
 /**
  *
  * @author CJAA
@@ -82,6 +87,157 @@ public class Prueba {
         LocalDate fechaActual= LocalDate.now();
         System.out.println(fechaActual);
    }
+//    public void reservarHospedaje(){
+//     Reserva.mostrarCabecera();
+//     Scanner sc=new Scanner(System.in);
+//     System.out.println("Ingrese la fecha entrada: ");
+//     String fechaEntrada=sc.nextLine();
+//     System.out.println("Ingrese la fecha salidad: ");
+//     String fechaSalida=sc.nextLine();
+//     long dias=Funcion.calcularDias(fechaEntrada,fechaSalida);
+//     
+//     System.out.println("¿Qué tipo de hospedaje busca?");
+//     System.out.println("1. Hotel");
+//     System.out.println("2. Departamento");
+//     System.out.println("Ingrese una opción: ");
+//     String opsi=sc.nextLine();
+//     switch(opsi){
+//                case "1":
+//     System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
+//     String ciudad=sc.nextLine();
+//     
+//     ArrayList<String[]> hotelString=new ArrayList();
+//     hotelString=Funcion.generarArreglo("hoteles.txt");
+//     int indice=1;
+//     ArrayList<Hotel> hoteles=new ArrayList<Hotel>();
+//     
+//        for(int i=0;i<hotelString.size();i++){
+//            if(hotelString.get(i)[0].equals(ciudad)){
+//                System.out.println(indice+". "+ hotelString.get(i)[2]);
+//                Hotel hotelito=new Hotel(hotelString.get(i)[0],hotelString.get(i)[1],hotelString.get(i)[2],Integer.parseInt (hotelString.get(i)[3]), hotelString.get(i)[4], hotelString.get(i)[5].equals("true"), hotelString.get(i)[5].equals("true"),hotelString.get(i)[6].equals("true"));
+//            indice++;
+//            hoteles.add(hotelito);
+// 
+//            }
+//        }
+//        
+//     System.out.println("Elija una opción: ");
+//     int opcion=sc.nextInt();
+//     sc.nextLine();
+//     Hotel hotElegido=new Hotel();
+//     for (Hotel hote: hoteles){
+//            if(hote==hoteles.get(opcion-1)){
+//                System.out.println("Datos de "+hote.getNombre());
+//                System.out.println("/*********************************/");
+//                System.out.println("Dirección: "+hote.getDireccion()); 
+//                System.out.println("Costo por noche: ");
+//                String estrellitas="";
+//                for(int b=0;b<hote.getNumeroEstrellas();b++){
+//                    estrellitas=estrellitas+"*";
+//                }
+//                System.out.println("Estrellas: "+estrellitas); 
+//                String desa="";
+//                if(hote.getDesayuno()){
+//                    desa="Sí";
+//                }
+//                else{
+//                    desa="No";
+//                }
+//                System.out.println("Incluye desayuno: "+desa); 
+//                String parq="";
+//                if(hote.getDesayuno()){
+//                    parq="Sí";
+//                }
+//                else{
+//                    parq="No";
+//                }
+//                System.out.println("Incluye parqueo: "+parq);
+//                String can="";
+//                if(hote.getDesayuno()){
+//                    can="Sí";
+//                }
+//                else{
+//                    can="No";
+//                }
+//                System.out.println("Permite cancelación gratis: "+can);
+//                System.out.println("/*********************************/");
+//                hotElegido= hote;
+//
+//            }
+//             
+//        }
+//     
+//     ArrayList<String[]> habitacionString=new ArrayList();
+//     habitacionString=Funcion.generarArreglo("habitaciones.txt");
+//     int indice2=1;
+//     
+//     ArrayList<Habitacion> habitaciones=new ArrayList<Habitacion>();
+//       System.out.println("Elija el tipo de habitación que prefiere");
+//       for(int i=0;i<habitacionString.size();i++){
+//            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")){
+//                System.out.println(indice2+". "+ habitacionString.get(i)[1]+" - "+habitacionString.get(i)[3]+" persona(s) "+" - "+habitacionString.get(i)[2]);
+//                Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
+//            indice2++;
+//            habitaciones.add(habi);
+// 
+//            }
+//        }
+//       System.out.println("Elija una opción: ");
+//       int op=sc.nextInt();
+//       sc.nextLine();
+//       System.out.println("Usted ha elegido una habitación "+habitaciones.get(op-1).getTipoHabitacion()+" para in total de "+dias+ " noche(s).");
+//       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(op-1).getPrecio());
+//       
+//       System.out.println("¿Desea reservar?: ");
+//        String reservo=sc.nextLine();
+//        if (reservo.equals("si")||reservo.equals("sí")){
+//                Hospedaje pedaje=new Hospedaje(fechaEntrada, fechaSalida,hotElegido,habitaciones.get(op-1).getPrecio()); 
+//                Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habitaciones.get(op-1).getPrecio(),this,"ENTRENEMIENTO");
+//                //ojo tipo sevicio
+//                ManejoArchivos.EscribirArchivo("reservas.txt", reservaHospedaje.toString());
+//                ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", reservaHospedaje.toString());
+//                pedaje.mostrarReserva();
+//        }
+//        break;
+//                case "2":
+//              System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
+//              String ciudadDepa=sc.nextLine(); 
+//                 ArrayList<String[]> DepaString=new ArrayList();
+//                hotelString=Funcion.generarArreglo("departamento.txt");
+//                 int indiceDepa=1;
+//                ArrayList<Departamento> departamentos=new ArrayList<Departamento>();
+//     
+//        for(int i=0;i<hotelString.size();i++){
+//            if(hotelString.get(i)[0].equals(ciudadDepa)){
+//                System.out.println(indiceDepa+". "+ hotelString.get(i)[1]);
+//               // (String ciudadDepa, String nombreDepa, double costoDepa, Estado estadoDepa, int numeroHabitaciones, boolean wifi, boolean piscina
+//                Departamento departamentito=new Departamento(DepaString.get(i)[0],DepaString.get(i)[1],Double.valueOf(DepaString.get(i)[2]),Integer.valueOf(DepaString.get(i)[3]), Estado.valueOf(DepaString.get(i)[4]), DepaString.get(i)[5].equals("true"),DepaString.get(i)[6].equals("true"));
+//                indiceDepa++;
+//               departamentos.add(departamentito);
+//            }
+//        }
+//        System.out.println("Elija una opción: ");
+//        int opcionDepa=sc.nextInt();
+//        sc.nextLine();
+//        for (Departamento depa:departamentos){
+//            if(depa==departamentos.get(opcionDepa-1)){
+//                System.out.println("AAAAAAA"+depa.getNombreDepa());
+//            }
+//                
+//            }
+//        
+//                  
+//        break;
+//                default:
+//                    //la opcion ingreada no esta dentro de las opciones del menu
+//                    System.out.println("Opcion invalida");
+//             
+//                    break;
+//                        
+//            }
+////         }
+//    }
+    
 //    public static void reservarTransporte(ArrayList<Vehiculo> vehiculos, Cliente cliente){
 //        Scanner sc=new Scanner(System.in);
 //        Reserva.mostrarCabecera();
