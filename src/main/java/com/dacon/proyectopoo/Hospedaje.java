@@ -11,8 +11,65 @@ package com.dacon.proyectopoo;
 public class Hospedaje extends Servicio{
     protected String fechaEntrada;
     protected String fechaSalida;
+    private Hotel hotel;
+    private Departamento departamento;
+    private Double precioH;
+
+    public Hospedaje(String fechaEntrada, String fechaSalida, Hotel hotel,double precioH) {
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
+        this.hotel = hotel;
+        this.precioH = precioH;
+    }
+
+    public Hospedaje(String fechaEntrada, String fechaSalida, Departamento departamento, double precioH) {
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
+        this.departamento = departamento;
+         this.precioH = precioH;
+    }
+    public Hospedaje(){
+        
+    }
+            
+    @Override
+     public void mostrarReserva(){
+        super.mostrarReserva();
+        System.out.println("FECHAS: "+this.fechaEntrada+"-"+this.fechaSalida);
+        System.out.println("CIUDAD: "+this.hotel.getCiudadH());
+        System.out.println("HOTEL: "+this.hotel.getNombre());
+        System.out.println("VALOR A PAGAR: "+this.getPrecioH());
+     }
+
+     public void mostrarReservaDe(){
+        super.mostrarReserva();
+        System.out.println("FECHAS: "+this.fechaEntrada+"-"+this.fechaSalida);
+        System.out.println("CIUDAD: "+this.departamento.getCiudadDepa());
+        System.out.println("DEPARTAMENTO: "+this.departamento.getNombreDepa());
+        System.out.println("VALOR A PAGAR: "+this.getPrecioH());
+     }
+    
     
     //Getters
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Double getPrecioH() {
+        return precioH;
+    }
+
+    public void setPrecioH(Double precioH) {
+        this.precioH = precioH;
+    }
+    
+    
+    
     public String GetfechaEntrada(){
         return this.fechaEntrada;
     }
