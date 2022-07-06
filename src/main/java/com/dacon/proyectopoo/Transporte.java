@@ -22,4 +22,16 @@ public class Transporte extends Servicio {
         System.out.println("CÓDIGO VEHICULO: "+this.vehiculo.getId());
         System.out.println("VALOR A PAGAR: "+this.valor);
     }
+    @Override
+    public String toString(){
+        return this.getReserva().getNumeroReserva()+","+this.getVehiculo().getId()+","+this.getReserva().getValorPagar();
+    }
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+    
 }
