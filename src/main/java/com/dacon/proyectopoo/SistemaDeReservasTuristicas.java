@@ -17,7 +17,7 @@ import Personas.Administrador;
  */
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
-    private Usuario cliente;
+    private Usuario usuarioConectado;
     Scanner sc=new Scanner(System.in);
     public void mostrarBienvenida(){
         String signo="++++++++++++++++++++++++++++++++++++++++";
@@ -55,16 +55,16 @@ public class SistemaDeReservasTuristicas {
                 System.out.println(" ");
             }
         }while(usuarioCorrecto==null);
-        this.cliente=usuarioCorrecto;
+        this.usuarioConectado=usuarioCorrecto;
     }
     public void verificarDatosCliente(){
         Scanner sc=new Scanner(System.in);
-        if(this.cliente.getClass()==Cliente.class){
+        if(this.usuarioConectado.getClass()==Cliente.class){
             int edad=0;
             String tarjetaDeCredito;
             ArrayList<String[]> datosClientes=Funcion.generarArreglo("clientes.txt");
             for (String[] ele:datosClientes){
-                if (ele[0].equals(this.cliente.GetCedula())){
+                if (ele[0].equals(this.usuarioConectado.GetCedula())){
                     if(ele[1].equals("sd")){
                         do{
                             System.out.println("Ingrese su edad");
@@ -74,20 +74,34 @@ public class SistemaDeReservasTuristicas {
                                 System.out.println("Ingrese una edad válida");
                             }
                         }while(edad<=0);
-                        ((Cliente)this.cliente).setEdad(edad);
+                        ((Cliente)this.usuarioConectado).setEdad(edad);
                     }else{
-                        ((Cliente)this.cliente).setEdad(Integer.valueOf(ele[1]));
+                        ((Cliente)this.usuarioConectado).setEdad(Integer.valueOf(ele[1]));
                     }
                     if(ele[2].equals("sd")){
                             System.out.println("Ingrese su tarjetaDeCredito");
                             tarjetaDeCredito=sc.nextLine();
-                        ((Cliente)this.cliente).setTarjetaDeCredito(tarjetaDeCredito);
+                        ((Cliente)this.usuarioConectado).setTarjetaDeCredito(tarjetaDeCredito);
                     }else{
-                        ((Cliente)this.cliente).setTarjetaDeCredito(ele[2]);
+                        ((Cliente)this.usuarioConectado).setTarjetaDeCredito(ele[2]);
                     }
                 }
             }
         }
+    }
+
+    public void mostarMenuAdmin(){
+        String simbolo="/************MENU ADMINISTRADOR************/";
+        String simbolo1="/*                                       */";
+        String simbolo2="/*****************************************/";
+        System.out.println(simbolo);
+        System.out.println(simbolo1);
+        System.out.println(simbolo2);
+        System.out.println("");
+        System.out.println("1. Consultar Reservas");
+        System.out.println("2. Reservar Transporte");
+        System.out.println("3. Salir");
+        System.out.println("\n");
     }
     public void mostrarMenuCliente(){
         String abajo="++++++++++++++++++++++++++++++++++++++++";
@@ -114,18 +128,18 @@ public class SistemaDeReservasTuristicas {
             entrada = sc.nextLine();
             switch(entrada){
                 case "1":
-                    ((Cliente)this.cliente).reservarHospedaje();
+                    ((Cliente)this.usuarioConectado).reservarHospedaje();
                     break;
                 case "2":
 
-                    ((Cliente)this.cliente).reservarTransporte();
+                    ((Cliente)this.usuarioConectado).reservarTransporte();
                     //llamamos a metodo realizartest()
                     break;
                 case "3":
-                   ((Cliente)this.cliente).reservarEntretenimiento();
+                   ((Cliente)this.usuarioConectado).reservarEntretenimiento();
                     break;
                 case "4":
-                    ((Cliente)this.cliente).pagarReserva();
+                    ((Cliente)this.usuarioConectado).pagarReserva();
                     break;
                 case "5":
                     //llamamos a metodo realizartest()
@@ -156,6 +170,14 @@ public class SistemaDeReservasTuristicas {
         sistema.verificarDatosCliente();
         System.out.println();
         sistema.iniciar();
+        if (sistema.usuarioConectado.getTipoUsuario()=='A'){
+            sistema.mostarMenuAdmin();
+            
+            }
+        else{
+            sistema.mostrarMenuCliente();
+            sistema.iniciar();
+        }
     }
     
 }
