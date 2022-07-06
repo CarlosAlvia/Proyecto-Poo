@@ -223,7 +223,7 @@ public class Cliente extends Usuario{
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaDepa);
                 String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+","+depaElegido.getNumeroHabitaciones()+" habitaciones"+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReservaDepa);
-//                reservaHospedajeDepa.mostrarReservaDe();
+                dapaje.mostrarReservaDe();
             }
         }
                   
