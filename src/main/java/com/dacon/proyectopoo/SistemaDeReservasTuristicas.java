@@ -142,7 +142,7 @@ public class SistemaDeReservasTuristicas {
                     ((Cliente)this.usuarioConectado).pagarReserva();
                     break;
                 case "5":
-                    //llamamos a metodo realizartest()
+                    ((Cliente)this.usuarioConectado).consultarReservas();
                     break; 
                 case "6":
                     //mostramos mensaje de finalizacion
