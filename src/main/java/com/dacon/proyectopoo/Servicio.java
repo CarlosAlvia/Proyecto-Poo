@@ -35,7 +35,6 @@ public class Servicio {
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
         System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().GetApellidos());
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
-        //TIPO RESERVA ES UN ENUM
     }
     public void crearReserva(Cliente cliente){
         String simbolo="/**************RESERVA GENERADA*************/";
@@ -48,9 +47,7 @@ public class Servicio {
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
         System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().GetApellidos());
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
-        //TIPO RESERVA ES UN ENUM
     }
-    
     public String getCiudad(){
         return this.ciudad;
     }
