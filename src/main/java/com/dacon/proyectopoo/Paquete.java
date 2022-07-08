@@ -102,8 +102,8 @@ public class Paquete {
         this.numeroPersonas = numeroPersonas;
     }
     
-   //s
- public Paquete(String ciudadPa,String nombrePaquete, String informacion, double costoP, String diasSalida, String fechaDisponible) {
+
+    public Paquete(String ciudadPa,String nombrePaquete, String informacion, double costoP, String diasSalida, String fechaDisponible) {
         this.ciudadPa=ciudadPa;
         this.nombrePaquete = nombrePaquete;
         this.informacion = informacion;
