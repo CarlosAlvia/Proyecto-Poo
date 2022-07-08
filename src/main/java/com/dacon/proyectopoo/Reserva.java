@@ -93,11 +93,11 @@ public class Reserva {
         return this.fechaReserva;
     }
     
-    public String Getdesde(){
+    public String getDesde(){
         return this.desde;
     }
     
-    public String Gethasta(){
+    public String getHasta(){
         return this.hasta;
     }
     
