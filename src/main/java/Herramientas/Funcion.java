@@ -9,8 +9,6 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Random;
-//import org.apache.commons.math.random.RandomData;
-//import org.apache.commons.math.random.RandomDataImpl;
 /**
  *
  * @author CJAA
