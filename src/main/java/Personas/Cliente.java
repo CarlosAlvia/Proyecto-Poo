@@ -23,6 +23,7 @@ import com.dacon.proyectopoo.Hotel;
 import com.dacon.proyectopoo.Habitacion;
 import com.dacon.proyectopoo.Departamento;
 import com.dacon.proyectopoo.Pago;
+import com.dacon.proyectopoo.Servicio;
 /**
  *
  * @author User
@@ -530,4 +531,96 @@ public class Cliente extends Usuario{
                     }
                 }
     }
-}
+    public void consultarReservas(){
+    String simbolo="/***********SERVICIOS RESERVADOS**********/";
+    String simbolo1="/*                                       */";
+    String simbolo2="/*****************************************/";
+    System.out.println(simbolo);
+    System.out.println(simbolo1);
+    System.out.println(simbolo2);
+    System.out.println("\n"); 
+    ArrayList<Servicio> servicios=new ArrayList<Servicio>();
+    ArrayList<String[]> reservasHospedaje=Funcion.generarArreglo("reservasHospedaje.txt");
+    ArrayList<String[]> reservasTransporte=Funcion.generarArreglo("reservasTransporte.txt");
+    ArrayList<String[]> reservasEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
+    ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+    ArrayList<Reserva> reservasCliente=new ArrayList<Reserva>();
+        if (!(datosReservas.isEmpty())){
+            for (String[] datos:datosReservas){
+               String[] nombreApellido=datos[3].split(" ");
+               if(nombreApellido[0].equals(this.nombres)&&nombreApellido[1].equals(this.apellidos)){
+                   Reserva reservaCliente=new Reserva(datos[0],datos[1],datos[2],this,datos[4],datos[5],Double.valueOf(datos[6]));
+                   reservasCliente.add(reservaCliente);
+               }
+            }
+        }
+        if (!(reservasHospedaje.isEmpty())){
+            for (String[] datos:reservasHospedaje){
+                
+            }
+        }
+        if (!(reservasTransporte.isEmpty())){
+            for (String[] datosTransporte:reservasTransporte){
+                for (Reserva reserva:reservasCliente){
+                    if(datosTransporte[0].equals(reserva.getNumeroReserva())){
+                        ArrayList<String[]> datosVehiculos=new ArrayList<String[]>();
+                        datosVehiculos=Funcion.generarArreglo("vehiculos.txt");
+                        Vehiculo vehiculoReservado;
+                        for (String[] ele:datosVehiculos){
+                            if(ele[0].equals(datosTransporte[2])){
+                                Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
+                                vehiculoReservado=vehiculo;
+                                Transporte transporte=new Transporte(datosTransporte[1],Double.valueOf(datosTransporte[2]),vehiculoReservado);
+                                transporte.setReserva(reserva);
+                                servicios.add(transporte);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (!(reservasEntretenimiento.isEmpty())){
+            for (String[] datosEntretenimiento:reservasEntretenimiento){
+                for (Reserva reserva:reservasCliente){
+                    if(datosEntretenimiento[0].equals(reserva.getNumeroReserva())){
+                        ArrayList<String[]> datosPaquetes=new ArrayList<String[]>();
+                        datosPaquetes=Funcion.generarArreglo("paquetes.txt");
+                        Paquete paqueteReservado;
+                        for (String[] ele:datosPaquetes){
+                            if(ele[2].equals(datosEntretenimiento[2])){
+                                Paquete paquete=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
+                                paqueteReservado=paquete;
+                                Entretenimiento entretenimiento=new Entretenimiento(paqueteReservado,datosEntretenimiento[1],Double.valueOf(datosEntretenimiento[3]));
+                                entretenimiento.setReserva(reserva);
+                                servicios.add(entretenimiento);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for (Servicio servicio:servicios){
+            if(servicio.getClass()!=null&&servicio.getClass()==Transporte.class){
+                Transporte transporte=(Transporte)servicio;
+                System.out.println("Servicio: " +transporte.getReserva().getTipoReserva());
+                System.out.println("Vehículo: " +transporte.getVehiculo().toString());
+                System.out.println("Fecha reserva: " +transporte.getReserva().getFechaReserva());
+                System.out.println("Desde: " +transporte.getReserva().getDesde());
+                System.out.println("Hasta: " +transporte.getReserva().getHasta());
+                System.out.println("Pago: " +transporte.getReserva().getValorPagar());
+            }
+            if(servicio.getClass()!=null&&servicio.getClass()==Entretenimiento.class){
+                Entretenimiento entretenimiento=(Entretenimiento)servicio;
+                System.out.println("Servicio: " +entretenimiento.getReserva().getTipoReserva());
+                System.out.println("Paquete: " +entretenimiento.getPaquete().getInformacion());
+                System.out.println("Fecha reserva: " +entretenimiento.getReserva().getFechaReserva());
+                System.out.println("Desde: " +entretenimiento.getReserva().getDesde());
+                System.out.println("Hasta: " +entretenimiento.getReserva().getHasta());
+                //System.out.println("Cantidad de personas: " +entretenimiento.getCantidadPersonas());
+                System.out.println("Pago: " +entretenimiento.getReserva().getValorPagar());
+            }
+        }
+    }
+        
+ }  
+
