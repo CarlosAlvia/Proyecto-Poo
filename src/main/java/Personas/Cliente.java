@@ -55,27 +55,32 @@ public class Cliente extends Usuario{
     public void reservarHospedaje(){
      Reserva.mostrarCabecera();
      Scanner sc=new Scanner(System.in);
+     // Ingreso de los datos de la fecha de entrada y de salida del cliente
      System.out.println("Ingrese la fecha entrada: ");
      String fechaEntrada=sc.nextLine();
      System.out.println("Ingrese la fecha salidad: ");
      String fechaSalida=sc.nextLine();
+     // Llamada al método de calcular día que devuelve la cantidad de días que existen entre la fecha de entrada y de salida
      long dias=Funcion.calcularDias(fechaEntrada,fechaSalida);
-     
+     // Presentación por consulo de las opciones que tiene el método de reservarHospedaje
      System.out.println("¿Qué tipo de hospedaje busca?");
      System.out.println("1. Hotel");
      System.out.println("2. Departamento");
      System.out.println("Ingrese una opción: ");
      String opsi=sc.nextLine();
+     // Implementación de un switch para que dependiendo si el usuario ingresa la opción 1 o 2 muestre el codigo para reservar hotel(1) y departamento(2)
      switch(opsi){
                 case "1":
      System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
      String ciudad=sc.nextLine();
-     
+     // Creacion de un ArrayList que contiene arreglos de String para almacenar los datos que se generan al momento de leer el código
      ArrayList<String[]> hotelString=new ArrayList();
+     // llenar el arrayList con la función generar arreglo definida en la clase "Funcion"
      hotelString=Funcion.generarArreglo("hoteles.txt");
      int indice=1;
+     //creación de una lista de hoteles donde se almacenarán los objetos obteles creados a continuación
      ArrayList<Hotel> hoteles=new ArrayList<Hotel>();
-     
+     // for que recorrera el Arraylist de arreglos y el if evaluará si pertenecen a una ciudad para arregarlos al array de hoteles, antes habiendo creado su objeto y se imprime el nombre del hotel que pertenece a la ciudad ingresada por el usuario 
         for(int i=0;i<hotelString.size();i++){
             if(hotelString.get(i)[0].equals(ciudad)){
                 System.out.println(indice+". "+ hotelString.get(i)[2]);
@@ -89,9 +94,11 @@ public class Cliente extends Usuario{
      System.out.println("Elija una opción: ");
      int opcion=sc.nextInt();
      sc.nextLine();
+     // creacion del objeto hotel que representara cuyo hotel selccionará el usuario
      Hotel hotElegido=new Hotel();
      for (Hotel hote: hoteles){
             if(hote==hoteles.get(opcion-1)){
+                // Presentación de los datos del hotel escogido por el usuario previamente
                 System.out.println("Datos de "+hote.getNombre());
                 System.out.println("/*********************************/");
                 System.out.println("Dirección: "+hote.getDireccion()); 
@@ -101,6 +108,7 @@ public class Cliente extends Usuario{
                     estrellitas=estrellitas+"*";
                 }
                 System.out.println("Estrellas: "+estrellitas); 
+                // Imprimirá "Si" o "No" dependiendo del valor de verdad, es decir si incluye tal servicio
                 String desa="";
                 if(hote.getDesayuno()){
                     desa="Sí";
@@ -126,12 +134,13 @@ public class Cliente extends Usuario{
                 }
                 System.out.println("Permite cancelación gratis: "+can);
                 System.out.println("/*********************************/");
+                // Se le asigna el objeto hotel al creado previamente
                 hotElegido= hote;
 
             }
              
         }
-     
+     // ahora se prosedera a realizar un proceso con las habitaciones
      ArrayList<String[]> habitacionString=new ArrayList();
      habitacionString=Funcion.generarArreglo("habitaciones.txt");
      int indice2=1;
