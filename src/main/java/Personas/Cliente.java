@@ -587,7 +587,8 @@ public class Cliente extends Usuario{
                         datosPaquetes=Funcion.generarArreglo("paquetes.txt");
                         Paquete paqueteReservado;
                         for (String[] ele:datosPaquetes){
-                            if(ele[2].equals(datosEntretenimiento[2])){
+                            if(ele[1].equals(datosEntretenimiento[2])){
+                                System.out.println("2");
                                 Paquete paquete=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
                                 paqueteReservado=paquete;
                                 Entretenimiento entretenimiento=new Entretenimiento(paqueteReservado,datosEntretenimiento[1],Double.valueOf(datosEntretenimiento[3]));
@@ -608,11 +609,12 @@ public class Cliente extends Usuario{
                 System.out.println("Desde: " +transporte.getReserva().getDesde());
                 System.out.println("Hasta: " +transporte.getReserva().getHasta());
                 System.out.println("Pago: " +transporte.getReserva().getValorPagar());
+                System.out.println("\n");
             }
             if(servicio.getClass()!=null&&servicio.getClass()==Entretenimiento.class){
                 Entretenimiento entretenimiento=(Entretenimiento)servicio;
                 System.out.println("Servicio: " +entretenimiento.getReserva().getTipoReserva());
-                System.out.println("Paquete: " +entretenimiento.getPaquete().getInformacion());
+                System.out.println("Paquete: " +entretenimiento.getPaquete().getNombrePaquete());
                 System.out.println("Fecha reserva: " +entretenimiento.getReserva().getFechaReserva());
                 System.out.println("Desde: " +entretenimiento.getReserva().getDesde());
                 System.out.println("Hasta: " +entretenimiento.getReserva().getHasta());
