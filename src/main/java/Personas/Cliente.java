@@ -165,7 +165,8 @@ public class Cliente extends Usuario{
        
        System.out.println("¿Desea reservar?: ");
         String reservo=sc.nextLine();
-//        
+        hotElegido.setCiudadH(ciudad);
+        
         if (reservo.equals("si")||reservo.equals("sí")){
                 Hospedaje pedaje=new Hospedaje(fechaEntrada, fechaSalida,hotElegido,habitaciones.get(op-1).getPrecio()*dias); 
                 Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habitaciones.get(op-1).getPrecio(),this,"HOSPEDAJE");
@@ -173,7 +174,7 @@ public class Cliente extends Usuario{
                 //ojo tipo sevicio
                 String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+super.getNombres()+","+fechaEntrada+","+fechaSalida+","+habitaciones.get(op-1).getTipoHabitacion()+","+habitaciones.get(op-1).getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
-                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCodigoHotel()+","+habitaciones.get(op-1).getTipoHabitacion()+","+habitaciones.get(op-1).getPrecio()*dias;
+                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habitaciones.get(op-1).getTipoHabitacion()+","+habitaciones.get(op-1).getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReserva);
                 pedaje.mostrarReserva();
         }
@@ -223,6 +224,7 @@ public class Cliente extends Usuario{
             }
             System.out.println("¿Desea reservar?");
             String reservoDepa=sc.nextLine();
+            depaElegido.setCiudadDepa(ciudadDepa);
 //        
         if (reservoDepa.equals("si")||reservoDepa.equals("sí")){
                 Hospedaje dapaje=new Hospedaje(fechaEntrada, fechaSalida,depaElegido,depaElegido.getCostoDepa()); 
@@ -231,7 +233,7 @@ public class Cliente extends Usuario{
                 //ojo tipo sevicio
                 String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"hospedaje"+","+super.getNombres()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaDepa);
-                String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+","+depaElegido.getNumeroHabitaciones()+" habitaciones"+","+depaElegido.getCostoDepa();
+                String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+depaElegido.getCiudadDepa()+","+depaElegido.getNombreDepa()+","+"ED"+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReservaDepa);
                 dapaje.mostrarReservaDe();
             }
