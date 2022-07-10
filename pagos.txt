@@ -1,7 +1,1 @@
 numeroReserva,numeroPago,cliente,fechaPago,valorPagar,valorPagarFinal,tipoPago,numero,(mes/año) caducidad
-26242,0,Luis Mancero,02/07/2022,300.0,300.0,Cheque,32441,12/22
-26242,0,Marco Cárdenas,02/07/2022,300.0,300.0,Cheque,3287374783272342,07/2022
-26124,0,Luis Mancero,04/07/2022,300.0,300.0,Cheque,2423423432141,07/2022
-26124,0,Luis Mancero,04/07/2022,300.0,300.0,Tarjeta,32142342423423,08/2022
-26124,0,Luis Mancero,04/07/2022,300.0,330.0,Tarjeta,23847328778232,08/2022
-26782,30981,Carlos Montalvo,04/07/2022,900.0,765.0,Cheque,239329,12/22

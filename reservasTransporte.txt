@@ -1,2 +1,1 @@
 numeroReserva,ciudad,códigoVehículo,valorPagar
-29092,Guayaquil,9273,300.0

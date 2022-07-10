@@ -1,8 +1,1 @@
 numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
-26242,02/07/2022,transporte,Luis Mancero,12/04/2020,14/04/2020,300.0
-26124,02/07/2022,transporte,Marco Cárdenas,12/05/2022,14/05/2022,300.0
-21973,02/07/2022,ENTRENEMIENTO,Marco Cárdenas, 05/07/2022,10/07/2022,45.0
-26782,04/07/2022,transporte,Carlos Montalvo,24/08/2022,30/08/2022,900.0
-29092,08/07/2022,transporte,Luis Mancero,24/07/2022,26/07/2022,300.0
-29550,08/07/2022,ENTRENEMIENTO,Luis Mancero, 07/12/2022,07/07/2022,180.0
-29462,10/07/2022,hospedaje,Luis Mancero,08/08/2022,10/08/2022,700.0
