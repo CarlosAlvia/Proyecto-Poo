@@ -285,7 +285,7 @@ public class Cliente extends Usuario{
                 Reserva reservaHospedajeDepa=new Reserva(fechaEntrada,fechaSalida,depaElegido.getCostoDepa(),this,"HOSPEDAJE");
                 dapaje.setReserva(reservaHospedajeDepa);
                 //ojo tipo sevicio
-                String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"hospedaje"+","+super.getNombres()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
+                String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaDepa);
                 String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+depaElegido.getCiudadDepa()+","+depaElegido.getNombreDepa()+","+"ED"+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReservaDepa);
