@@ -25,7 +25,7 @@ public class Entretenimiento extends Servicio {
         this.paquete = paquete;
     }
     public Entretenimiento(Paquete paquete, String ciudad, double valor) {
-        super(ciudad, valor, 4.9, 2123);
+        super(ciudad, valor);
         this.paquete = paquete;
     }
     
