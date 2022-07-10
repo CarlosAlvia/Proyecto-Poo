@@ -8,20 +8,20 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import Herramientas.ManejoArchivos;
-import com.dacon.proyectopoo.Reserva;
-import com.dacon.proyectopoo.Transporte;
-import com.dacon.proyectopoo.Vehiculo;
+import PagoReserva.Reserva;
+import Servicios.Transporte;
+import ElementoServicios.Vehiculo;
 import java.util.Scanner;
 import Enum.Estado;
 import Enum.TipoHabitacion;
 import Enum.Transmision;
 import Herramientas.Funcion;
-import com.dacon.proyectopoo.Departamento;
-import com.dacon.proyectopoo.Habitacion;
-import com.dacon.proyectopoo.Hotel;
-import com.dacon.proyectopoo.Paquete;
-import com.dacon.proyectopoo.Pago;
-import com.dacon.proyectopoo.Hospedaje;
+import ElementoServicios.Departamento;
+import ElementoServicios.Habitacion;
+import ElementoServicios.Hotel;
+import ElementoServicios.Paquete;
+import PagoReserva.Pago;
+import Servicios.Hospedaje;
 /**
  *
  * @author CJAA
