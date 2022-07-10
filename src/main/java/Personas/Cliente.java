@@ -11,6 +11,8 @@ import PagoReserva.*;
 import Herramientas.*;
 import Servicios.*;
 import ElementoServicios.*;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 /**
  *
  * @author User
@@ -44,12 +46,30 @@ public class Cliente extends Usuario{
      Reserva.mostrarCabecera();
      Scanner sc=new Scanner(System.in);
      // Ingreso de los datos de la fecha de entrada y de salida del cliente
-     System.out.println("Ingrese la fecha entrada: ");
-     String fechaEntrada=sc.nextLine();
-     System.out.println("Ingrese la fecha salidad: ");
-     String fechaSalida=sc.nextLine();
-     // Llamada al método de calcular día que devuelve la cantidad de días que existen entre la fecha de entrada y de salida
-     long dias=Funcion.calcularDias(fechaEntrada,fechaSalida);
+     
+     String fechaEntrada;
+     String fechaSalida;
+     LocalDate fechaIni;
+     long dias;
+    do{
+        System.out.println("Ingrese la fecha entrada: ");
+        fechaEntrada=sc.nextLine();
+        System.out.println("Ingrese la fecha salidad: ");
+        fechaSalida=sc.nextLine();
+        
+        dias=Funcion.calcularDias(fechaEntrada,fechaSalida);
+        String [] fechaInicio=fechaEntrada.split("/");
+        fechaIni=LocalDate.of(Integer.valueOf(fechaInicio[2]),Month.of(Integer.valueOf(fechaInicio[1])),Integer.valueOf(fechaInicio[0]));
+        //Se verifica que el valor devuelto sea distinto de cero
+        if (dias<=0||(ChronoUnit.DAYS.between(LocalDate.now(),fechaIni))<0){
+            System.out.println("Ingrese fechas válidas");
+        }
+        //El código se ejecuta hasta que se ingresen fechas que disten entre sí de forma positiva
+        //es decir, que la fecha de fin sea después de la fecha de inicio. También se verifica que 
+        //la fecha de inicio sea la fecha actual o posterior
+    }while(dias<=0||(ChronoUnit.DAYS.between(LocalDate.now(),fechaIni))<0);
+     
+     
      // Presentación por consulo de las opciones que tiene el método de reservarHospedaje
      System.out.println("¿Qué tipo de hospedaje busca?");
      System.out.println("1. Hotel");
