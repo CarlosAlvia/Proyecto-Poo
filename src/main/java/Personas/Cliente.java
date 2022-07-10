@@ -444,11 +444,11 @@ public class Cliente extends Usuario{
          }
         }
     }
-    public void mostarReserva(){
-        
-    }
     public void pagarReserva(){
+        //Se usa el método now de la Clase LocalDate para obtener la fecha actual y se le aplica el split
+        //Este método usa el formato (aa-mm-dd)
         String[] arrFechaActual= LocalDate.now().toString().split("-");
+        //Se define la fecha actual con el formato del programa
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
         Reserva reservaAPagar = null;
         Scanner sc=new Scanner(System.in);
@@ -459,24 +459,33 @@ public class Cliente extends Usuario{
         do{
             System.out.println("Ingrese el código de la reserva");
             String codigoReserva=sc.nextLine();
+            //Se leen los datos del archivo de reservas
             ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
             for (String[] datos:datosReservas){
+                //Se obtiene el nombre y apellido del cliente de la línaea de los datos del archivo reserva 
                 String[] nombreApellido=datos[3].split(" ");
+                //Se verifica que la reserva exista según su código y que pertenezca al cliente por el nombre y el apellido
                 if(datos[0].equals(codigoReserva)&&nombreApellido[0].equals(this.nombres)&&nombreApellido[1].equals(this.apellidos)){
-                  //String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar
+                  //Se crea la reserva que se pagará
                     Reserva reserva=new Reserva(datos[0],datos[1],datos[2],this,datos[4],datos[5],Double.valueOf(datos[6]));
                     reservaAPagar=reserva;
                 }
             }
+            //Se verifica si es que en el paso anterior no se encontró la reserva
             if(reservaAPagar==null){
+                //Se le consulta al usuario si quiere consultar con otro código
                 System.out.println("Número de reserva inválido");
                 System.out.println("¿Desea probar con otro número de reserva?");
                 String respuesta=sc.nextLine();
+                //Si la respuesta es diferente de sí, el boolean probrarOtraVez se define como falso y esto provoca
+                //que el usuario regrese al menú inicial
                 if(!(respuesta.toLowerCase().equals("si")||respuesta.toLowerCase().equals("sí"))){
                     probarOtraVez=false;
                 }
             }
+        //Mientras no haya reserva y el usuario quiera  intentar otra vez, se ejecuta el bloque de código
         }while(reservaAPagar==null&&probarOtraVez);
+        //Se verifica que haya una reserva a pagar
         if (reservaAPagar!=null){
             ArrayList<String[]> reservaServicio=null;
             switch (reservaAPagar.getTipoReserva().toLowerCase()) {
@@ -486,21 +495,24 @@ public class Cliente extends Usuario{
                 case "tranporte":
                     reservaServicio=Funcion.generarArreglo("reservasTransporte.txt");
                     break;
-                case "transmision":
+                case "entretenimiento":
                     reservaServicio=Funcion.generarArreglo("reservasEntretenimiento.txt");
                     break;
                 default:
                     break;
             }
-            System.out.println("Seleccione su forma de pago");
+            System.out.println("Seleccione su forma de pago (cheque o tarjeta)");
             String formaPago=sc.nextLine();
             boolean repetirTarjeta;
+            //Se usa el toLowerCase para comparar de forma adecuada
             if(formaPago.toLowerCase().equals("tarjeta")){
                 do{
                 System.out.println("Ingrese su número de tarjeta");
                 String tarjeta=sc.nextLine();
                 System.out.println("Ingrese el mes y año de caducidad");
                 String caducidad=sc.nextLine();
+                //Se usa el split para tomar individualmente el mes y año de la fecha de caducidad de
+                //la tarjeta y se compara con los
                 String[] fechaTarjeta=caducidad.split("/");
                 int mesTarjeta=Integer.valueOf(fechaTarjeta[0]);
                 int anoTarjeta=Integer.valueOf(fechaTarjeta[1]);
