@@ -18,6 +18,10 @@ public class Habitacion{
     private Estado estado;
 
     
+    public Habitacion(){
+         
+     }
+    
     public Habitacion(String codigoHotel, TipoHabitacion tipoHabitacion, double precio, int capacidad, int numerodeHabitacion, Estado estado) {
         this.codigoHotel = codigoHotel;
         this.tipoHabitacion = tipoHabitacion;
