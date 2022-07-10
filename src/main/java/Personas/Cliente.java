@@ -429,7 +429,7 @@ public class Cliente extends Usuario{
         if (reservo.equals("si")||reservo.equals("sí")){
             
                 Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
-                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"ENTRENEMIENTO");
+                Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimiento");
                 //ojo tipo sevicio
                 elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
