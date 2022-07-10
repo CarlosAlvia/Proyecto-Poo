@@ -20,6 +20,9 @@ public class Funcion {
         long diasReserva;
         String fechaInicio;
         String fechaFin;
+        //se crea esta variable para poder usarla como condición del while
+        //y verificar que no se está reservando en una fecha anterior a la actual
+        LocalDate fechaIni;
         do{
         System.out.println("Ingrese la fecha desde la reserva: ");
         fechaInicio=sc.nextLine();
@@ -37,17 +40,17 @@ public class Funcion {
         int mes2=Integer.valueOf(arrFecha2[1]);
         //Se crean objetos de tipo fecha para poder usar la funcion between de la clase DAYS
         //La cual calcula el número de días que hay entre dos fechas
-        LocalDate fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
+        fechaIni=LocalDate.of(año1,Month.of(mes1),dia1);
         LocalDate fechaFinal=LocalDate.of(año2,Month.of(mes2),dia2);
         //Se guarda la información en la variable diasReserva
         diasReserva=ChronoUnit.DAYS.between(fechaIni,fechaFinal);
         //Se verifica que el valor devuelto sea distinto de cero
-        if (diasReserva<=0){
+        if (diasReserva<=0||(ChronoUnit.DAYS.between(LocalDate.now(),fechaIni))<0){
             System.out.println("Ingrese fechas válidas");
         }
         //El código se ejecuta hasta que se ingresen fechas que disten entre sí de forma positiva
         //es decir, que la fecha de fin sea después de la fecha de inicio
-        }while(diasReserva<=0);
+        }while(diasReserva<=0||(ChronoUnit.DAYS.between(LocalDate.now(),fechaIni))<0);
         Long dias=diasReserva;
         //Se crea una lista que contiene la cantidad de días, la fecha de inicio y la fecha de fin
         ArrayList datos=new ArrayList();
