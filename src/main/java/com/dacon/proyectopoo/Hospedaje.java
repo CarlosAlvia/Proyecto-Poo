@@ -13,7 +13,7 @@ public class Hospedaje extends Servicio{
     protected String fechaSalida;
     private Hotel hotel;
     private Departamento departamento;
-    private Double precioH;
+    private double precioH;
 
     public Hospedaje(String fechaEntrada, String fechaSalida, Hotel hotel,double precioH) {
         this.fechaEntrada = fechaEntrada;
@@ -39,7 +39,7 @@ public class Hospedaje extends Servicio{
     public Hospedaje(){
         
     }
-            
+      
     @Override
      public void mostrarReserva(){
         super.mostrarReserva();
@@ -84,17 +84,17 @@ public class Hospedaje extends Servicio{
         this.hotel = hotel;
     }
     
-    public String GetfechaEntrada(){
+    public String getFechaEntrada(){
         return this.fechaEntrada;
     }
-    public String GetfechaSalida(){
+    public String getFechaSalida(){
         return this.fechaSalida;
     }
     //Setters
-    public void setfechaEntrada(String fechaEntrada){
+    public void setFechaEntrada(String fechaEntrada){
         this.fechaEntrada=fechaEntrada;
     }
-    public void setfechaSalida(String fechaSalida){
+    public void setFechaSalida(String fechaSalida){
         this.fechaSalida=fechaSalida;
     }
     
