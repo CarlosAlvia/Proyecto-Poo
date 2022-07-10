@@ -631,6 +631,7 @@ public class Cliente extends Usuario{
                                             Hotel hotelReserva=new Hotel(hotel[0],hotel[1],hotel[2],Integer.valueOf(hotel[3]),hotel[4],Boolean.valueOf(hotel[5]),Boolean.valueOf(hotel[6]),Boolean.valueOf(hotel[7]));
                                             hotelReserva.setHabitacion(habitacionReservada);
                                             Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),hotelReserva);
+                                            hospedajeReservado.setReserva(reserva);
                                             servicios.add(hospedajeReservado);
                                         }
                                     }
@@ -643,6 +644,7 @@ public class Cliente extends Usuario{
                                 if(datosHospedaje[2].equals(departamento[1])){
                                     Departamento departamentoReservado=new Departamento(departamento[0],departamento[1],Double.valueOf(departamento[2]),Integer.valueOf(departamento[3]),Estado.valueOf(departamento[4]),Boolean.valueOf(departamento[5]),Boolean.valueOf(departamento[6]));
                                     Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),departamentoReservado);
+                                    hospedajeReservado.setReserva(reserva);
                                     servicios.add(hospedajeReservado);
                                 }
                             }
@@ -718,6 +720,7 @@ public class Cliente extends Usuario{
                     System.out.println("Hasta: " +hospedaje.getReserva().getHasta());
                     System.out.println("Habitacion: " +hospedaje.getHotel().getHabitacion().getNumerodeHabitacion());
                     System.out.println("Pago: " +hospedaje.getReserva().getValorPagar());
+                    System.out.println("\n");
                 }else if(hospedaje.getDepartamento()!=null){
                     System.out.println("Servicio: " +hospedaje.getReserva().getTipoReserva());
                     System.out.println("Departamento: " +hospedaje.getDepartamento().getNombreDepa());
@@ -726,6 +729,7 @@ public class Cliente extends Usuario{
                     System.out.println("Hasta: " +hospedaje.getReserva().getHasta());
                     System.out.println("Número de habitaciones: " +hospedaje.getDepartamento().getNumeroHabitaciones());
                     System.out.println("Pago: " +hospedaje.getReserva().getValorPagar());
+                    System.out.println("\n");
                 }
             }
         }
