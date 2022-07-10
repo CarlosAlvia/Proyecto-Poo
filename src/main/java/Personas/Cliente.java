@@ -512,13 +512,15 @@ public class Cliente extends Usuario{
                 System.out.println("Ingrese el mes y año de caducidad");
                 String caducidad=sc.nextLine();
                 //Se usa el split para tomar individualmente el mes y año de la fecha de caducidad de
-                //la tarjeta y se compara con los
+                //la tarjeta y se compara con el mes y año actua
                 String[] fechaTarjeta=caducidad.split("/");
                 int mesTarjeta=Integer.valueOf(fechaTarjeta[0]);
                 int anoTarjeta=Integer.valueOf(fechaTarjeta[1]);
                 String[] fechaComparacion=fechaActual.split("/");
                 int mesActual=Integer.valueOf(fechaComparacion[1]);
                 int anoActual=Integer.valueOf(fechaComparacion[2]);
+                //Se pone verifica si la tarjeta está caducada, si sí se muestra el mensaje tarjeta inválida
+                // y si no, se guarda la tarjeta y su fecha de caducidad
                 repetirTarjeta=(anoTarjeta<anoActual)||(anoTarjeta==anoActual&&mesTarjeta<mesActual);
                 if(repetirTarjeta){
                     System.out.println("Tarjeta inválida");
@@ -527,7 +529,9 @@ public class Cliente extends Usuario{
                     caducidadTarjeta=caducidad;
                 }
                 }while(repetirTarjeta);
+                //Se llama al método pagar para tarjeta
                 this.pagar(tarjetaCredito,caducidadTarjeta,reservaAPagar,fechaActual);
+            //Si el método seleccionado es un cheque se pide el número y si llama al método pagar para cheque
             }else if(formaPago.toLowerCase().equals("cheque")){
                 System.out.println("Ingrese el número de cheque");
                 String cheque=sc.nextLine();
@@ -543,23 +547,29 @@ public class Cliente extends Usuario{
         final double RECARGOTARJETA=0.10;
         Scanner sc=new Scanner(System.in);
                 if (this.getTipoUsuario()=='V'){
+                    //Si el cliente es VIP (V)se define el valor a pagar aplicando el descuento y el recargo por tarjeta
                     double subtotal=reservaAPagar.getValorPagar();
                     valorPago=subtotal-(subtotal*FACTORDESCUENTO)+(subtotal*RECARGOTARJETA);
+                    //Se muestra el valor a pagar y se consulta si se confirma el pago
                     System.out.println("Su valor a pagar final es: "+valorPago);
                     System.out.println("¿Desea confirmar su pago?");
                     String confirmacion=sc.nextLine().toLowerCase();
-                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){
+                        //En caso de ser confirmado, se crea el pago y se escribe su información en el documento de pagos
                         Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Tarjeta",tarjetaDeCredito,mesAnoCaducidad);
                         ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
                         System.out.println("Pago generado");
                     }    
                 }else if (this.getTipoUsuario()=='C'){
+                    //Si el cliente es normal, solo se aplica el recargo por tarjeta
                     double subtotal=reservaAPagar.getValorPagar();
                     valorPago=subtotal+(subtotal*RECARGOTARJETA);
+                    //Se muestra el valor a pagar y se consulta si se confirma el pago
                     System.out.println("Su valor a pagar final es: "+valorPago);
                     System.out.println("¿Desea confirmar su pago?");
                     String confirmacion=sc.nextLine().toLowerCase();
-                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){    
+                        //En caso de ser confirmado, se crea el pago y se escribe su información en el documento de pagos
                         Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Tarjeta",tarjetaDeCredito,mesAnoCaducidad);
                         ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
                         System.out.println("Pago generado");
@@ -571,24 +581,32 @@ public class Cliente extends Usuario{
         final double FACTORDESCUENTO=0.15;
         Scanner sc=new Scanner(System.in);
                 if (this.getTipoUsuario()=='V'){
+                    //Si el cliente es VIP (V)se le aplica el descuento
                     double subtotal=reservaAPagar.getValorPagar();
                     valorPago=subtotal-(subtotal*FACTORDESCUENTO);
+                    //Se muestra el valor a pagar y se consulta si se confirma el pago
                     System.out.println("Su valor a pagar final es: "+valorPago);
                     System.out.println("¿Desea confirmar su pago?");
                     String confirmacion=sc.nextLine().toLowerCase();
-                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){   
+                        //En caso de ser confirmado, se crea el pago, se le hace el recordatorio
+                        // y se escribe su información en el documento de pagos
                         Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",cheque,"12/22");
                         ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
                         System.out.println("Pago generado");
                         System.out.println("Debe depositar el cheque en las próximas 24 horas, caso contrario, su pago no será validado ni la reserva considerada");
                     }    
                 }else if (this.getTipoUsuario()=='C'){
+                    //Si el cliente es normal el valor a pagar es igual que el subtotal
                     double subtotal=reservaAPagar.getValorPagar();
                     valorPago=subtotal;
+                    //Se muestra el valor a pagar y se consulta si se confirma el pago
                     System.out.println("Su valor a pagar final es: "+valorPago);
                     System.out.println("¿Desea confirmar su pago?");
                     String confirmacion=sc.nextLine().toLowerCase();
-                    if(confirmacion.equals("sí")||confirmacion.equals("si")){                    
+                    if(confirmacion.equals("sí")||confirmacion.equals("si")){
+                        //En caso de ser confirmado, se crea el pago, se le hace el recordatorio
+                        // y se escribe su información en el documento de pagos
                         Pago pago=new Pago(fechaActual,reservaAPagar,valorPago,"Cheque",cheque,"12/22");
                         ManejoArchivos.EscribirArchivo("pagos.txt",pago.toString());
                         System.out.println("Pago generado");
