@@ -360,7 +360,7 @@ public class Cliente extends Usuario{
             String deseaReserva=sc.nextLine().toLowerCase();
             if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
                 //Se crea el objeto transporte y el objeto reserva
-                Transporte transporte=new Transporte(ciudad,valorPagar,5.0,4,opciones.get(op-1));
+                Transporte transporte=new Transporte(ciudad,valorPagar,opciones.get(op-1));
                 Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,this,"transporte");
                 //Se le asigna la reserva al transporte con el método set
                 transporte.setReserva(reservaTransporte);
@@ -681,7 +681,6 @@ public class Cliente extends Usuario{
                         datosPaquetes=Funcion.generarArreglo("paquetes.txt");
                         for (String[] ele:datosPaquetes){
                             if(ele[1].equals(datosEntretenimiento[2])){
-                                System.out.println("2");
                                 Paquete paqueteReservado=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
                                 Entretenimiento entretenimiento=new Entretenimiento(paqueteReservado,datosEntretenimiento[1],Double.valueOf(datosEntretenimiento[3]));
                                 entretenimiento.setReserva(reserva);
