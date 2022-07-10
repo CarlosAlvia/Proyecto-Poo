@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ElementoServicios;
-import ElementoServicios.Habitacion;
 import java.util.ArrayList;
 /**
  *
@@ -105,7 +104,7 @@ public class Hotel {
     }
 
     public void setHabitacion(Habitacion habitacion) {
-        this.habitacion = habitacion;
+        this.habitacion=habitacion;
     }
     
 }
