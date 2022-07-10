@@ -52,7 +52,7 @@ public class Administrador extends Usuario {
                 case "transporte":
                    for(int i=0; i<reservasTransporte.size();i++){
                        if(numerRese.equals(reservasTransporte.get(i)[0])){
-                           String linea= reservasTransporte.get(i)[1]+","+"transporte";
+                           String linea= reservasTransporte.get(i)[1].toLowerCase()+","+"transporte";
                            String[] lineas=linea.split(",");
                            ciudadYtipo.add(lineas);
                         }
@@ -62,7 +62,7 @@ public class Administrador extends Usuario {
 
                     for(int i=0; i<reservasHospedaje.size();i++){
                        if(numerRese.equals(reservasHospedaje.get(i)[0])){
-                           String linea= reservasHospedaje.get(i)[1]+","+"hospedaje";
+                           String linea= reservasHospedaje.get(i)[1].toLowerCase()+","+"hospedaje";
                            String[] lineas=linea.split(",");
                            ciudadYtipo.add(lineas);
                     }
@@ -71,7 +71,7 @@ public class Administrador extends Usuario {
                 case "entretenimiento":
                    for(int i=0; i<reservasEntretenimiento.size();i++){
                        if(numerRese.equals(reservasEntretenimiento.get(i)[0])){
-                           String linea= reservasEntretenimiento.get(i)[1]+","+"entretenimiento";
+                           String linea= reservasEntretenimiento.get(i)[1].toLowerCase()+","+"entretenimiento";
                            String[] lineas=linea.split(",");
                            ciudadYtipo.add(lineas);
                        }
