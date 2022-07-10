@@ -10,15 +10,14 @@ import java.util.ArrayList;
  * @author User
  */
 public class Paquete {
-    String ciudadPa;
-    ArrayList<Paquete> paquetes;
+   String ciudadPa;
+   ArrayList<Paquete> paquetes;
    String nombrePaquete;
-    String informacion;
-    double costoP; 
-    String diasSalida;
-    String fechaDisponible;
-    int numeroPersonas;
-    String ciudadP;
+   String informacion;
+   double costoP; 
+   String diasSalida;
+   String fechaDisponible;
+   int numeroPersonas;
 
     public String getCiudadPa() {
         return ciudadPa;
@@ -35,16 +34,7 @@ public class Paquete {
     public void setPaquetes(ArrayList<Paquete> paquetes) {
         this.paquetes = paquetes;
     }
-
-    public String getCiudadP() {
-        return ciudadP;
-    }
-
-    public void setCiudadP(String ciudadP) {
-        this.ciudadP = ciudadP;
-    }
-    
-    
+ 
     public String getNombrePaquete() {
         return nombrePaquete;
     }
