@@ -443,7 +443,7 @@ public class Cliente extends Usuario{
                 elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
                 
-                String linea=reservaEntretenimiento.getNumeroReserva()+","+packelegido.getCiudadPa()+","+packelegido.getNombrePaquete()+","+diaInicio+","+diaFin+","+packelegido.getNumeroPersonas()+","+packelegido.getCostoP();
+                String linea=reservaEntretenimiento.getNumeroReserva()+","+packelegido.getCiudadPa()+","+packelegido.getNombrePaquete()+","+packelegido.getNumeroPersonas()+","+packelegido.getCostoP();
                 ManejoArchivos.EscribirArchivo("reservasEntretenimiento.txt", linea);
                 elegido.mostrarReserva();
                    
