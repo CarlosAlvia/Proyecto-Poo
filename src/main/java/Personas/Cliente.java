@@ -142,7 +142,7 @@ public class Cliente extends Usuario{
              
         }
      // ahora se prosedera a realizar un proceso con las habitaciones
-     ArrayList<String[]> habitacionString=new ArrayList();
+     ArrayList<String[]> habitacionString;
      habitacionString=Funcion.generarArreglo("habitaciones.txt");
     
      
@@ -595,12 +595,12 @@ public class Cliente extends Usuario{
     System.out.println(simbolo1);
     System.out.println(simbolo2);
     System.out.println("\n"); 
-    ArrayList<Servicio> servicios=new ArrayList<Servicio>();
+    ArrayList<Servicio> servicios=new ArrayList<>();
     ArrayList<String[]> reservasHospedaje=Funcion.generarArreglo("reservasHospedaje.txt");
     ArrayList<String[]> reservasTransporte=Funcion.generarArreglo("reservasTransporte.txt");
     ArrayList<String[]> reservasEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
     ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
-    ArrayList<Reserva> reservasCliente=new ArrayList<Reserva>();
+    ArrayList<Reserva> reservasCliente=new ArrayList<>();
         if (!(datosReservas.isEmpty())){
             for (String[] datos:datosReservas){
                String[] nombreApellido=datos[3].split(" ");
@@ -611,21 +611,52 @@ public class Cliente extends Usuario{
             }
         }
         if (!(reservasHospedaje.isEmpty())){
-            for (String[] datos:reservasHospedaje){
-                
+            for (String[] datosHospedaje:reservasHospedaje){
+                for (Reserva reserva:reservasCliente){
+                    if(datosHospedaje[0].equals(reserva.getNumeroReserva())){
+                        if(!datosHospedaje[3].equals("ED")){
+                            ArrayList<String[]> datosHoteles;
+                            datosHoteles=Funcion.generarArreglo("hoteles.txt");
+                            for (String[] hotel:datosHoteles){
+                                if(datosHospedaje[2].equals(hotel[1])){
+                                    ArrayList<String[]> datosHabitaciones;
+                                    datosHabitaciones=Funcion.generarArreglo("habitaciones.txt");
+                                    for (String[] room:datosHabitaciones){
+                                        if(hotel[1].equals(room[0])&&datosHospedaje[4].equals(room[4])){
+                                            Habitacion habitacionReservada=new Habitacion(room[0],TipoHabitacion.valueOf(room[1]),Double.valueOf(room[2]),Integer.valueOf(room[3]),Integer.valueOf(room[4]),Estado.valueOf(room[5]));
+                                            Hotel hotelReserva=new Hotel(hotel[0],hotel[1],hotel[2],Integer.valueOf(hotel[3]),hotel[4],Boolean.valueOf(hotel[5]),Boolean.valueOf(hotel[6]),Boolean.valueOf(hotel[7]));
+                                            hotelReserva.setHabitacion(habitacionReservada);
+                                            Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),hotelReserva);
+                                            servicios.add(hospedajeReservado);
+                                        }
+                                    }
+                                }
+                            }
+                        }else{
+                            ArrayList<String[]> datosDepartamentos;
+                            datosDepartamentos=Funcion.generarArreglo("departamento.txt");
+                            for (String[] departamento:datosDepartamentos){
+                                if(datosHospedaje[2].equals(departamento[1])){
+                                    Departamento departamentoReservado=new Departamento(departamento[0],departamento[1],Double.valueOf(departamento[2]),Integer.valueOf(departamento[3]),Estado.valueOf(departamento[4]),Boolean.valueOf(departamento[5]),Boolean.valueOf(departamento[6]));
+                                    Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),departamentoReservado);
+                                    servicios.add(hospedajeReservado);
+                                }
+                            }
+                        }
+                    }
+                }
             }
+        
         }
         if (!(reservasTransporte.isEmpty())){
             for (String[] datosTransporte:reservasTransporte){
                 for (Reserva reserva:reservasCliente){
                     if(datosTransporte[0].equals(reserva.getNumeroReserva())){
-                        ArrayList<String[]> datosVehiculos=new ArrayList<String[]>();
+                        ArrayList<String[]> datosVehiculos;
                         datosVehiculos=Funcion.generarArreglo("vehiculos.txt");
-                        Vehiculo vehiculoReservado;
                         for (String[] ele:datosVehiculos){
                             if(ele[0].equals(datosTransporte[2])){
-                                Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
-                                vehiculoReservado=vehiculo;
+                                Vehiculo vehiculoReservado=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
                                 Transporte transporte=new Transporte(datosTransporte[1],Double.valueOf(datosTransporte[2]),vehiculoReservado);
                                 transporte.setReserva(reserva);
                                 servicios.add(transporte);
@@ -639,14 +670,12 @@ public class Cliente extends Usuario{
             for (String[] datosEntretenimiento:reservasEntretenimiento){
                 for (Reserva reserva:reservasCliente){
                     if(datosEntretenimiento[0].equals(reserva.getNumeroReserva())){
-                        ArrayList<String[]> datosPaquetes=new ArrayList<String[]>();
+                        ArrayList<String[]> datosPaquetes;
                         datosPaquetes=Funcion.generarArreglo("paquetes.txt");
-                        Paquete paqueteReservado;
                         for (String[] ele:datosPaquetes){
                             if(ele[1].equals(datosEntretenimiento[2])){
                                 System.out.println("2");
-                                Paquete paquete=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
-                                paqueteReservado=paquete;
+                                Paquete paqueteReservado=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
                                 Entretenimiento entretenimiento=new Entretenimiento(paqueteReservado,datosEntretenimiento[1],Double.valueOf(datosEntretenimiento[3]));
                                 entretenimiento.setReserva(reserva);
                                 servicios.add(entretenimiento);
@@ -666,8 +695,7 @@ public class Cliente extends Usuario{
                 System.out.println("Hasta: " +transporte.getReserva().getHasta());
                 System.out.println("Pago: " +transporte.getReserva().getValorPagar());
                 System.out.println("\n");
-            }
-            if(servicio.getClass()!=null&&servicio.getClass()==Entretenimiento.class){
+            }else if(servicio.getClass()!=null&&servicio.getClass()==Entretenimiento.class){
                 Entretenimiento entretenimiento=(Entretenimiento)servicio;
                 System.out.println("Servicio: " +entretenimiento.getReserva().getTipoReserva());
                 System.out.println("Paquete: " +entretenimiento.getPaquete().getNombrePaquete());
@@ -676,6 +704,25 @@ public class Cliente extends Usuario{
                 System.out.println("Hasta: " +entretenimiento.getReserva().getHasta());
                 //System.out.println("Cantidad de personas: " +entretenimiento.getCantidadPersonas());
                 System.out.println("Pago: " +entretenimiento.getReserva().getValorPagar());
+            }else if(servicio.getClass()!=null&&servicio.getClass()==Hospedaje.class){
+                Hospedaje hospedaje=(Hospedaje) servicio;
+                if(hospedaje.getHotel()!=null){
+                    System.out.println("Servicio: " +hospedaje.getReserva().getTipoReserva());
+                    System.out.println("Hotel: " +hospedaje.getHotel().getNombre());
+                    System.out.println("Fecha reserva: " +hospedaje.getReserva().getFechaReserva());
+                    System.out.println("Desde: " +hospedaje.getReserva().getDesde());
+                    System.out.println("Hasta: " +hospedaje.getReserva().getHasta());
+                    System.out.println("Habitacion: " +hospedaje.getHotel().getHabitacion().getNumerodeHabitacion());
+                    System.out.println("Pago: " +hospedaje.getReserva().getValorPagar());
+                }else if(hospedaje.getDepartamento()!=null){
+                    System.out.println("Servicio: " +hospedaje.getReserva().getTipoReserva());
+                    System.out.println("Departamento: " +hospedaje.getDepartamento().getNombreDepa());
+                    System.out.println("Fecha reserva: " +hospedaje.getReserva().getFechaReserva());
+                    System.out.println("Desde: " +hospedaje.getReserva().getDesde());
+                    System.out.println("Hasta: " +hospedaje.getReserva().getHasta());
+                    System.out.println("Número de habitaciones: " +hospedaje.getDepartamento().getNumeroHabitaciones());
+                    System.out.println("Pago: " +hospedaje.getReserva().getValorPagar());
+                }
             }
         }
     }
