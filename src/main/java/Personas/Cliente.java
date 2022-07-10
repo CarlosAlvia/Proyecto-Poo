@@ -612,11 +612,11 @@ public class Cliente extends Usuario{
                }
             }
         }
-        //Se verifica que haya información de hospedaje por trabajar
+        //Se verifica que haya información de hospedaje
         if (!(reservasHospedaje.isEmpty())){
             for (String[] datosHospedaje:reservasHospedaje){
                 for (Reserva reserva:reservasCliente){
-                    //Se verifica que la línea del archivo reservasHospedaje corresponda a la reserva 
+                    //Se buscan las reservas hospedaje que corresponden al cliente, en caso de haber
                     if(datosHospedaje[0].equals(reserva.getNumeroReserva())){
                         //Se ve que el hospedaje no sea un hotel("ED" significa: es departamento)
                         if(!datosHospedaje[3].equals("ED")){
@@ -624,12 +624,16 @@ public class Cliente extends Usuario{
                             ArrayList<String[]> datosHoteles;
                             datosHoteles=Funcion.generarArreglo("hoteles.txt");
                             for (String[] hotel:datosHoteles){
-                                //Se ve
+                                //Se busca el hotel de la reserva hospedaje
                                 if(datosHospedaje[2].equals(hotel[1])){
+                                    //Se leen los datos del archivo habitaciones
                                     ArrayList<String[]> datosHabitaciones;
                                     datosHabitaciones=Funcion.generarArreglo("habitaciones.txt");
+                                    //Se busca la habitación reservada por el código del hotel y el número de habitación
                                     for (String[] room:datosHabitaciones){
                                         if(hotel[1].equals(room[0])&&datosHospedaje[4].equals(room[4])){
+                                            //Se crean: la habitación, el hotel y el hospedaje y este se añade a la lista
+                                            //de servicios
                                             Habitacion habitacionReservada=new Habitacion(room[0],TipoHabitacion.valueOf(room[1]),Double.valueOf(room[2]),Integer.valueOf(room[3]),Integer.valueOf(room[4]),Estado.valueOf(room[5]));
                                             Hotel hotelReserva=new Hotel(hotel[0],hotel[1],hotel[2],Integer.valueOf(hotel[3]),hotel[4],Boolean.valueOf(hotel[5]),Boolean.valueOf(hotel[6]),Boolean.valueOf(hotel[7]));
                                             hotelReserva.setHabitacion(habitacionReservada);
@@ -641,10 +645,13 @@ public class Cliente extends Usuario{
                                 }
                             }
                         }else{
+                            //Se leen los datos de departamentos
                             ArrayList<String[]> datosDepartamentos;
                             datosDepartamentos=Funcion.generarArreglo("departamento.txt");
+                            //Se busca el departamento correspondiente a la reserva hospedaje por su nombre
                             for (String[] departamento:datosDepartamentos){
                                 if(datosHospedaje[2].equals(departamento[1])){
+                                    //Se crean: el departamento y el hospedaje y este se añade a la lista de servicios
                                     Departamento departamentoReservado=new Departamento(departamento[0],departamento[1],Double.valueOf(departamento[2]),Integer.valueOf(departamento[3]),Estado.valueOf(departamento[4]),Boolean.valueOf(departamento[5]),Boolean.valueOf(departamento[6]));
                                     Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),departamentoReservado);
                                     hospedajeReservado.setReserva(reserva);
@@ -657,14 +664,20 @@ public class Cliente extends Usuario{
             }
         
         }
+        //Se verifica que hayan reservas transporte
         if (!(reservasTransporte.isEmpty())){
             for (String[] datosTransporte:reservasTransporte){
                 for (Reserva reserva:reservasCliente){
+                    //Se buscan las reservas transporte que correspondan al cliente, en caso de haber
                     if(datosTransporte[0].equals(reserva.getNumeroReserva())){
+                        //Se leen los datos de vehículos desde el archivo 
                         ArrayList<String[]> datosVehiculos;
                         datosVehiculos=Funcion.generarArreglo("vehiculos.txt");
+                        //Se recorren los datos de cada vehículo
                         for (String[] ele:datosVehiculos){
+                            //se busca el vehículo que corresponde a la reserva del cliente
                             if(ele[0].equals(datosTransporte[2])){
+                                //Se crean: el vehículo, el transporte y este se añade a la lista de servicios
                                 Vehiculo vehiculoReservado=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
                                 Transporte transporte=new Transporte(datosTransporte[1],Double.valueOf(datosTransporte[2]),vehiculoReservado);
                                 transporte.setReserva(reserva);
@@ -675,15 +688,21 @@ public class Cliente extends Usuario{
                 }
             }
         }
+        //Se verfica que hayan reservas entretenimiento
         if (!(reservasEntretenimiento.isEmpty())){
             for (String[] datosEntretenimiento:reservasEntretenimiento){
                 for (Reserva reserva:reservasCliente){
+                    //Se buscan las reservas entretenimiento que correspondan al cliente, en caso de haber
                     if(datosEntretenimiento[0].equals(reserva.getNumeroReserva())){
+                        //Se leen los datos de los paquetes
                         ArrayList<String[]> datosPaquetes;
                         datosPaquetes=Funcion.generarArreglo("paquetes.txt");
                         for (String[] ele:datosPaquetes){
+                            //Se busca el paquete que corresponde a la reserva entretenimiento del cliente
                             if(ele[1].equals(datosEntretenimiento[2])){
+                                //Se crean: el paquete,el entretenimiento y este se añade a la lista servicios
                                 Paquete paqueteReservado=new Paquete(ele[0],ele[1],ele[2],Double.valueOf(ele[3]),ele[4],ele[5]);
+                                paqueteReservado.setNumeroPersonas(Integer.valueOf(datosEntretenimiento[3]));
                                 Entretenimiento entretenimiento=new Entretenimiento(paqueteReservado,datosEntretenimiento[1],Double.valueOf(datosEntretenimiento[3]));
                                 entretenimiento.setReserva(reserva);
                                 servicios.add(entretenimiento);
@@ -693,6 +712,8 @@ public class Cliente extends Usuario{
                 }
             }
         }
+        //Finalmente, se recorre la lista de servicios,se verifica a qué clase corresponde el servicio para realizar el downcasting
+        //y con ello se imprime en pantalla los atributos requeridos
         for (Servicio servicio:servicios){
             if(servicio.getClass()!=null&&servicio.getClass()==Transporte.class){
                 Transporte transporte=(Transporte)servicio;
@@ -710,7 +731,7 @@ public class Cliente extends Usuario{
                 System.out.println("Fecha reserva: " +entretenimiento.getReserva().getFechaReserva());
                 System.out.println("Desde: " +entretenimiento.getReserva().getDesde());
                 System.out.println("Hasta: " +entretenimiento.getReserva().getHasta());
-                //System.out.println("Cantidad de personas: " +entretenimiento.getCantidadPersonas());
+                System.out.println("Cantidad de personas: " +entretenimiento.getPaquete().getNumeroPersonas());
                 System.out.println("Pago: " +entretenimiento.getReserva().getValorPagar());
             }else if(servicio.getClass()!=null&&servicio.getClass()==Hospedaje.class){
                 Hospedaje hospedaje=(Hospedaje) servicio;
