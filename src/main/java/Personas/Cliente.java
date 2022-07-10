@@ -183,7 +183,7 @@ public class Cliente extends Usuario{
                     habitaciones.add(habi);
                     int numero = (int) (Math.random() *habitaciones.size()+ 1);
                     System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-                    System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
+                    System.out.println("El costo a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
                     habiElegida=habitaciones.get(numero-1);
                      }
                  }    
@@ -200,7 +200,7 @@ public class Cliente extends Usuario{
         // En caso de ser la respuesta afirmativa se pocederá a crear un objeto de tipo hotel, para asginar todas las características escogidas por el usuario
         // A su vez se creará un objeto de tipo reserva y se le aaasginara al objeto de hotel creador previamente
         if (reservo.equals("si")||reservo.equals("sí")){
-                Hospedaje pedaje=new Hospedaje(fechaEntrada, fechaSalida,hotElegido,habiElegida.getPrecio()*dias); 
+                Hospedaje pedaje=new Hospedaje(hotElegido.getCiudadH(),habiElegida.getPrecio()*dias,hotElegido); 
                 Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"HOSPEDAJE");
                 pedaje.setReserva(reservaHospedaje);
                 //Se escribe la linea que se desea añadir al archivo de reservas y se la agrega 
@@ -269,7 +269,8 @@ public class Cliente extends Usuario{
             depaElegido.setCostoDepa(depaElegido.getCostoDepa()*dias);
 //        
         if (reservoDepa.equals("si")||reservoDepa.equals("sí")){
-                Hospedaje dapaje=new Hospedaje(fechaEntrada, fechaSalida,depaElegido,depaElegido.getCostoDepa()); 
+                Hospedaje dapaje=new Hospedaje(depaElegido.getCiudadDepa(),depaElegido.getCostoDepa(),depaElegido);
+                
                 //Se crea un objeto de Reserva, para formar la linea que se procederá a agregar a el archivos 
                 Reserva reservaHospedajeDepa=new Reserva(fechaEntrada,fechaSalida,depaElegido.getCostoDepa(),this,"HOSPEDAJE");
                 dapaje.setReserva(reservaHospedajeDepa);
@@ -428,7 +429,7 @@ public class Cliente extends Usuario{
         // Se verifica la opción elegida 
         if (reservo.equals("si")||reservo.equals("sí")){
             // Se crean objetos de tipo Entretenimieiento 
-                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
+                Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar); 
                 Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimiento");
                //Se estable la reserva de elegido, y con el toString definido en la clase se agrega una linea al archivo de reservas 
                 elegido.setReserva(reservaEntretenimiento);
