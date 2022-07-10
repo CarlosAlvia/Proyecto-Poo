@@ -53,7 +53,7 @@ public class Cliente extends Usuario{
     public void setTarjetaDeCredito(String tarjetaDeCredito){
         this.tarjetaDeCredito=tarjetaDeCredito;
     }
-    public void reservarHospedaje(){
+ public void reservarHospedaje(){
      Reserva.mostrarCabecera();
      Scanner sc=new Scanner(System.in);
      // Ingreso de los datos de la fecha de entrada y de salida del cliente
@@ -141,23 +141,24 @@ public class Cliente extends Usuario{
             }
              
         }
-     // ahora se prosedera a realizar un proceso con las habitaciones
-     ArrayList<String[]> habitacionString;
+     // ahora se prosedera a realizar un proceso con las habitaciones primero se crea arraylist de arrys para almacenar los datos genetados por la función que le el archivo.
+     ArrayList<String[]> habitacionString=new ArrayList();
      habitacionString=Funcion.generarArreglo("habitaciones.txt");
-    
-     
      ArrayList<Habitacion> habitaciones=new ArrayList<Habitacion>();
+     
+     //se procede a mostar los tipos de habitaciones y el tipo
        System.out.println("Elija el tipo de habitación que prefiere");
        
        
        System.out.println("1. INDIVIDUAL - 1 persona - 99.00");
        System.out.println("2. DOBLE - 2 personas - 140.00");
        System.out.println("3. FAMILIAR - 4 persona - 350.00");
-       
+       // se crear un objeto que representará el tipo de la habitación escogida por el usuario
        Habitacion habiElegida=new Habitacion();
        System.out.println("Elija una opción: ");
        int op=sc.nextInt();
        sc.nextLine();
+       // En base a la previa selección el presente swicth tiene el objetivo de asignar una de todas las habitaciones al usuario alteroriamente, basandose en que sus caracterisiticas sean smiliares, y a su vez que esten disponibles
        switch(op){
                 case 1:
                 
@@ -211,20 +212,23 @@ public class Cliente extends Usuario{
                     System.out.println("Opcion invalida");
                     break;         
             }
-
+           // Se le pregunta al usuario si la habitacion mostrada por pantalla y con la cantidad de noches y el precio es la que desea.
        System.out.println("¿Desea reservar?: ");
         String reservo=sc.nextLine();
         hotElegido.setCiudadH(ciudad);
-        
+        // En caso de ser la respuesta afirmativa se pocederá a crear un objeto de tipo hotel, para asginar todas las características escogidas por el usuario
+        // A su vez se creará un objeto de tipo reserva y se le aaasginara al objeto de hotel creador previamente
         if (reservo.equals("si")||reservo.equals("sí")){
                 Hospedaje pedaje=new Hospedaje(fechaEntrada, fechaSalida,hotElegido,habiElegida.getPrecio()*dias); 
                 Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"HOSPEDAJE");
                 pedaje.setReserva(reservaHospedaje);
-                //ojo tipo sevicio
+                //Se escribe la linea que se desea añadir al archivo de reservas y se la agrega 
                 String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+super.getNombres()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getTipoHabitacion()+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
-                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+","+habiElegida.getNumerodeHabitacion()+","+habiElegida.getPrecio()*dias;
+                 //Se escribe la linea que se desea añadir al archivo de reservasHospedaje y se la agrega 
+                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumerodeHabitacion()+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReserva);
+                //Se llama al método definido en Hospedaje para mostar la reserva por pantalla
                 pedaje.mostrarReserva();
         }
         break;
@@ -299,7 +303,6 @@ public class Cliente extends Usuario{
             }
 //         }
     }
-    
     
     
     
