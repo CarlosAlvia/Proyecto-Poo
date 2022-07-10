@@ -28,6 +28,7 @@ public class Pago {
         this.MetodoPago = MetodoPago;
         this.numeroMetodoPago = numeroMetodoPago;
         this.fechaCaducidad = fechaCaducidad;
+        //Se usa el método para definir el número de pago aleatorio y único
         this.identificador=Funcion.generarNumerosAleatorios(30000,40000,"pagos.txt");
     }
     
