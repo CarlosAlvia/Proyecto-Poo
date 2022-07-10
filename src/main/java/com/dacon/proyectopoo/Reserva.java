@@ -4,9 +4,6 @@
  */
 package com.dacon.proyectopoo;
 import Personas.Cliente;
-import Personas.Usuario;
-import java.util.Random;
-import java.util.ArrayList;
 import Herramientas.Funcion;
 import java.time.LocalDate;
 /**
@@ -19,11 +16,8 @@ public class Reserva {
     private String desde;
     private String hasta;
     private double valorPagar;
-//    protected int contadorReserva;
     private String tipoReserva;
-    //protected Servicio servicio;
     private Cliente cliente;
-//    protected ArrayList<String> identificadores;
     
     
     public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
@@ -57,25 +51,6 @@ public class Reserva {
         this.tipoReserva = tipoReserva;
         
     }
-//    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
-//        this.desde=desde;
-//        this.hasta=hasta;
-//        this.valorPagar=valorPagar;
-//        this.cliente=cliente;
-//        this.tipoReserva=tipoReserva;
-//        //crear arreglo de numeros reserva
-//         Random random = new Random();
-    
-//       while()
-//        for(int i = 0; i <=5; i++) {
-//            int value = random.nextInt((10 - 1) + 1) + 1;
-//            this.numeroReserva+=value;
-//          
-//            indentificadores.add(this.numeroReserva)
-             
-//        this.fechaReserva="a";
-//    }    
-//    }
     public static void mostrarCabecera(){
         String simbolo="/***************RESERVACIÓN***************/";
         String simbolo1="/*                                       */";
@@ -88,7 +63,6 @@ public class Reserva {
     public String getTipoReserva() {
         return tipoReserva;
     }
-
     
     public void setTipoReserva(String tipoReserva) {
         this.tipoReserva = tipoReserva;
@@ -120,35 +94,27 @@ public class Reserva {
         return this.cliente;
     }
     
-    public void setnumeroReserva(String numeroReserva){
+    public void setNumeroReserva(String numeroReserva){
         this.numeroReserva=numeroReserva;
     }
     
-    public void setfechaReserva(String fechaReserva){
+    public void setFechaReserva(String fechaReserva){
         this.fechaReserva=fechaReserva;
     }
-    public void setdesde(String desde){
+    public void setDesde(String desde){
         this.desde=desde;
     }
-    public void sethasta(String hasta){
+    public void setHasta(String hasta){
         this.hasta=hasta;
     }
-    public void setvalorPagar(double valorPagar){
+    public void setValorPagar(double valorPagar){
         this.valorPagar=valorPagar;
     }
 //    public void setservicio(Servicio servicio){
 //        this.servicio=servicio;
 //    }
-    public void setcliente(Cliente cliente){
+    public void setCliente(Cliente cliente){
         this.cliente=cliente;
-    }
-    public static void encabezado(){
-        String abajo="++++++++++++++++++++++++++++++++++++++++";
-        String arriba="+++++++++++++++RESERVACION+++++++++++++++++";
-        String medio="+                                     +";
-        System.out.println(arriba);
-        System.out.println(medio);
-        System.out.println(abajo);
     }
     @Override
     public String toString(){
