@@ -18,46 +18,32 @@ public class Hospedaje extends Servicio{
     private Departamento departamento;
     private double precioH;
 
-    public Hospedaje(String fechaEntrada, String fechaSalida, Hotel hotel,double precioH) {
-        this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida;
-        this.hotel = hotel;
-        this.precioH = precioH;
-    }
-
-    public Hospedaje(String fechaEntrada, String fechaSalida, Departamento departamento, double precioH) {
-        this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida;
-        this.departamento = departamento;
-         this.precioH = precioH;
-    }
     public Hospedaje(String ciudad,double precio, Hotel hotel){
         super(ciudad,precio);
         this.hotel=hotel;
 
     }
     public Hospedaje(String ciudad,double precio,Departamento departamento){
-        
+        super(ciudad,precio);
+        this.departamento=departamento;
     }
-    public Hospedaje(){
-        
-    }
+//   
       
     @Override
      public void mostrarReserva(){
         super.mostrarReserva();
-        System.out.println("FECHAS: "+this.fechaEntrada+"-"+this.fechaSalida);
+        System.out.println("FECHAS: "+this.reserva.getDesde()+"-"+this.reserva.getHasta());
         System.out.println("CIUDAD: "+this.hotel.getCiudadH());
         System.out.println("HOTEL: "+this.hotel.getNombre());
-        System.out.println("VALOR A PAGAR: "+this.getPrecioH());
+        System.out.println("VALOR A PAGAR: "+this.getValor());
      }
 
      public void mostrarReservaDe(){
         super.mostrarReserva();
-        System.out.println("FECHAS: "+this.fechaEntrada+"-"+this.fechaSalida);
+        System.out.println("FECHAS: "+this.reserva.getDesde()+"-"+this.reserva.getHasta());
         System.out.println("CIUDAD: "+this.departamento.getCiudadDepa());
         System.out.println("DEPARTAMENTO: "+this.departamento.getNombreDepa());
-        System.out.println("VALOR A PAGAR: "+this.getPrecioH());
+        System.out.println("VALOR A PAGAR: "+this.getValor());
      }
     
     
