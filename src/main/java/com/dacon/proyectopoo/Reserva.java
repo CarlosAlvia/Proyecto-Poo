@@ -18,7 +18,7 @@ public class Reserva {
     private double valorPagar;
     private String tipoReserva;
     private Cliente cliente;
-    
+    private static int cantidadReservas;
     
     public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
         this.desde=desde;
@@ -31,6 +31,7 @@ public class Reserva {
         String[] arrFechaActual= LocalDate.now().toString().split("-");
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
         this.fechaReserva=fechaActual;
+        cantidadReservas+=1;
     }
 
     public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar ) {
@@ -41,6 +42,7 @@ public class Reserva {
         this.valorPagar = valorPagar;
         this.tipoReserva = tipoReserva;
         this.cliente = cliente;
+        cantidadReservas+=1;
     }
     public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, String desde, String hasta, double valorPagar ) {
         this.numeroReserva = numeroReserva;
@@ -49,6 +51,7 @@ public class Reserva {
         this.hasta = hasta;
         this.valorPagar = valorPagar;
         this.tipoReserva = tipoReserva;
+        cantidadReservas+=1;
         
     }
     public static void mostrarCabecera(){
@@ -116,6 +119,15 @@ public class Reserva {
     public void setCliente(Cliente cliente){
         this.cliente=cliente;
     }
+
+    public static int getCantidadReservas() {
+        return cantidadReservas;
+    }
+
+    public static void setCantidadReservas(int cantidadReservas) {
+        Reserva.cantidadReservas = cantidadReservas;
+    }
+    
     @Override
     public String toString(){
         //numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
