@@ -201,10 +201,10 @@ public class Cliente extends Usuario{
         // A su vez se creará un objeto de tipo reserva y se le aaasginara al objeto de hotel creador previamente
         if (reservo.equals("si")||reservo.equals("sí")){
                 Hospedaje pedaje=new Hospedaje(hotElegido.getCiudadH(),habiElegida.getPrecio()*dias,hotElegido); 
-                Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"HOSPEDAJE");
+                Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"Hospedaje");
                 pedaje.setReserva(reservaHospedaje);
                 //Se escribe la linea que se desea añadir al archivo de reservas y se la agrega 
-                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getPrecio()*dias;
+                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"Hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
                  //Se escribe la linea que se desea añadir al archivo de reservasHospedaje y se la agrega 
                 String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumeroDeHabitacion()+","+habiElegida.getPrecio()*dias;
@@ -275,7 +275,7 @@ public class Cliente extends Usuario{
                 Reserva reservaHospedajeDepa=new Reserva(fechaEntrada,fechaSalida,depaElegido.getCostoDepa(),this,"HOSPEDAJE");
                 dapaje.setReserva(reservaHospedajeDepa);
                 //ojo tipo sevicio
-                String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
+                String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"Hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaDepa);
                 //Se crea elemento de tipo Hospedaje y se crea su respectiva linea que será agregada al archivo
                 String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+depaElegido.getCiudadDepa()+","+depaElegido.getNombreDepa()+","+"ED"+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
@@ -356,7 +356,7 @@ public class Cliente extends Usuario{
             if (deseaReserva.equals("si")||deseaReserva.equals("sí")){
                 //Se crea el objeto transporte y el objeto reserva
                 Transporte transporte=new Transporte(ciudad,valorPagar,opciones.get(op-1));
-                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,this,"transporte");
+                Reserva reservaTransporte=new Reserva(fechaInicio,fechaFin,valorPagar,this,"Transporte");
                 //Se le asigna la reserva al transporte con el método set
                 transporte.setReserva(reservaTransporte);
                 //Se escribe el archivo reservas y rservasTransporte, el toString() de reservas y de Transporte devuelven la línea
