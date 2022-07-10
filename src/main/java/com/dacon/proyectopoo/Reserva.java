@@ -48,7 +48,15 @@ public class Reserva {
         this.tipoReserva = tipoReserva;
         this.cliente = cliente;
     }
-    
+    public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, String desde, String hasta, double valorPagar ) {
+        this.numeroReserva = numeroReserva;
+        this.fechaReserva = fechaReserva;
+        this.desde = desde;
+        this.hasta = hasta;
+        this.valorPagar = valorPagar;
+        this.tipoReserva = tipoReserva;
+        
+    }
 //    public Reserva(String ciudad,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
 //        this.desde=desde;
 //        this.hasta=hasta;
