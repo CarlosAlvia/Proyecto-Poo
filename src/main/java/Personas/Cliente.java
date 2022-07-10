@@ -592,6 +592,7 @@ public class Cliente extends Usuario{
     }
     @Override
     public void consultarReservas(){
+    //Se imprime la cabecera
     String simbolo="/***********SERVICIOS RESERVADOS**********/";
     String simbolo1="/*                                       */";
     String simbolo2="/*****************************************/";
@@ -599,14 +600,17 @@ public class Cliente extends Usuario{
     System.out.println(simbolo1);
     System.out.println(simbolo2);
     System.out.println("\n"); 
+    //Creación de la lista de servicios y lectura de los archivos de reservas
     ArrayList<Servicio> servicios=new ArrayList<>();
     ArrayList<String[]> reservasHospedaje=Funcion.generarArreglo("reservasHospedaje.txt");
     ArrayList<String[]> reservasTransporte=Funcion.generarArreglo("reservasTransporte.txt");
     ArrayList<String[]> reservasEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
     ArrayList<String[]> datosReservas=Funcion.generarArreglo("reservas.txt");
+    //Se crea la lista con todas las reservas que le corresponden al cliente que ejecuta el método
     ArrayList<Reserva> reservasCliente=new ArrayList<>();
         if (!(datosReservas.isEmpty())){
             for (String[] datos:datosReservas){
+                //verificación de la correspondencia y llenado de la lista
                String[] nombreApellido=datos[3].split(" ");
                if(nombreApellido[0].equals(this.nombres)&&nombreApellido[1].equals(this.apellidos)){
                    Reserva reservaCliente=new Reserva(datos[0],datos[1],datos[2],this,datos[4],datos[5],Double.valueOf(datos[6]));
@@ -614,14 +618,19 @@ public class Cliente extends Usuario{
                }
             }
         }
+        //Se verifica que haya información de hospedaje por trabajar
         if (!(reservasHospedaje.isEmpty())){
             for (String[] datosHospedaje:reservasHospedaje){
                 for (Reserva reserva:reservasCliente){
+                    //Se verifica que la línea del archivo reservasHospedaje corresponda a la reserva 
                     if(datosHospedaje[0].equals(reserva.getNumeroReserva())){
+                        //Se ve que el hospedaje no sea un hotel("ED" significa: es departamento)
                         if(!datosHospedaje[3].equals("ED")){
+                            //Se crea una lista con la información de los hoteles
                             ArrayList<String[]> datosHoteles;
                             datosHoteles=Funcion.generarArreglo("hoteles.txt");
                             for (String[] hotel:datosHoteles){
+                                //Se ve
                                 if(datosHospedaje[2].equals(hotel[1])){
                                     ArrayList<String[]> datosHabitaciones;
                                     datosHabitaciones=Funcion.generarArreglo("habitaciones.txt");
