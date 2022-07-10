@@ -28,6 +28,14 @@ public class Hospedaje extends Servicio{
         this.departamento = departamento;
          this.precioH = precioH;
     }
+    public Hospedaje(String ciudad,double precio, Hotel hotel){
+        super(ciudad,precio);
+        this.hotel=hotel;
+
+    }
+    public Hospedaje(String ciudad,double precio,Departamento departamento){
+        
+    }
     public Hospedaje(){
         
     }
@@ -67,8 +75,14 @@ public class Hospedaje extends Servicio{
     public void setPrecioH(Double precioH) {
         this.precioH = precioH;
     }
-    
-    
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
     
     public String GetfechaEntrada(){
         return this.fechaEntrada;
