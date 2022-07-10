@@ -83,7 +83,6 @@ public class Paquete {
         this.numeroPersonas = numeroPersonas;
     }
     
-    
     public Paquete(String informacion, double costoP, String diasSalida, String fechaDisponible, int numeroPersonas) {
         this.informacion = informacion;
         this.costoP = costoP;
@@ -91,30 +90,15 @@ public class Paquete {
         this.fechaDisponible = fechaDisponible;
         this.numeroPersonas = numeroPersonas;
     }
-    
-
     public Paquete(String ciudadPa,String nombrePaquete, String informacion, double costoP, String diasSalida, String fechaDisponible) {
         this.ciudadPa=ciudadPa;
         this.nombrePaquete = nombrePaquete;
         this.informacion = informacion;
         this.costoP = costoP;
         this.diasSalida = diasSalida;
-        this.fechaDisponible = fechaDisponible;
-        
+        this.fechaDisponible = fechaDisponible; 
     }
     
-    
-    public Paquete() {
-        
+    public Paquete() {    
     }
-
-   
-    
-    
-    
-            
-            
-            
-   
-    
 }
