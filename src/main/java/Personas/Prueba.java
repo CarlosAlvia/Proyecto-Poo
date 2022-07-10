@@ -86,6 +86,7 @@ public class Prueba {
 //         }
         LocalDate fechaActual= LocalDate.now();
         System.out.println(fechaActual);
+        Funcion.calcularDias();
    }
 //    public void reservarHospedaje(){
 //     Reserva.mostrarCabecera();
