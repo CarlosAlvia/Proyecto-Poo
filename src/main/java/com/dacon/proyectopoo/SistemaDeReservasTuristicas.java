@@ -46,7 +46,7 @@ public class SistemaDeReservasTuristicas {
             System.out.println("CONTRASEÑA: ");
             String contrasenaIngresada=sc.nextLine();
             for (Usuario u: this.listaUsuario){
-                if (u.GetUser().equals(usuarioIngresado)&&u.GetContraseña().equals(contrasenaIngresada)){
+                if (u.getUser().equals(usuarioIngresado)&&u.getContraseña().equals(contrasenaIngresada)){
                     usuarioCorrecto=u;
                 }
             }
@@ -64,7 +64,7 @@ public class SistemaDeReservasTuristicas {
             String tarjetaDeCredito;
             ArrayList<String[]> datosClientes=Funcion.generarArreglo("clientes.txt");
             for (String[] ele:datosClientes){
-                if (ele[0].equals(this.usuarioConectado.GetCedula())){
+                if (ele[0].equals(this.usuarioConectado.getCedula())){
                     if(ele[1].equals("sd")){
                         do{
                             System.out.println("Ingrese su edad");
