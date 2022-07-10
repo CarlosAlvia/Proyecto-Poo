@@ -112,6 +112,7 @@ public class Administrador extends Usuario {
                 System.out.println("Transporte: "+contadorTransporte);
                 System.out.println("Entretenimiento: "+contadorEntretenimiento);
             }
+            System.out.println("El total de reservas es: "+Reserva.getCantidadReservas());
         
         }
 }
