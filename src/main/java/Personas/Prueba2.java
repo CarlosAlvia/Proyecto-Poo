@@ -4,11 +4,15 @@
  */
 package Personas;
 
+import ElementoServicios.Hotel;
+import Servicios.Hospedaje;
+import ElementoServicios.Habitacion;
+import ElementoServicios.Departamento;
 import Enum.*;
 import Enum.Transmision;
 import Herramientas.Funcion;
-import com.dacon.proyectopoo.Reserva;
-import com.dacon.proyectopoo.Transporte;
+import PagoReserva.Reserva;
+import Servicios.Transporte;
 import com.dacon.proyectopoo.*;
 import java.util.ArrayList;
 
