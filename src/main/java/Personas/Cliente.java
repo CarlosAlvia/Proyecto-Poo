@@ -161,51 +161,42 @@ public class Cliente extends Usuario{
        // En base a la previa selección el presente swicth tiene el objetivo de asignar una de todas las habitaciones al usuario alteroriamente, basandose en que sus caracterisiticas sean smiliares, y a su vez que esten disponibles
        switch(op){
                 case 1:
+                   
                 
          for(int i=0;i<habitacionString.size();i++){
-            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("INDIVIUDAL")){
-                
+            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("INDIVIDUAL")){
                 Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-         
                 habitaciones.add(habi);
                 int numero = (int) (Math.random() *habitaciones.size()+ 1);
-            
                 System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
                 System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
                 habiElegida=habitaciones.get(numero-1);
             }
-         }
-                    
+         }      
                     break;
                 case 2:
-                     for(int i=0;i<habitacionString.size();i++){
-            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("DOBLE")){
-       
-                Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-     
-            habitaciones.add(habi);
-            
-            int numero = (int) (Math.random() *habitaciones.size()+ 1);
-           
-            System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-            habiElegida=habitaciones.get(numero-1);
-            }
-                     } 
+            for(int i=0;i<habitacionString.size();i++){
+                if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("DOBLE")){
+                    Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
+                    habitaciones.add(habi);
+                    int numero = (int) (Math.random() *habitaciones.size()+ 1);      
+                    System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
+                    System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
+                    habiElegida=habitaciones.get(numero-1);
+                }
+              } 
                     break;
                 case 3:
-                  for(int i=0;i<habitacionString.size();i++){
-            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("FAMILIAR")){
-                Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-        
-            habitaciones.add(habi);
-            int numero = (int) (Math.random() *habitaciones.size()+ 1);
-            
-            System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-       habiElegida=habitaciones.get(numero-1);
-            }
-                  }    
+            for(int i=0;i<habitacionString.size();i++){
+                if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("FAMILIAR")){
+                    Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
+                    habitaciones.add(habi);
+                    int numero = (int) (Math.random() *habitaciones.size()+ 1);
+                    System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
+                    System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
+                    habiElegida=habitaciones.get(numero-1);
+                     }
+                 }    
                     break;
                 default:
                     //la opcion ingreada no esta dentro de las opciones del menu
@@ -223,7 +214,7 @@ public class Cliente extends Usuario{
                 Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"HOSPEDAJE");
                 pedaje.setReserva(reservaHospedaje);
                 //Se escribe la linea que se desea añadir al archivo de reservas y se la agrega 
-                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getTipoHabitacion()+","+habiElegida.getPrecio()*dias;
+                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
                  //Se escribe la linea que se desea añadir al archivo de reservasHospedaje y se la agrega 
                 String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumerodeHabitacion()+","+habiElegida.getPrecio()*dias;
@@ -279,6 +270,7 @@ public class Cliente extends Usuario{
             System.out.println("¿Desea reservar?");
             String reservoDepa=sc.nextLine();
             depaElegido.setCiudadDepa(ciudadDepa);
+            depaElegido.setCostoDepa(depaElegido.getCostoDepa()*dias);
 //        
         if (reservoDepa.equals("si")||reservoDepa.equals("sí")){
                 Hospedaje dapaje=new Hospedaje(fechaEntrada, fechaSalida,depaElegido,depaElegido.getCostoDepa()); 
