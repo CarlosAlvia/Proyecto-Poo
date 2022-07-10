@@ -14,7 +14,7 @@ public class Habitacion{
     private TipoHabitacion tipoHabitacion;
     private double precio;
     private int capacidad;
-    private int numerodeHabitacion;
+    private int numeroDeHabitacion;
     private Estado estado;
 
     
@@ -27,7 +27,7 @@ public class Habitacion{
         this.tipoHabitacion = tipoHabitacion;
         this.precio = precio;
         this.capacidad = capacidad;
-        this.numerodeHabitacion = numerodeHabitacion;
+        this.numeroDeHabitacion = numerodeHabitacion;
         this.estado = estado;
     }
 
@@ -50,7 +50,7 @@ public class Habitacion{
         return this.capacidad;
     }
     public int getNumeroDeHabitacion(){
-        return this.numerodeHabitacion;
+        return this.numeroDeHabitacion;
     }
     public Estado getEstado(){
         return this.estado;
@@ -66,7 +66,7 @@ public class Habitacion{
         this.capacidad=capacidad;
     }
     public void setNumeroDeHabitacion(int numerodeHabitacion){
-        this.numerodeHabitacion=numerodeHabitacion;
+        this.numeroDeHabitacion=numerodeHabitacion;
     }
     public void setEstado(Estado estado){
         this.estado=estado;
