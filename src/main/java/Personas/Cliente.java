@@ -162,19 +162,19 @@ public class Cliente extends Usuario{
        switch(op){
                 case 1:
                 
-                    for(int i=0;i<habitacionString.size();i++){
+         for(int i=0;i<habitacionString.size();i++){
             if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("INDIVIUDAL")){
                 
                 Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
          
-            habitaciones.add(habi);
-            int numero = (int) (Math.random() *habitaciones.size()+ 1);
+                habitaciones.add(habi);
+                int numero = (int) (Math.random() *habitaciones.size()+ 1);
             
-            System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-       System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-            habiElegida=habitaciones.get(numero-1);
+                System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
+                System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
+                habiElegida=habitaciones.get(numero-1);
             }
-        }
+         }
                     
                     break;
                 case 2:
