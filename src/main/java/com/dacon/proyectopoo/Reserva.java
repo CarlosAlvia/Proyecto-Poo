@@ -32,7 +32,7 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
-        this.numeroReserva=Funcion.generarNumerosAleatorios(20000,30000,"resevas.txt");
+        this.numeroReserva=Funcion.generarNumerosAleatorios(20000,30000,"reservas.txt");
         //Fin Generado del numeroReserva y asignación
         String[] arrFechaActual= LocalDate.now().toString().split("-");
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
