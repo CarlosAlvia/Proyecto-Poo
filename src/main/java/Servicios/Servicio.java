@@ -19,15 +19,6 @@ public class Servicio {
     //el identificador
     private static int contador;
     
-    public Servicio(String ciudad, double valor, double puntuacion, int identificador) {
-        this.ciudad = ciudad;
-        this.valor = valor;
-        this.puntuacion = puntuacion;
-        this.identificador = identificador;
-    }
-    public Servicio(){
-        
-    }
     public Servicio(String ciudad, double valor){
         Random rd=new Random();
         //Se genera la puntuación al azar sumándo un entero aleatorio entre 1 y 4 a
