@@ -24,6 +24,11 @@ public class Servicio {
     public Servicio(){
         
     }
+    public Servicio(String ciudad, double valor){
+        //Falta generar aleatoriamente la ciudad y el valor
+        this.ciudad=ciudad;
+        this.valor=valor;
+    }
     
     public void mostrarReserva(){
         String simbolo="/**************RESERVA GENERADA*************/";
