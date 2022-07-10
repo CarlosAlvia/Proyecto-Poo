@@ -1,1 +1,2 @@
 numeroReserva,ciudad,códigoHotel,tipoHabitación,numeroHabitacion,valorPagar
+29462,cuenca,3645,FAMILIAR,209,700.0
