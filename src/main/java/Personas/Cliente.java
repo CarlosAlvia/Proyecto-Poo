@@ -159,12 +159,14 @@ public class Cliente extends Usuario{
        System.out.println("Elija una opción: ");
        int op=sc.nextInt();
        sc.nextLine();
-       // En base a la previa selección el presente swicth tiene el objetivo de asignar una de todas las habitaciones al usuario alteroriamente, basandose en que sus caracterisiticas sean smiliares, y a su vez que esten disponibles
+       // En base a la previa selección el presente swicth tiene el objetivo de asignar una de todas las habitaciones al usuario alteroriamente
+       //basandose en que sus caracterisiticas sean smiliares, y a su vez que esten disponibles
        switch(op){
                 case 1:
                    
                 
          for(int i=0;i<habitacionString.size();i++){
+             //para obtner la habitación necesita pasar por 3 requisitos, que pertenezca al hotel, que este disponible y que sea del tipo que el cliente solicito
             if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("INDIVIDUAL")){
                 Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
                 habitaciones.add(habi);
@@ -218,36 +220,40 @@ public class Cliente extends Usuario{
                 String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
                  //Se escribe la linea que se desea añadir al archivo de reservasHospedaje y se la agrega 
-                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumerodeHabitacion()+","+habiElegida.getPrecio()*dias;
+                String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumeroDeHabitacion()+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReserva);
                 //Se llama al método definido en Hospedaje para mostar la reserva por pantalla
                 pedaje.mostrarReserva();
         }
         break;
                 case "2":
+               //Al seleccionar el numero 2 aparacerán el menú de reserca departamento
               System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
               String ciudadDepa=sc.nextLine(); 
               ciudadDepa=ciudadDepa.toLowerCase();
+               // Creacion de un ArrayList que contiene arreglos de String para almacenar los datos que se generan al momento de leer el código
                  ArrayList<String[]> depaString=new ArrayList();
                 depaString=Funcion.generarArreglo("departamento.txt");
                  int indiceDepa=1;
+                // Creación de una lista de departamentos
                 ArrayList<Departamento> departamentos=new ArrayList<Departamento>();
-     
+        // El for recorrerá la lista e irá presentado el nombre de los departamentos 
         for(int i=0;i<depaString.size();i++){
             if(depaString.get(i)[0].equals(ciudadDepa)){
                 System.out.println(indiceDepa+". "+ depaString.get(i)[1]);
-               // (String ciudadDepa, String nombreDepa, double costoDepa, Estado estadoDepa, int numeroHabitaciones, boolean wifi, boolean piscina
+               //creación de objeto de tipo Departamento, para ser agregado a la lista departamentos
                 Departamento departamentito=new Departamento(depaString.get(i)[0],depaString.get(i)[1],Double.valueOf(depaString.get(i)[2]),Integer.valueOf(depaString.get(i)[3]), Estado.valueOf(depaString.get(i)[4]), depaString.get(i)[5].equals("true"),depaString.get(i)[6].equals("true"));
                 indiceDepa++;
+                
                departamentos.add(departamentito);
             }
         }
-//        System.out.println(departamentos);
+//      // creación de un objeto de tipo Departamento, el cual será asignado con los atributos de la selección del usuario 
         Departamento depaElegido=new Departamento();
         System.out.println("Elija una opción: ");
         int opcionDepa=sc.nextInt();
         sc.nextLine();
-        
+        // Se presentan los atributos del departamento escogido
         for (Departamento depa:departamentos){
             if(depa==departamentos.get(opcionDepa-1)){
                 depaElegido=depa;
@@ -269,6 +275,7 @@ public class Cliente extends Usuario{
                     }  
             }
             }
+        // Despues de presentar los, se le pide al usuario que ingrese si lo quiere reservar 
             System.out.println("¿Desea reservar?");
             String reservoDepa=sc.nextLine();
             depaElegido.setCiudadDepa(ciudadDepa);
@@ -276,26 +283,24 @@ public class Cliente extends Usuario{
 //        
         if (reservoDepa.equals("si")||reservoDepa.equals("sí")){
                 Hospedaje dapaje=new Hospedaje(fechaEntrada, fechaSalida,depaElegido,depaElegido.getCostoDepa()); 
+                //Se crea un objeto de Reserva, para formar la linea que se procederá a agregar a el archivos 
                 Reserva reservaHospedajeDepa=new Reserva(fechaEntrada,fechaSalida,depaElegido.getCostoDepa(),this,"HOSPEDAJE");
                 dapaje.setReserva(reservaHospedajeDepa);
                 //ojo tipo sevicio
                 String lineaDepa=reservaHospedajeDepa.getNumeroReserva()+","+reservaHospedajeDepa.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaDepa);
+                //Se crea elemento de tipo Hospedaje y se crea su respectiva linea que será agregada al archivo
                 String lineaReservaDepa=reservaHospedajeDepa.getNumeroReserva()+","+depaElegido.getCiudadDepa()+","+depaElegido.getNombreDepa()+","+"ED"+","+depaElegido.getNumeroHabitaciones()+","+depaElegido.getCostoDepa();
                 ManejoArchivos.EscribirArchivo("reservasHospedaje.txt", lineaReservaDepa);
                 dapaje.mostrarReservaDe();
             }
-        
-                  
+                
         break;
                 default:
                     //la opcion ingreada no esta dentro de las opciones del menu
                     System.out.println("Opcion invalida");
-             
-                    break;
-                        
+                    break;       
             }
-//         }
     }
     
     
@@ -377,18 +382,19 @@ public class Cliente extends Usuario{
         }
     }
     public void reservarEntretenimiento(){
+        //Se hace llamada al método estatico mostrarCabecera
          Reserva.mostrarCabecera();
          Scanner sc=new Scanner(System.in);
+         // Se crea una lista de arrays a la cual se le asignará lel elemento que retorna la funcion generar arreglo
         ArrayList<String[]> paqueteString=new ArrayList();
         paqueteString=Funcion.generarArreglo("paquetes.txt");
-//        System.out.println(paqueteString);
-//    System.out.println(paqueteString.get(0)[3]);
         System.out.println("Ingrese la ciudad de reserva: ");
         String ciudad=sc.nextLine();
         ciudad=ciudad.toLowerCase();
         int a=1;
         ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
-        
+        //El for recorrerá el arrayList creado y mostrará el nombre de los paquetes que coincidan con la ciudad seleccionada
+        //Posteriormente se crea los elementos de paquetes y se los agrega a la lista creada previamente de paquetes
         for(int i=0;i<paqueteString.size();i++){
             if(paqueteString.get(i)[0].equals(ciudad)){
                 System.out.println(a+". "+ paqueteString.get(i)[1]);
@@ -399,10 +405,12 @@ public class Cliente extends Usuario{
         }
         String reservo="";
         if(!(reservo.equals("Si"))){
+        // De las opciones mostradas por pantalla el cliente debe seleccionar una para conocer su descripción 
         System.out.println("Elija una opción para conocer más: ");
         int seleccion =sc.nextInt();
         Paquete packelegido=new Paquete();
         int cantPersonas=0;
+        //En esta parte se muestran los datos que rerpresetan las características del paquete seleccionado
         for (Paquete pac:paquetes){
             if(pac==paquetes.get(seleccion-1)){
                 System.out.println(pac.getInformacion()); 
@@ -412,33 +420,36 @@ public class Cliente extends Usuario{
                 System.out.println("Numero de personas: ");
                 cantPersonas=sc.nextInt();
                 sc.nextLine();
+              //Se define al paquete seleccionado
                 packelegido= pac;
                 
         
             }
              
         }
- 
+        //Con el set se establecen la cantidad de personas y a ciudad al objeto seleccionado
         packelegido.setNumeroPersonas(cantPersonas);
         packelegido.setCiudadPa(ciudad);
-//        System.out.println(packelegido.getCostoP());
-//        System.out.println(packelegido.getNumeroPersonas());
+        //Se separa por split los dias que tiene un paquete para posteriormente agregarlos a un constructor
         String diaInicio=packelegido.getFechaDisponible().split("-")[0];
         String diaFin=packelegido.getFechaDisponible().split("-")[1];
         System.out.println("¿Desea reservar?: ");
         reservo=sc.nextLine();
+        //El costo total del paquete escogdo es igual al numero de personas por el costo del paquete
         double valorPagar=packelegido.getNumeroPersonas()*packelegido.getCostoP();
         packelegido.setCostoP(valorPagar);
+        // Se verifica la opción elegida 
         if (reservo.equals("si")||reservo.equals("sí")){
-            
+            // Se crean objetos de tipo Entretenimieiento 
                 Entretenimiento elegido=new Entretenimiento(packelegido, ciudad, valorPagar, 2.5, 46564); 
                 Reserva reservaEntretenimiento=new Reserva(diaInicio,diaFin,valorPagar,this,"Entretenimiento");
-                //ojo tipo sevicio
+               //Se estable la reserva de elegido, y con el toString definido en la clase se agrega una linea al archivo de reservas 
                 elegido.setReserva(reservaEntretenimiento);
                 ManejoArchivos.EscribirArchivo("reservas.txt", reservaEntretenimiento.toString());
-                
+                //Se crea un objeto de tipo Entretenimiento y mediante getters se usa  para llenar el archivo reservasEntretenimiento con el metodo Escribir Archivos
                 String linea=reservaEntretenimiento.getNumeroReserva()+","+packelegido.getCiudadPa()+","+packelegido.getNombrePaquete()+","+packelegido.getNumeroPersonas()+","+packelegido.getCostoP();
                 ManejoArchivos.EscribirArchivo("reservasEntretenimiento.txt", linea);
+                //Se muestra la reserva generada por pantalla
                 elegido.mostrarReserva();
                    
          }
@@ -771,7 +782,7 @@ public class Cliente extends Usuario{
                     System.out.println("Fecha reserva: " +hospedaje.getReserva().getFechaReserva());
                     System.out.println("Desde: " +hospedaje.getReserva().getDesde());
                     System.out.println("Hasta: " +hospedaje.getReserva().getHasta());
-                    System.out.println("Habitacion: " +hospedaje.getHotel().getHabitacion().getNumerodeHabitacion());
+                    System.out.println("Habitacion: " +hospedaje.getHotel().getHabitacion().getNumeroDeHabitacion());
                     System.out.println("Pago: " +hospedaje.getReserva().getValorPagar());
                     System.out.println("\n");
                 }else if(hospedaje.getDepartamento()!=null){
