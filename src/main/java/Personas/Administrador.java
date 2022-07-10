@@ -36,29 +36,27 @@ public class Administrador extends Usuario {
         ArrayList<String[]> reservasHospedaje=Funcion.generarArreglo("reservasHospedaje.txt");
         ArrayList<String[]> reservasTransporte=Funcion.generarArreglo("reservasTransporte.txt");
          ArrayList<String[]> reservasEntretenimiento=Funcion.generarArreglo("reservasEntretenimiento.txt");
-
+        //creación de las reservas   
         ArrayList<Reserva> reservas=new ArrayList<Reserva>();
         for(int i=0;i<reservasString.size();i++){
         Reserva reservaElemento=new Reserva(reservasString.get(i)[0],reservasString.get(i)[1],reservasString.get(i)[2], reservasString.get(i)[4],reservasString.get(i)[5],Double.parseDouble(reservasString.get(i)[6]));
          reservas.add(reservaElemento); 
         }
+        // creciación de un lista de arrays que sus elementos contienen a la ciudad y al tipo
         ArrayList<String[]> ciudadYtipo=new ArrayList<String[]>();
-        
+        // Llenar la lista
         for(Reserva elemento:reservas){
             String tipo=elemento.getTipoReserva();
             String numerRese=elemento.getNumeroReserva();
             switch(tipo.toLowerCase()){
                 case "transporte":
-                    
                    for(int i=0; i<reservasTransporte.size();i++){
                        if(numerRese.equals(reservasTransporte.get(i)[0])){
                            String linea= reservasTransporte.get(i)[1]+","+"transporte";
                            String[] lineas=linea.split(",");
                            ciudadYtipo.add(lineas);
- 
-                       }
+                        }
                    }
-                   
                     break;
                 case "hospedaje":
 
@@ -76,14 +74,15 @@ public class Administrador extends Usuario {
                            String linea= reservasEntretenimiento.get(i)[1]+","+"entretenimiento";
                            String[] lineas=linea.split(",");
                            ciudadYtipo.add(lineas);
- 
                        }
                    }
                     break;
             }
-           
+        }
+            
+           // crear una lista de ciudades
             ArrayList<String> ciudades=new ArrayList<String>();
-
+//[cuenca, entretenimienot][quito,transporte]
             for(int i=0; i<ciudadYtipo.size();i++){
                 if(!(ciudades.contains(ciudadYtipo.get(i)[0]))){
                 String nombreCiudad=ciudadYtipo.get(i)[0].toLowerCase();
@@ -115,8 +114,6 @@ public class Administrador extends Usuario {
             }
         
         }
-        
-    }
 }
 
 
