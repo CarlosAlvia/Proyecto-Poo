@@ -375,7 +375,6 @@ public class Cliente extends Usuario{
         }
     }
     public void reservarEntretenimiento(){
-        
          Reserva.mostrarCabecera();
          Scanner sc=new Scanner(System.in);
         ArrayList<String[]> paqueteString=new ArrayList();
