@@ -24,7 +24,7 @@ public class Entretenimiento extends Servicio {
         super.mostrarReserva();
         System.out.println("CIUDAD: "+this.paquete.getCiudadPa());
         System.out.println("PAQUETE: "+this.paquete.getNombrePaquete());
-        System.out.println("VALOR PAGAR: "+this.paquete.getCostoP()*this.paquete.getNumeroPersonas());
+        System.out.println("VALOR PAGAR: "+this.getValor());
      }
     
     public Paquete getPaquete() {
