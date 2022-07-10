@@ -166,7 +166,7 @@ public class SistemaDeReservasTuristicas {
                     ((Cliente)this.usuarioConectado).pagarReserva();
                     break;
                 case "5":
-                    ((Cliente)this.usuarioConectado).consultarReservas();
+                    this.usuarioConectado.consultarReservas();
                     break; 
                 case "6":
                     //se muestra el mensaje de despedida
