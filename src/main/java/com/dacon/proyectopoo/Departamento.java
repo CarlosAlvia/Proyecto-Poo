@@ -9,7 +9,7 @@ import Enum.Estado;
  * @author CJAA
  */
     
-public class Departamento extends Hospedaje{
+public class Departamento {
     
     private String ciudadDepa;
     private String nombreDepa;
