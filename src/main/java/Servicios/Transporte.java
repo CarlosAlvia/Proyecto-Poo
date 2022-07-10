@@ -4,7 +4,6 @@
  */
 package Servicios;
 
-import Servicios.Servicio;
 import ElementoServicios.Vehiculo;
 
 /**
@@ -13,14 +12,10 @@ import ElementoServicios.Vehiculo;
  */
 public class Transporte extends Servicio {
     private Vehiculo vehiculo;
-    //Este constructor está de más, la puntuación y el identificador se generan aleatoriamente
-    public Transporte(String ciudad, double valor, double puntuacion, int identificador,Vehiculo vehiculo){
-        super(ciudad,valor,puntuacion,identificador);
-        this.vehiculo=vehiculo;
-    }
+
     //En este constructor se debe arreglar para que el super no reciba los dos últimos valores
     public Transporte(String ciudad, double valor,Vehiculo vehiculo){
-        super(ciudad,valor,5.0,32341);
+        super(ciudad,valor);
         this.vehiculo=vehiculo;
     }
     
