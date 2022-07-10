@@ -223,7 +223,7 @@ public class Cliente extends Usuario{
                 Reserva reservaHospedaje=new Reserva(fechaEntrada,fechaSalida,habiElegida.getPrecio(),this,"HOSPEDAJE");
                 pedaje.setReserva(reservaHospedaje);
                 //Se escribe la linea que se desea añadir al archivo de reservas y se la agrega 
-                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+super.getNombres()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getTipoHabitacion()+","+habiElegida.getPrecio()*dias;
+                String lineaHotel=reservaHospedaje.getNumeroReserva()+","+reservaHospedaje.getFechaReserva()+","+"hospedaje"+","+this.getNombres()+" "+this.getApellidos()+","+fechaEntrada+","+fechaSalida+","+habiElegida.getTipoHabitacion()+","+habiElegida.getPrecio()*dias;
                 ManejoArchivos.EscribirArchivo("reservas.txt", lineaHotel);
                  //Se escribe la linea que se desea añadir al archivo de reservasHospedaje y se la agrega 
                 String lineaReserva=reservaHospedaje.getNumeroReserva()+","+hotElegido.getCiudadH()+","+hotElegido.getCodigoHotel()+","+habiElegida.getTipoHabitacion()+","+habiElegida.getNumerodeHabitacion()+","+habiElegida.getPrecio()*dias;
