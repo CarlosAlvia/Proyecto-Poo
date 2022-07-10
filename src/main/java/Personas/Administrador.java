@@ -83,6 +83,7 @@ public class Administrador extends Usuario {
             }
            
             ArrayList<String> ciudades=new ArrayList<String>();
+            System.out.println(ciudades);
             
             for(int i=0; i<ciudadYtipo.size();i++){
                 if(!(ciudades.contains(ciudadYtipo.get(i)[0]))){
@@ -91,6 +92,7 @@ public class Administrador extends Usuario {
                 }
                 
             }
+             System.out.println(ciudades);
             
             
             for(String ciudad: ciudades){
