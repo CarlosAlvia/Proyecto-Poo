@@ -38,7 +38,7 @@ public class Servicio {
         System.out.println(simbolo1);
         System.out.println(simbolo2);
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
-        System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().GetApellidos());
+        System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().getApellidos());
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
     }
     public void crearReserva(Cliente cliente){
@@ -50,7 +50,7 @@ public class Servicio {
         System.out.println(simbolo2);
         
         System.out.println("CÓDIGO RESERVA: "+this.reserva.getNumeroReserva());
-        System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().GetApellidos());
+        System.out.println("CLIENTE: "+this.reserva.getCliente().getNombres()+" "+this.reserva.getCliente().getApellidos());
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
     }
     public String getCiudad(){
