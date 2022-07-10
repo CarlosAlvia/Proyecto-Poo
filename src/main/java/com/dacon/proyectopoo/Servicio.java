@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.dacon.proyectopoo;
-import Personas.Cliente;
+import java.util.Random;
 /**
  *
  * @author CJAA
@@ -14,6 +14,9 @@ public class Servicio {
     protected Reserva reserva;
     protected double puntuacion;
     protected int identificador;
+    //Esta variable es privada puesto que solo se usa para generar
+    //el identificador
+    private static int contador;
     
     public Servicio(String ciudad, double valor, double puntuacion, int identificador) {
         this.ciudad = ciudad;
@@ -25,7 +28,14 @@ public class Servicio {
         
     }
     public Servicio(String ciudad, double valor){
-        //Falta generar aleatoriamente la ciudad y el valor
+        Random rd=new Random();
+        this.puntuacion=rd.nextInt(1,5)+(Math.round(rd.nextDouble()*10.0)/10.0);
+        //La variable estática contador se la usa para que el identificador de cada servicio
+        //sea único sin importar la ejecución en la que se da, puesto que no se guarda este identificador
+        //en ningún archivo, no se puede utilizar el método que se aplica en reserva o pago
+        contador+=1;
+        //Se le suma 9000 al contador para que no sea un número muy pequeño;
+        this.identificador=9000+contador;
         this.ciudad=ciudad;
         this.valor=valor;
     }
