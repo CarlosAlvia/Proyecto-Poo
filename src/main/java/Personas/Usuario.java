@@ -35,22 +35,22 @@ public abstract class Usuario {
         this.contraseña=contraseña;
         this.celular=celular;
     }
-    public String GetCedula(){
+    public String getCedula(){
         return this.cedula;
     }
     public String getNombres(){
         return this.nombres;
     }
-    public String GetApellidos(){
+    public String getApellidos(){
         return this.apellidos;
     }
-    public String GetContraseña(){
+    public String getContraseña(){
         return this.contraseña;
     }
-    public String GetUser(){
+    public String getUser(){
         return this.user;
     }
-    public String GetCelular(){
+    public String getCelular(){
         return this.celular;
     }
     public void setCedula(String cedula){
