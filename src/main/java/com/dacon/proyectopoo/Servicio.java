@@ -29,6 +29,8 @@ public class Servicio {
     }
     public Servicio(String ciudad, double valor){
         Random rd=new Random();
+        //Se genera la puntuación al azar sumándo un entero aleatorio entre 1 y 4 a
+        //un double aleatorio que se redondea a un decimal
         this.puntuacion=rd.nextInt(1,5)+(Math.round(rd.nextDouble()*10.0)/10.0);
         //La variable estática contador se la usa para que el identificador de cada servicio
         //sea único sin importar la ejecución en la que se da, puesto que no se guarda este identificador
