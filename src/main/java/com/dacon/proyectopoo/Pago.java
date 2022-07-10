@@ -81,7 +81,7 @@ public class Pago {
     @Override
     public String toString(){
         String a=this.reserva.getNumeroReserva()+","+this.identificador+","+this.reserva.getCliente().getNombres()+" ";
-        a+=this.reserva.getCliente().GetApellidos()+","+this.fechaDePago+","+this.reserva.getValorPagar()+",";
+        a+=this.reserva.getCliente().getApellidos()+","+this.fechaDePago+","+this.reserva.getValorPagar()+",";
         a+=this.valorAPagar+","+this.MetodoPago+","+this.numeroMetodoPago+","+this.fechaCaducidad;
         return a;
         
