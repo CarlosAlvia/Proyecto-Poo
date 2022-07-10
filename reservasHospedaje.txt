@@ -1,0 +1,1 @@
+numeroReserva,ciudad,códigoHotel,tipoHabitación,numeroHabitacion,valorPagar
