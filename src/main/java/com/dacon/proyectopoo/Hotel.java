@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class Hotel {
-     private String ciudadH;
+    private String ciudadH;
     private String codigoHotel;
     private String nombre;
     private String direccion;
@@ -17,6 +17,7 @@ public class Hotel {
     private boolean desayuno;
     private boolean parqueo;
     private ArrayList<Habitacion> listaHabitaciones;
+    private Habitacion habitacion;
     private boolean cancelacionGratis;
     
     public Hotel(){
@@ -97,4 +98,13 @@ public class Hotel {
     public void setCancelacionGratis(boolean cancelacionGratis){
         this.cancelacionGratis=cancelacionGratis;
     }
+
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+    
 }
