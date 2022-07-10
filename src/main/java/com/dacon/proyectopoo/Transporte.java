@@ -30,7 +30,7 @@ public class Transporte extends Servicio {
     }
     @Override
     public String toString(){
-        return this.getReserva().getNumeroReserva()+","+this.getVehiculo().getId()+","+this.getReserva().getValorPagar();
+        return this.reserva.getNumeroReserva()+","+this.ciudad+","+this.vehiculo.getId()+","+this.reserva.getValorPagar();
     }
     public Vehiculo getVehiculo() {
         return vehiculo;
