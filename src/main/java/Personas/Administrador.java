@@ -39,7 +39,7 @@ public class Administrador extends Usuario {
 
         ArrayList<Reserva> reservas=new ArrayList<Reserva>();
         for(int i=0;i<reservasString.size();i++){
-        Reserva reservaElemento=new Reserva(reservasString.get(i)[0],reservasString.get(i)[1],reservasString.get(i)[2], reservasString.get(i)[4],reservasString.get(i)[5],Double.parseDouble(reservasString.get(i)[5]));
+        Reserva reservaElemento=new Reserva(reservasString.get(i)[0],reservasString.get(i)[1],reservasString.get(i)[2], reservasString.get(i)[4],reservasString.get(i)[5],Double.parseDouble(reservasString.get(i)[6]));
          reservas.add(reservaElemento); 
         }
         ArrayList<String[]> ciudadYtipo=new ArrayList<String[]>();
