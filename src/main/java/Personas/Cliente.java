@@ -3,27 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Personas;
-import Enum.Estado;
-import Enum.Transmision;
-import Enum.TipoHabitacion;
+import Enum.*;
 import java.util.Scanner;
 import java.util.ArrayList;
-import ElementoServicios.Vehiculo;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
-import PagoReserva.Reserva;
-import Herramientas.ManejoArchivos;
-import Servicios.Transporte;
-import ElementoServicios.Paquete;
-import Herramientas.Funcion;
-import Servicios.Entretenimiento;
-import Servicios.Hospedaje;
-import ElementoServicios.Hotel;
-import ElementoServicios.Habitacion;
-import ElementoServicios.Departamento;
-import PagoReserva.Pago;
-import Servicios.Servicio;
+import PagoReserva.*;
+import Herramientas.*;
+import Servicios.*;
+import ElementoServicios.*;
 /**
  *
  * @author User
