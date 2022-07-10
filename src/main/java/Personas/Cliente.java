@@ -693,7 +693,7 @@ public class Cliente extends Usuario{
                                     }
                                 }
                             }
-                        }else{
+                        }else if (datosHospedaje[3].equals("ED")){
                             //Se leen los datos de departamentos
                             ArrayList<String[]> datosDepartamentos;
                             datosDepartamentos=Funcion.generarArreglo("departamento.txt");
@@ -782,6 +782,7 @@ public class Cliente extends Usuario{
                 System.out.println("Hasta: " +entretenimiento.getReserva().getHasta());
                 System.out.println("Cantidad de personas: " +entretenimiento.getPaquete().getNumeroPersonas());
                 System.out.println("Pago: " +entretenimiento.getReserva().getValorPagar());
+                System.out.println("\n");
             }else if(servicio.getClass()!=null&&servicio.getClass()==Hospedaje.class){
                 Hospedaje hospedaje=(Hospedaje) servicio;
                 if(hospedaje.getHotel()!=null){
