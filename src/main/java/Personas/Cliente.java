@@ -74,6 +74,7 @@ public class Cliente extends Usuario{
                 case "1":
      System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
      String ciudad=sc.nextLine();
+     ciudad=ciudad.toLowerCase();
      // Creacion de un ArrayList que contiene arreglos de String para almacenar los datos que se generan al momento de leer el código
      ArrayList<String[]> hotelString=new ArrayList();
      // llenar el arrayList con la función generar arreglo definida en la clase "Funcion"
@@ -226,6 +227,7 @@ public class Cliente extends Usuario{
                 case "2":
               System.out.println("Ingrese el nombre de la ciudad donde se alojará: ");
               String ciudadDepa=sc.nextLine(); 
+              ciudadDepa=ciudadDepa.toLowerCase();
                  ArrayList<String[]> depaString=new ArrayList();
                 depaString=Funcion.generarArreglo("departamento.txt");
                  int indiceDepa=1;
@@ -383,6 +385,7 @@ public class Cliente extends Usuario{
 //    System.out.println(paqueteString.get(0)[3]);
         System.out.println("Ingrese la ciudad de reserva: ");
         String ciudad=sc.nextLine();
+        ciudad=ciudad.toLowerCase();
         int a=1;
         ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
         
