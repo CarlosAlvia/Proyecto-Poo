@@ -83,35 +83,30 @@ public class Administrador extends Usuario {
             }
            
             ArrayList<String> ciudades=new ArrayList<String>();
-            System.out.println(ciudades);
-            
+
             for(int i=0; i<ciudadYtipo.size();i++){
                 if(!(ciudades.contains(ciudadYtipo.get(i)[0]))){
-                String nombreCiudad=ciudadYtipo.get(i)[0];
+                String nombreCiudad=ciudadYtipo.get(i)[0].toLowerCase();
                 ciudades.add(nombreCiudad);
                 }
-                
             }
-             System.out.println(ciudades);
-            
-            
+
             for(String ciudad: ciudades){
-            int contadorEntretenimiento=0;
-            int contadorTransporte=0;
-            int contadorHospedaje=0;
-            
+                int contadorEntretenimiento=0;
+                int contadorTransporte=0;
+                int contadorHospedaje=0;
                 for(String[]ele:ciudadYtipo){
-                if(ciudad.equals(ele[0])){
-                    if(ele[1].equals("entretenimiento")){
-                    contadorEntretenimiento++;
+                    if(ciudad.equals(ele[0])){
+                        if(ele[1].equals("entretenimiento")){
+                        contadorEntretenimiento++;
+                        }
+                        else if(ele[1].equals("transporte")){
+                        contadorTransporte++;
+                        }
+                        else if(ele[1].equals("hospedaje")){
+                        contadorHospedaje++;
+                        }
                     }
-                    else if(ele[1].equals("transporte")){
-                    contadorTransporte++;
-                    }
-                    else if(ele[1].equals("hospedaje")){
-                    contadorHospedaje++;
-                    }
-                }
                 }
                 System.out.println("/-------"+ciudad +"--------/");
                 System.out.println("Hospedaje: "+contadorHospedaje);
