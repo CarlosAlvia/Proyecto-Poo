@@ -49,7 +49,7 @@ public class Habitacion{
     public int getCapacidad(){
         return this.capacidad;
     }
-    public int getNumerodeHabitacion(){
+    public int getNumeroDeHabitacion(){
         return this.numerodeHabitacion;
     }
     public Estado getEstado(){
@@ -65,7 +65,7 @@ public class Habitacion{
     public void setCapacidad(int capacidad){
         this.capacidad=capacidad;
     }
-    public void setNumerodeHabitacion(int numerodeHabitacion){
+    public void setNumeroDeHabitacion(int numerodeHabitacion){
         this.numerodeHabitacion=numerodeHabitacion;
     }
     public void setEstado(Estado estado){
