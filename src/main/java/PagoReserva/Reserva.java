@@ -26,8 +26,10 @@ public class Reserva {
         this.valorPagar=valorPagar;
         this.cliente=cliente;
         this.tipoReserva=tipoReserva;
+        //Se usa el método para definir el número de reserva aleatorio y único
         this.numeroReserva=Funcion.generarNumerosAleatorios(20000,30000,"reservas.txt");
-        //Fin Generado del numeroReserva y asignación
+        //Se consigue la fecha actual con el método now de la Clase LocalDate (aa-mm-dd), se hace un split y se usan 
+        //los componentes para usar el formato del programa (dd/mm/aa)
         String[] arrFechaActual= LocalDate.now().toString().split("-");
         String fechaActual=arrFechaActual[2]+"/"+arrFechaActual[1]+"/"+arrFechaActual[0];
         this.fechaReserva=fechaActual;
@@ -113,9 +115,6 @@ public class Reserva {
     public void setValorPagar(double valorPagar){
         this.valorPagar=valorPagar;
     }
-//    public void setservicio(Servicio servicio){
-//        this.servicio=servicio;
-//    }
     public void setCliente(Cliente cliente){
         this.cliente=cliente;
     }
@@ -130,7 +129,6 @@ public class Reserva {
     
     @Override
     public String toString(){
-        //numeroReserva,fecha reserva,tipoReserva,nombreCliente,desde,hasta,valorPagar
         return this.numeroReserva+","+this.fechaReserva+","+this.tipoReserva+","+this.cliente.getNombres()+" "+this.cliente.getApellidos()+","+this.desde+","+this.hasta+","+this.valorPagar;
     }
 }
