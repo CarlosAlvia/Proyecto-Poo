@@ -7,8 +7,8 @@ package Personas;
 import Enum.Estado;
 import Enum.Transmision;
 import Herramientas.Funcion;
-import com.dacon.proyectopoo.Hotel;
-import com.dacon.proyectopoo.Reserva;
+import ElementoServicios.Hotel;
+import PagoReserva.Reserva;
 import java.util.ArrayList;
 import com.dacon.proyectopoo.*;
 /**
