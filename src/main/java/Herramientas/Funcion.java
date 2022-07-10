@@ -49,7 +49,8 @@ public class Funcion {
             System.out.println("Ingrese fechas válidas");
         }
         //El código se ejecuta hasta que se ingresen fechas que disten entre sí de forma positiva
-        //es decir, que la fecha de fin sea después de la fecha de inicio
+        //es decir, que la fecha de fin sea después de la fecha de inicio. También se verifica que 
+        //la fecha de inicio sea la fecha actual o posterior
         }while(diasReserva<=0||(ChronoUnit.DAYS.between(LocalDate.now(),fechaIni))<0);
         Long dias=diasReserva;
         //Se crea una lista que contiene la cantidad de días, la fecha de inicio y la fecha de fin
