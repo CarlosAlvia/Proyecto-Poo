@@ -587,6 +587,7 @@ public class Cliente extends Usuario{
                     }
                 }
     }
+    @Override
     public void consultarReservas(){
     String simbolo="/***********SERVICIOS RESERVADOS**********/";
     String simbolo1="/*                                       */";
