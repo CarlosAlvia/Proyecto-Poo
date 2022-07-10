@@ -63,12 +63,12 @@ public class Cliente extends Usuario{
      String ciudad=sc.nextLine();
      ciudad=ciudad.toLowerCase();
      // Creacion de un ArrayList que contiene arreglos de String para almacenar los datos que se generan al momento de leer el código
-     ArrayList<String[]> hotelString=new ArrayList();
+     ArrayList<String[]> hotelString;
      // llenar el arrayList con la función generar arreglo definida en la clase "Funcion"
      hotelString=Funcion.generarArreglo("hoteles.txt");
      int indice=1;
      //creación de una lista de hoteles donde se almacenarán los objetos obteles creados a continuación
-     ArrayList<Hotel> hoteles=new ArrayList<Hotel>();
+     ArrayList<Hotel> hoteles=new ArrayList<>();
      // for que recorrera el Arraylist de arreglos y el if evaluará si pertenecen a una ciudad para arregarlos al array de hoteles, antes habiendo creado su objeto y se imprime el nombre del hotel que pertenece a la ciudad ingresada por el usuario 
         for(int i=0;i<hotelString.size();i++){
             if(hotelString.get(i)[0].equals(ciudad)){
@@ -130,9 +130,9 @@ public class Cliente extends Usuario{
              
         }
      // ahora se prosedera a realizar un proceso con las habitaciones primero se crea arraylist de arrys para almacenar los datos genetados por la función que le el archivo.
-     ArrayList<String[]> habitacionString=new ArrayList();
+     ArrayList<String[]> habitacionString;
      habitacionString=Funcion.generarArreglo("habitaciones.txt");
-     ArrayList<Habitacion> habitaciones=new ArrayList<Habitacion>();
+     ArrayList<Habitacion> habitaciones=new ArrayList<>();
      
      //se procede a mostar los tipos de habitaciones y el tipo
        System.out.println("Elija el tipo de habitación que prefiere");
@@ -219,11 +219,11 @@ public class Cliente extends Usuario{
               String ciudadDepa=sc.nextLine(); 
               ciudadDepa=ciudadDepa.toLowerCase();
                // Creacion de un ArrayList que contiene arreglos de String para almacenar los datos que se generan al momento de leer el código
-                 ArrayList<String[]> depaString=new ArrayList();
+                ArrayList<String[]> depaString;
                 depaString=Funcion.generarArreglo("departamento.txt");
                  int indiceDepa=1;
                 // Creación de una lista de departamentos
-                ArrayList<Departamento> departamentos=new ArrayList<Departamento>();
+                ArrayList<Departamento> departamentos=new ArrayList<>();
         // El for recorrerá la lista e irá presentado el nombre de los departamentos 
         for(int i=0;i<depaString.size();i++){
             if(depaString.get(i)[0].equals(ciudadDepa)){
@@ -297,9 +297,9 @@ public class Cliente extends Usuario{
     public void reservarTransporte(){
         // Se crea y llena una lista de vehículos mediante los datos de los vehículos leyendo su archivo correspondiente
         // y creando los objetos
-        ArrayList<String[]> datosVehiculos=new ArrayList();
-        ArrayList<Vehiculo> vehiculos=new ArrayList();
+        ArrayList<String[]> datosVehiculos;
         datosVehiculos=Funcion.generarArreglo("vehiculos.txt");
+        ArrayList<Vehiculo> vehiculos=new ArrayList();
         for (String[] ele:datosVehiculos){
             Vehiculo vehiculo=new Vehiculo(ele[0],ele[1],ele[2],ele[3],ele[4],Integer.valueOf(ele[5]),Estado.valueOf(ele[6]),Double.valueOf(ele[7]),Transmision.valueOf(ele[8]));
             vehiculos.add(vehiculo);
@@ -324,7 +324,7 @@ public class Cliente extends Usuario{
         // además, se muestran en pantalla sus elemento con ayuda del for 
         System.out.println("Estos son los vehículos disponibles:");
         int contador=0;
-        ArrayList<Vehiculo> opciones=new ArrayList<Vehiculo>();
+        ArrayList<Vehiculo> opciones=new ArrayList<>();
         for (Vehiculo vehiculo:vehiculos){
             if(vehiculo.getCapacidad()==capacidadElegida&&vehiculo.getEstado().name().equals("DISPONIBLE")){
                 contador+=1;
@@ -374,13 +374,13 @@ public class Cliente extends Usuario{
          Reserva.mostrarCabecera();
          Scanner sc=new Scanner(System.in);
          // Se crea una lista de arrays a la cual se le asignará lel elemento que retorna la funcion generar arreglo
-        ArrayList<String[]> paqueteString=new ArrayList();
+        ArrayList<String[]> paqueteString;
         paqueteString=Funcion.generarArreglo("paquetes.txt");
         System.out.println("Ingrese la ciudad de reserva: ");
         String ciudad=sc.nextLine();
         ciudad=ciudad.toLowerCase();
         int a=1;
-        ArrayList<Paquete> paquetes=new ArrayList<Paquete>();
+        ArrayList<Paquete> paquetes=new ArrayList<>();
         //El for recorrerá el arrayList creado y mostrará el nombre de los paquetes que coincidan con la ciudad seleccionada
         //Posteriormente se crea los elementos de paquetes y se los agrega a la lista creada previamente de paquetes
         for(int i=0;i<paqueteString.size();i++){
@@ -453,7 +453,7 @@ public class Cliente extends Usuario{
         Scanner sc=new Scanner(System.in);
         String tarjetaCredito="";
         String caducidadTarjeta="";
-        String numeroCheque="";
+        String numeroCheque;
         boolean probarOtraVez=true;
         do{
             System.out.println("Ingrese el código de la reserva");
