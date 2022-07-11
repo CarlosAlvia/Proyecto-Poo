@@ -313,7 +313,9 @@ public class Cliente extends Usuario{
     
     
     
-    
+    /**
+     *Este método permite al cliente reservar un transporte según la capacidad deseada
+     */
     public void reservarTransporte(){
         // Se crea y llena una lista de vehículos mediante los datos de los vehículos leyendo su archivo correspondiente
         // y creando los objetos
@@ -463,6 +465,10 @@ public class Cliente extends Usuario{
          }
         }
     }
+    /**
+     * Este método permite al cliente pagar su reserva
+     * Llama al método pagar que es sobrecargado según el cheque o tarjeta
+     */
     public void pagarReserva(){
         //Se usa el método now de la Clase LocalDate para obtener la fecha actual y se le aplica el split
         //Este método usa el formato (aa-mm-dd)
@@ -560,6 +566,13 @@ public class Cliente extends Usuario{
         }
         
     }
+    /**
+     * Este método es llamado en el método pagarReserva cuando el cliente elige tarjeta ocomo método de pago
+     * @param tarjetaDeCredito
+     * @param mesAnoCaducidad
+     * @param reservaAPagar
+     * @param fechaActual 
+     */
     public void pagar(String tarjetaDeCredito,String mesAnoCaducidad,Reserva reservaAPagar,String fechaActual){
         double valorPago;
         final double FACTORDESCUENTO=0.15;
@@ -595,6 +608,12 @@ public class Cliente extends Usuario{
                     }
                 }
     }
+    /**
+     * Este método es llamado en el método pagarReserva cuando el cliente elige cheque ocomo método de pago
+     * @param cheque
+     * @param reservaAPagar
+     * @param fechaActual 
+     */
     public void pagar(String cheque,Reserva reservaAPagar,String fechaActual){
         double valorPago;
         final double FACTORDESCUENTO=0.15;
@@ -634,6 +653,9 @@ public class Cliente extends Usuario{
                 }
     }
     @Override
+    /**
+     * Este método permite al cliente consultar todas sus reservas realizadas
+     */
     public void consultarReservas(){
     //Se imprime la cabecera
     String simbolo="/***********SERVICIOS RESERVADOS**********/";
