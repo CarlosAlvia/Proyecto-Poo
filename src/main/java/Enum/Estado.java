@@ -13,5 +13,14 @@ package Enum;
  * Esta clase contiene Enum para definir tipos
  */
 public enum Estado {
-    DISPONIBLE,OCUPADO
+
+    /**
+     *
+     */
+    DISPONIBLE,
+
+    /**
+     *
+     */
+    OCUPADO
 }
