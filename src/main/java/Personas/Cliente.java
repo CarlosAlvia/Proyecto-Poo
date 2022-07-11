@@ -24,24 +24,63 @@ public class Cliente extends Usuario{
     private int edad;
     private String tarjetaDeCredito;
     
-
+    /**
+     *
+     * @param cedula
+     * @param nombres
+     * @param apellidos
+     * @param user
+     * @param contraseña
+     * @param celular
+     * @param tipoCliente
+     */
     public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular,char tipoCliente){
         super(cedula,nombres,apellidos,user,contraseña,celular,tipoCliente);
         
     }
+
+    /**
+     *
+     * @param cedula
+     * @param nombres
+     * @param apellidos
+     * @param user
+     * @param contraseña
+     * @param celular
+     */
     public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular){
         super(cedula,nombres,apellidos,user,contraseña,celular);
         
     }
+
+    /**
+     *
+     * @return
+     */
     public int GetEdad(){
         return this.edad;
     }
+
+    /**
+     *
+     * @return
+     */
     public String GetTarjetaDeCredito(){
         return this.tarjetaDeCredito;
     }
+
+    /**
+     *
+     * @param edad
+     */
     public void setEdad(int edad){
         this.edad=edad;
     }
+
+    /**
+     *
+     * @param tarjetaDeCredito
+     */
     public void setTarjetaDeCredito(String tarjetaDeCredito){
         this.tarjetaDeCredito=tarjetaDeCredito;
     }
@@ -662,6 +701,10 @@ public class Cliente extends Usuario{
                     }
                 }
     }
+
+    /**
+     *
+     */
     @Override
     /**
      * Este método permite al cliente consultar todas sus reservas realizadas
