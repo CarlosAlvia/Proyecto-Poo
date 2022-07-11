@@ -17,6 +17,9 @@ import java.time.temporal.ChronoUnit;
  *
  * @author User
  */
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public class Cliente extends Usuario{
     private int edad;
     private String tarjetaDeCredito;
