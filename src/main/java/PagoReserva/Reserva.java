@@ -10,6 +10,9 @@ import java.time.LocalDate;
  *
  * @author CJAA
  */
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public class Reserva {
     private String numeroReserva;
     private String fechaReserva;
