@@ -9,6 +9,11 @@ package com.dacon.proyectopoo;
  *
  * @author CJAA
  */
+
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class ProyectoPoo {
 
     public static void main(String[] args) {
