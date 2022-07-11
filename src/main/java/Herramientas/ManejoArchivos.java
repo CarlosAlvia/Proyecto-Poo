@@ -14,11 +14,21 @@ import java.util.ArrayList;
  * @author Verónica
  */
 public class ManejoArchivos {
+    
+    /**
+     * Este método lee los elementos que pertenecen a un archivo
+     * @param nombrearchivo del cual se extraen los datos para devolver el Arraylist de Strings
+     * @return ArrayList que contiene los lineas del archivo
+     */
 
     public static ArrayList<String> LeeFichero(String nombrearchivo) {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
-        FileReader fr = null;
+        FileReader fr = null/**
+     * Este método lee los elementos que pertenecen a un archivo
+     * @param nombrearchivo del cual se extraen los datos para devolver el Arraylist de Strings
+     * @return ArrayList que contiene los lineas del archivo
+     */;
         BufferedReader br = null;
 
         try {
@@ -53,7 +63,12 @@ public class ManejoArchivos {
         return lineas;
 
     }
-
+/**
+     * Este método EscribirArchivo escribe dentro de un archivo la linea de String ingresada en los parametros
+     * @param nombrearchivo del cual se extraen los datos para devolver el Arraylist de Strings
+     * @param linea es un String el cual será agregaddo al archivo
+     * Al finalizar el método se habrá escrito el String ingresado en los parametros en el archivo ingresado en los parametros
+     */
     public static void EscribirArchivo(String nombreArchivo, String linea) {
 
         FileWriter fichero = null;
