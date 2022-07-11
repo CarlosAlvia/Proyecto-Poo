@@ -42,6 +42,9 @@ public class Cliente extends Usuario{
     public void setTarjetaDeCredito(String tarjetaDeCredito){
         this.tarjetaDeCredito=tarjetaDeCredito;
     }
+    /**
+     *Este método permite al cliente reservar un Hotel ó departamento en base a la ciudad seleccionada, y preferencias del usuario
+     */
  public void reservarHospedaje(){
      Reserva.mostrarCabecera();
      Scanner sc=new Scanner(System.in);
@@ -391,6 +394,10 @@ public class Cliente extends Usuario{
             System.out.println("No hay vehículos disponibles");
         }
     }
+    /**
+     *Este método permite al cliente reservar paquete de entretenimiento, basandose en la ciudad seleccionada 
+     * 
+    */
     public void reservarEntretenimiento(){
         //Se hace llamada al método estatico mostrarCabecera
          Reserva.mostrarCabecera();
