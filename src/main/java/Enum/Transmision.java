@@ -8,6 +8,9 @@ package Enum;
  *
  * @author CJAA
  */
+/**
+ * Esta clase contiene Enum para definir tipos
+ */
 public enum Transmision {
     MANUAL,AUTOMÁTICA
 }
