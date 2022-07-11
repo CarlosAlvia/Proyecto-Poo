@@ -18,7 +18,13 @@ import java.util.Random;
     //Esta variable es privada puesto que solo se usa para generar
     //el identificador
     private static int contador;
-    
+    /**
+     * Este constructor inicializa la variable puntuación generando un entero al azar entre (1,4) ambos incluidos
+     * y le suma un double redondeado a un decimal.También inicializa la variable identificador con un valor por defecto
+     * al que se le suma una variable estática que funciona como contador y permite que los identificadores sean únicos
+     * @param ciudad
+     * @param valor 
+     */
     public Servicio(String ciudad, double valor){
         Random rd=new Random();
         //Se genera la puntuación al azar sumándo un entero aleatorio entre 1 y 4 a
