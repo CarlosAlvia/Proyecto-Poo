@@ -9,6 +9,10 @@ import java.util.Random;
  *
  * @author CJAA
  */
+
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
     public class Servicio {
     protected String ciudad;
     protected double valor;
