@@ -19,6 +19,11 @@ public class Entretenimiento extends Servicio {
         this.paquete = paquete;
     }
     
+    /**
+     *Este método permite a un objeto de tipo Entretenimiento presentar los datos generados
+     * por la reserva en pantalla. Debe ser escrito 
+     * Sobreescribiendo el método 
+     */
     @Override
      public void mostrarReserva(){
         super.mostrarReserva();
