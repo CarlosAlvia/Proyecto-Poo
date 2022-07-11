@@ -78,6 +78,13 @@ public class Pago {
     public void setFechaCaducidad(String fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
     }
+    /**
+     *Este método permite la creación de un formato que se presentará pantalla
+     * Debe ser declarado
+     * Sobreescribiendo el método 
+     * @return un String con la línea que se forma con las caracteristicas de 
+     * reserva, pago y cliente
+     */
     @Override
     public String toString(){
         String a=this.reserva.getNumeroReserva()+","+this.identificador+","+this.reserva.getCliente().getNombres()+" ";

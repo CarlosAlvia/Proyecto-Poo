@@ -18,7 +18,12 @@ public class Transporte extends Servicio {
         super(ciudad,valor);
         this.vehiculo=vehiculo;
     }
-    
+     /**
+     *Este método permite a un objeto de tipo Transporte presentar los datos generados
+     * por la reserva en pantalla. Debe ser escrito 
+     * Sobreescribiendo el método 
+     * Esta definido en la clase  padre
+     */ 
     @Override
     public void mostrarReserva(){
         super.mostrarReserva();

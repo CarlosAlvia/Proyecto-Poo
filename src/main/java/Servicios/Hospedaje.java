@@ -28,7 +28,11 @@ public class Hospedaje extends Servicio{
         this.departamento=departamento;
     }
 //   
-      
+      /**
+     *Este método permite a un objeto de tipo Hospedaje/Hotel presentar los datos generados
+     * por la reserva en pantalla. Debe ser escrito 
+     * Sobreescribiendo el método 
+     */ 
     @Override
      public void mostrarReserva(){
         super.mostrarReserva();
@@ -37,7 +41,11 @@ public class Hospedaje extends Servicio{
         System.out.println("HOTEL: "+this.hotel.getNombre());
         System.out.println("VALOR A PAGAR: "+this.getValor());
      }
-
+     /**
+     *Este método permite a un objeto de tipo Hospedaje/Departamento presentar los datos generados
+     * por la reserva en pantalla. Debe ser escrito 
+     * Sobreescribiendo el método 
+     */ 
      public void mostrarReservaDe(){
         super.mostrarReserva();
         System.out.println("FECHAS: "+this.reserva.getDesde()+"-"+this.reserva.getHasta());
