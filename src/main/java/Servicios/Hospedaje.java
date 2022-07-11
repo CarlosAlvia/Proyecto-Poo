@@ -15,7 +15,15 @@ import ElementoServicios.Hotel;
  * Esta clase contiene variables y constructores que apoyan la creación de métodos
  */
 public class Hospedaje extends Servicio{
+
+    /**
+     *
+     */
     protected String fechaEntrada;
+
+    /**
+     *
+     */
     protected String fechaSalida;
     private Hotel hotel;
     private Departamento departamento;
@@ -73,40 +81,84 @@ public class Hospedaje extends Servicio{
     
     //Getters
 
+    /**
+     *
+     * @return
+     */
+
     public Departamento getDepartamento() {
         return departamento;
     }
 
+    /**
+     *
+     * @param departamento
+     */
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getPrecioH() {
         return precioH;
     }
 
+    /**
+     *
+     * @param precioH
+     */
     public void setPrecioH(Double precioH) {
         this.precioH = precioH;
     }
 
+    /**
+     *
+     * @return
+     */
     public Hotel getHotel() {
         return hotel;
     }
 
+    /**
+     *
+     * @param hotel
+     */
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getFechaEntrada(){
         return this.fechaEntrada;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getFechaSalida(){
         return this.fechaSalida;
     }
     //Setters
+
+    /**
+     *
+     * @param fechaEntrada
+     */
     public void setFechaEntrada(String fechaEntrada){
         this.fechaEntrada=fechaEntrada;
     }
+
+    /**
+     *
+     * @param fechaSalida
+     */
     public void setFechaSalida(String fechaSalida){
         this.fechaSalida=fechaSalida;
     }
