@@ -9,8 +9,8 @@ import java.util.Random;
  *
  * @author CJAA
  */
-public class Servicio {
-  protected String ciudad;
+    public class Servicio {
+    protected String ciudad;
     protected double valor;
     protected Reserva reserva;
     protected double puntuacion;
@@ -33,7 +33,11 @@ public class Servicio {
         this.ciudad=ciudad;
         this.valor=valor;
     }
-    
+     /**
+     *Este método permite a un objeto de tipo Servicio presentar los datos generados
+     * por la reserva en pantalla. Este método será sobreescrito por sus clases hijas
+     * 
+     */ 
     public void mostrarReserva(){
         String simbolo="/**************RESERVA GENERADA*************/";
         String simbolo1="/*                                         */";
