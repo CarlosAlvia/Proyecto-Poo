@@ -9,6 +9,11 @@ import Enum.Estado;
  *
  * @author User
  */
+
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class Habitacion{
     private String codigoHotel;
     private TipoHabitacion tipoHabitacion;
