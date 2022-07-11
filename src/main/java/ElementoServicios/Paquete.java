@@ -9,6 +9,11 @@ import java.util.ArrayList;
  *
  * @author User
  */
+
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class Paquete {
    String ciudadPa;
    ArrayList<Paquete> paquetes;
