@@ -16,12 +16,24 @@ import com.dacon.proyectopoo.*;
  * @author User
  */
 public class Administrador extends Usuario {
-    
+    /**
+     * Este constructor llama al constructor de la clase padre para inicializar las variables correspondientes
+     * @param cedula
+     * @param nombres
+     * @param apellidos
+     * @param user
+     * @param contraseña
+     * @param celular
+     * @param tipoUsuario 
+     */
     public Administrador(String cedula, String nombres, String apellidos, String user, String contraseña, String celular,char tipoUsuario){
         super(cedula,nombres,apellidos,user,contraseña,celular,tipoUsuario);
     }
     
-    
+    /**
+     * Este método se sobreescribe ya que el de la clase padre es abstracto
+     * Muesrtra al administrador el detalle de la cantidad de reservas de cada tipo y por ciudades
+     */
     @Override
     public void consultarReservas(){
  
