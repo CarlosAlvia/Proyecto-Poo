@@ -13,7 +13,12 @@ import ElementoServicios.Vehiculo;
 public class Transporte extends Servicio {
     private Vehiculo vehiculo;
 
-    //En este constructor se debe arreglar para que el super no reciba los dos últimos valores
+    /**
+     * Este constructor llama al constructor de la clase padre e inicializa su atributo vehículo
+     * @param ciudad
+     * @param valor
+     * @param vehiculo 
+     */
     public Transporte(String ciudad, double valor,Vehiculo vehiculo){
         super(ciudad,valor);
         this.vehiculo=vehiculo;
@@ -32,6 +37,10 @@ public class Transporte extends Servicio {
         System.out.println("VALOR A PAGAR: "+this.valor);
     }
     @Override
+    /**
+     * Este método permite obtener una cadena algunos atributos del servicio
+     * @return retorna la línea que se escribe en el archivo reservasTransporte al momento de reservar este servicio
+     */
     public String toString(){
         return this.reserva.getNumeroReserva()+","+this.ciudad+","+this.vehiculo.getId()+","+this.reserva.getValorPagar();
     }
