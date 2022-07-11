@@ -9,6 +9,10 @@ package Personas;
  * @author User
  */
 import java.util.Scanner;
+
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public abstract class Usuario {
     protected String cedula;
     protected String nombres;
