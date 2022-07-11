@@ -16,6 +16,10 @@ package com.dacon.proyectopoo;
  */
 public class ProyectoPoo {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Hello World!");  
     }
