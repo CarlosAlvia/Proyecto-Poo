@@ -41,9 +41,18 @@ public class Entretenimiento extends Servicio {
         System.out.println("VALOR PAGAR: "+this.getValor());
      }
     
+    /**
+     *
+     * @return
+     */
     public Paquete getPaquete() {
         return paquete;
     }
+
+    /**
+     *
+     * @param paquete
+     */
     public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
     }
