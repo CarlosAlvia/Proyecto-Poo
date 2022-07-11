@@ -13,7 +13,15 @@ import java.util.Random;
  *
  * @author CJAA
  */
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos en el documento
+ * @author CJAA
+ */
 public class Funcion {
+    /**
+     * Este método solicita dos fechas y calcula la cantidad de días que hay entre ellas
+     * @return ArrayList que contiene la distancia entre los días, el día de inicio de la reserva y el día de fin de la reserva
+     */
     public static ArrayList calcularDias(){
         //Esta funcion incluye el código que solicita los días
         Scanner sc=new Scanner(System.in);
@@ -60,6 +68,11 @@ public class Funcion {
         datos.add(fechaFin);
         return datos;
     }
+        /**
+         * Este método generar Arraylist que permite para simplificar el proceso de creación de los objetos en las varias clases
+         * @param nombreArchivo del cual se extraen los datos para devolver el Arraylist de arreglos de Strings
+         * @return se devuelve el ArrayList que luego se usan para crear los objetos de la clase correspondiente al archivo
+         */
         public static ArrayList<String[]> generarArreglo(String nombreArchivo){
             //Se cree una lista de arreglos de Strings
             //Se crea una lista de Strings que guardará las líneas que devuelve el método LeeFichero
@@ -73,7 +86,12 @@ public class Funcion {
                 arregloFinal.add(linea);
         }
         return arregloFinal;
-    }
+    }/**
+     * Este método es una sobrecarga que recibe las fechas para luego calcular a diferencia de la otra versión que no recibe fechas
+     * @param fechaInicio
+     * @param fechaFin
+     * @return dias entre las fechas ingresadas
+     */
         public static long calcularDias(String fechaInicio,String fechaFin){
         long diasReserva;
         
@@ -94,7 +112,14 @@ public class Funcion {
         Long dias=diasReserva;
         return dias;
         }
-        
+        /**
+         * Este método genera números aleatorios para reservas y pagos entre el rango que se da sin incluir el fin y un nombre
+         * del archivo correspondiente para verificar que estos sean únicos
+         * @param inicio
+         * @param fin
+         * @param nombreArchivo
+         * @return el número generado como un String
+         */
         public static String generarNumerosAleatorios(int inicio,int fin,String nombreArchivo){
             //Este método aplica para generar números aleatorios únicos para pago y reservas
             Random a= new Random();
