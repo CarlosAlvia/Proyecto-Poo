@@ -19,7 +19,14 @@ public class Reserva {
     private String tipoReserva;
     private Cliente cliente;
     private static int cantidadReservas;
-    
+    /**
+     * Construcot reserva utilizado en la linea que se agregará al archivo
+     * @param desde
+     * @param hasta
+     * @param valorPagar
+     * @param cliente
+     * @param tipoReserva 
+     */
     public Reserva(String desde,String hasta,double valorPagar, Cliente cliente,String tipoReserva){
         this.desde=desde;
         this.hasta=hasta;
@@ -35,7 +42,16 @@ public class Reserva {
         this.fechaReserva=fechaActual;
         cantidadReservas+=1;
     }
-
+    /**
+     * Constrictor Reserva, utilizado en cliente
+     * @param numeroReserva
+     * @param fechaReserva
+     * @param tipoReserva
+     * @param cliente
+     * @param desde
+     * @param hasta
+     * @param valorPagar 
+     */
     public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, Cliente cliente, String desde, String hasta, double valorPagar ) {
         this.numeroReserva = numeroReserva;
         this.fechaReserva = fechaReserva;
@@ -46,6 +62,15 @@ public class Reserva {
         this.cliente = cliente;
         cantidadReservas+=1;
     }
+    /**
+     * Constructor de Reserva, inicializa las variables
+     * @param numeroReserva
+     * @param fechaReserva
+     * @param tipoReserva
+     * @param desde
+     * @param hasta
+     * @param valorPagar 
+     */
     public Reserva(String numeroReserva, String fechaReserva, String tipoReserva, String desde, String hasta, double valorPagar ) {
         this.numeroReserva = numeroReserva;
         this.fechaReserva = fechaReserva;
@@ -56,6 +81,11 @@ public class Reserva {
         cantidadReservas+=1;
         
     }
+    /**
+     * Método mostrar cabecera, es estatico 
+     * Muestra por pantalla "RESERVACIÓN" 
+     * 
+     */
     public static void mostrarCabecera(){
         String simbolo="/***************RESERVACIÓN***************/";
         String simbolo1="/*                                       */";
@@ -126,7 +156,13 @@ public class Reserva {
     public static void setCantidadReservas(int cantidadReservas) {
         Reserva.cantidadReservas = cantidadReservas;
     }
-    
+     /**
+     *Este método permite la creación de un formato que se presentará pantalla
+     * Debe ser declarado
+     * Sobreescribiendo el método 
+     * @return un String con la línea que se forma con las caracteristicas de 
+     * reserva y cliente
+     */
     @Override
     public String toString(){
         return this.numeroReserva+","+this.fechaReserva+","+this.tipoReserva+","+this.cliente.getNombres()+" "+this.cliente.getApellidos()+","+this.desde+","+this.hasta+","+this.valorPagar;
