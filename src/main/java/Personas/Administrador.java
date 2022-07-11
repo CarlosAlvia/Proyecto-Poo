@@ -15,6 +15,9 @@ import com.dacon.proyectopoo.*;
  *
  * @author User
  */
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public class Administrador extends Usuario {
     /**
      * Este constructor llama al constructor de la clase padre para inicializar las variables correspondientes
