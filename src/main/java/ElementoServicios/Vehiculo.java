@@ -9,6 +9,11 @@ import Enum.Transmision;
  *
  * @author User
  */
+
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class Vehiculo {
     private String id;
     private String marca;
