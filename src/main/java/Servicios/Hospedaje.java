@@ -17,12 +17,25 @@ public class Hospedaje extends Servicio{
     private Hotel hotel;
     private Departamento departamento;
     private double precioH;
-
+/**
+ * Constructor de Hospedaje, se utiliza exclusivamente para 
+ * introducir en sus parametros a un objeto de tipo Hotel
+ * @param ciudad
+ * @param precio
+ * @param hotel 
+ */
     public Hospedaje(String ciudad,double precio, Hotel hotel){
         super(ciudad,precio);
         this.hotel=hotel;
 
     }
+    /**
+     * Construcor de Hospedale, se usa esclusivamente para 
+     * introducir en sus parametros a un objeto de tipo Hotel
+     * @param ciudad
+     * @param precio
+     * @param departamento 
+     */
     public Hospedaje(String ciudad,double precio,Departamento departamento){
         super(ciudad,precio);
         this.departamento=departamento;
