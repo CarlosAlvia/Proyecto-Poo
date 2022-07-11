@@ -12,5 +12,14 @@ package Enum;
  * Esta clase contiene Enum para definir tipos
  */
 public enum Transmision {
-    MANUAL,AUTOMÁTICA
+
+    /**
+     *
+     */
+    MANUAL,
+
+    /**
+     *
+     */
+    AUTOMÁTICA
 }
