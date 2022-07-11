@@ -8,7 +8,10 @@ import Enum.Estado;
  *
  * @author CJAA
  */
-    
+ /**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class Departamento {
     
     private String ciudadDepa;
