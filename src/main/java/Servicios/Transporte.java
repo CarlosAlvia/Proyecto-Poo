@@ -40,6 +40,11 @@ public class Transporte extends Servicio {
         System.out.println("CÓDIGO VEHICULO: "+this.vehiculo.getId());
         System.out.println("VALOR A PAGAR: "+this.valor);
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     /**
      * Este método permite obtener una cadena algunos atributos del servicio
@@ -48,10 +53,19 @@ public class Transporte extends Servicio {
     public String toString(){
         return this.reserva.getNumeroReserva()+","+this.ciudad+","+this.vehiculo.getId()+","+this.reserva.getValorPagar();
     }
+
+    /**
+     *
+     * @return
+     */
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
+    /**
+     *
+     * @param vehiculo
+     */
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }   
