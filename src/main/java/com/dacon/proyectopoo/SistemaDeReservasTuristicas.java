@@ -13,6 +13,9 @@ import Personas.Administrador;
  *
  * @author CJAA
  */
+/**
+ * Esta clase es la principal en el proyecto, contiene a la mayoria de métodos
+ */
 public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
     private Usuario usuarioConectado;
