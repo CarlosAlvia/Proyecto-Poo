@@ -11,7 +11,9 @@ import ElementoServicios.Paquete;
  * @author User
  */
 
-
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public class Entretenimiento extends Servicio {
     private Paquete paquete;
     
