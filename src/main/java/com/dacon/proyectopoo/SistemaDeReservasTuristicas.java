@@ -242,9 +242,18 @@ public class SistemaDeReservasTuristicas {
         }while(!entrada.equals("2"));
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Usuario> getListaUsuario(){
         return this.listaUsuario;
     }
+
+    /**
+     *
+     * @param listaUsuario
+     */
     public void setListaUsuario(ArrayList<Usuario> listaUsuario){
         this.listaUsuario=listaUsuario;
     }
@@ -252,6 +261,7 @@ public class SistemaDeReservasTuristicas {
      * Es el método principal del progrma, se realizán todos los
      * métodos en base a la selección del usuario sea de tipo
      * administrador o cliente
+     * @param args
      */
     
     public static void main(String[] args){
