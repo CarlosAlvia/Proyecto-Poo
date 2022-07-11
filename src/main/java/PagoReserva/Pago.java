@@ -11,6 +11,10 @@ import Herramientas.Funcion;
  *
  * @author CJAA
  */
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
+
 public class Pago {
     private String fechaDePago;
     private String identificador;
