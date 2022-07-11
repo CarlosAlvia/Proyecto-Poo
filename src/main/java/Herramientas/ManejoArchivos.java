@@ -69,7 +69,7 @@ public class ManejoArchivos {
     }
 /**
      * Este método EscribirArchivo escribe dentro de un archivo la linea de String ingresada en los parametros
-     * @param nombrearchivo del cual se extraen los datos para devolver el Arraylist de Strings
+     * @param nombreArchivo
      * @param linea es un String el cual será agregaddo al archivo
      * Al finalizar el método se habrá escrito el String ingresado en los parametros en el archivo ingresado en los parametros
      */
