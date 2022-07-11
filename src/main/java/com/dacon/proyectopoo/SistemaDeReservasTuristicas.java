@@ -17,6 +17,10 @@ public class SistemaDeReservasTuristicas {
     private ArrayList<Usuario> listaUsuario;
     private Usuario usuarioConectado;
     Scanner sc=new Scanner(System.in);
+    /**
+     * Este método le muestra la bienvenida al sistema al usuario
+     * Muestra por pantalla la bienvenida con un formato
+     */
     public void mostrarBienvenida(){
         String signo="++++++++++++++++++++++++++++++++++++++++";
         System.out.println(signo);
@@ -26,6 +30,10 @@ public class SistemaDeReservasTuristicas {
         System.out.println(signo);
         System.out.println("");
     }
+    /**
+     * Este método permite al cliente ingresar al sistema con su usuario y contraseña
+     * Si son validos, este método llevara al usuario a su respectivo menú     
+     */
     public void ingresar(){
         //Se lee el archivo de usuarios para conseguir los datos
         ArrayList<String[]> datosUsuarios=Funcion.generarArreglo("usuarios.txt");
@@ -66,6 +74,10 @@ public class SistemaDeReservasTuristicas {
         }while(usuarioCorrecto==null);
         this.usuarioConectado=usuarioCorrecto;
     }
+    /**
+     * Este método verifica si el usuario y contraseña son correctos
+     * caso contario le pedirá que los digte denuevo   
+     */
     public void verificarDatosCliente(){
         Scanner sc=new Scanner(System.in);
         //Se verifica que el usuario se de clase Cliente
@@ -113,7 +125,10 @@ public class SistemaDeReservasTuristicas {
             }
         }
     }
-
+    /**
+     * Este método muestra al usuario de tipo administrado su 
+     * correspondiente menú
+     */
     public void mostarMenuAdmin(){
         String simbolo="/************MENU ADMINISTRADOR************/";
         String simbolo1="/*                                       */";
@@ -126,6 +141,10 @@ public class SistemaDeReservasTuristicas {
         System.out.println("2. Salir");
         System.out.println("\n");
     }
+    /**
+     * Este método muestra al usuario de tipo cliente su 
+     * correspondiente menú
+     */
     public void mostrarMenuCliente(){
         String abajo="++++++++++++++++++++++++++++++++++++++++";
         String arriba="+++++++++++++++++menu+++++++++++++++++";
@@ -141,6 +160,11 @@ public class SistemaDeReservasTuristicas {
         System.out.println("6. Salir");
         System.out.println("\n");
     }
+    /**
+     * Este método se caracteriza por poseer más métodos que son realizados 
+     * en base a la decisión del usuario de tipo cliente
+     * En el caso 6 este método hará al cliente salir del sistema
+     */
     public void iniciar(){
         String entrada = "";
         do{
@@ -182,6 +206,11 @@ public class SistemaDeReservasTuristicas {
         //muestra el menú otra vez
         }while(!entrada.equals("6"));
     }
+    /**
+     * Este método se caracteriza por poseer más métodos que son realizados 
+     * en base a la decisión del usuario de tipo administrador
+     * En el caso 2 este método hará al administrador salir del sistema
+     */
     public void iniciarAdmin(){
         String entrada = "";
         do{
@@ -216,6 +245,12 @@ public class SistemaDeReservasTuristicas {
     public void setListaUsuario(ArrayList<Usuario> listaUsuario){
         this.listaUsuario=listaUsuario;
     }
+    /**
+     * Es el método principal del progrma, se realizán todos los
+     * métodos en base a la selección del usuario sea de tipo
+     * administrador o cliente
+     */
+    
     public static void main(String[] args){
         //Se instancia el sistema y se ejecutan los métodos respectivos
         SistemaDeReservasTuristicas sistema=new SistemaDeReservasTuristicas();
