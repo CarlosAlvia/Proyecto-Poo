@@ -13,6 +13,10 @@ import java.util.ArrayList;
  *
  * @author Verónica
  */
+/**
+ * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
+ * @author CJAA
+ */
 public class ManejoArchivos {
     
     /**
