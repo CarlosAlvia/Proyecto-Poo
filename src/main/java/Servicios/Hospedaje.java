@@ -11,6 +11,9 @@ import ElementoServicios.Hotel;
  *
  * @author User
  */
+/**
+ * Esta clase contiene variables y constructores que apoyan la creación de métodos
+ */
 public class Hospedaje extends Servicio{
     protected String fechaEntrada;
     protected String fechaSalida;
