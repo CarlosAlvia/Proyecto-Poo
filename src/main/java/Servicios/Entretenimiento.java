@@ -10,10 +10,17 @@ import ElementoServicios.Paquete;
  *
  * @author User
  */
+
+
 public class Entretenimiento extends Servicio {
     private Paquete paquete;
     
-
+/**
+ * Constructor de Entretenimiento utilizado en cliente
+ * @param paquete
+ * @param ciudad
+ * @param valor 
+ */
     public Entretenimiento(Paquete paquete, String ciudad, double valor) {
         super(ciudad, valor);
         this.paquete = paquete;
