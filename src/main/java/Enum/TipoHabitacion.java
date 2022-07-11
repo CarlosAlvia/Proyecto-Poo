@@ -13,5 +13,19 @@ package Enum;
  * Esta clase contiene Enum para definir tipos
  */
 public enum TipoHabitacion {
-    INDIVIDUAL,DOBLE,FAMILIAR
+
+    /**
+     *
+     */
+    INDIVIDUAL,
+
+    /**
+     *
+     */
+    DOBLE,
+
+    /**
+     *
+     */
+    FAMILIAR
 }
