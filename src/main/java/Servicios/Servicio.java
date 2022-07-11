@@ -14,10 +14,30 @@ import java.util.Random;
  * Esta clase contiene variables y constructores que apoyan la creación de métodos
  */
     public class Servicio {
+
+    /**
+     *
+     */
     protected String ciudad;
+
+    /**
+     *
+     */
     protected double valor;
+
+    /**
+     *
+     */
     protected Reserva reserva;
+
+    /**
+     *
+     */
     protected double puntuacion;
+
+    /**
+     *
+     */
     protected int identificador;
     //Esta variable es privada puesto que solo se usa para generar
     //el identificador
@@ -60,33 +80,82 @@ import java.util.Random;
         System.out.println("TIPO RESERVA: "+this.reserva.getTipoReserva());
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCiudad(){
         return this.ciudad;
     }
+
+    /**
+     *
+     * @return
+     */
     public double getValor(){
         return this.valor;
     }
+
+    /**
+     *
+     * @return
+     */
     public Reserva getReserva(){
         return this.reserva;
     }
+
+    /**
+     *
+     * @return
+     */
     public double getPuntuacion(){
         return this.puntuacion;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getIdentificador(){
         return this.identificador;
     }
+
+    /**
+     *
+     * @param ciudad
+     */
     public void setCiudad(String ciudad){
         this.ciudad = ciudad;
     }
+
+    /**
+     *
+     * @param valor
+     */
     public void setValor(double valor){
         this.valor = valor;
     }
+
+    /**
+     *
+     * @param reserva
+     */
     public void setReserva(Reserva reserva){
         this.reserva = reserva;
     }
+
+    /**
+     *
+     * @param puntuacion
+     */
     public void setPuntuacion(double puntuacion){
         this.puntuacion = puntuacion;
     }
+
+    /**
+     *
+     * @param identificador
+     */
     public void setIdentificador(int identificador){
         this.identificador = identificador;
     }
