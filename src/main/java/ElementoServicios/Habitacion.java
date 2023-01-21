@@ -14,7 +14,7 @@ import Enum.Estado;
  * Esta clase contiene funciones que se utilizan para obtener recursos del archivo
  * @author CJAA
  */
-public class Habitacion{
+public abstract class Habitacion{
     private String codigoHotel;
     private TipoHabitacion tipoHabitacion;
     private double precio;
@@ -38,9 +38,8 @@ public class Habitacion{
      * @param numerodeHabitacion
      * @param estado
      */
-    public Habitacion(String codigoHotel, TipoHabitacion tipoHabitacion, double precio, int capacidad, int numerodeHabitacion, Estado estado) {
+    public Habitacion(String codigoHotel, double precio, int capacidad, int numerodeHabitacion, Estado estado) {
         this.codigoHotel = codigoHotel;
-        this.tipoHabitacion = tipoHabitacion;
         this.precio = precio;
         this.capacidad = capacidad;
         this.numeroDeHabitacion = numerodeHabitacion;
