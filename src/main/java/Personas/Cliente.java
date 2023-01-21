@@ -34,7 +34,7 @@ public class Cliente extends Usuario{
      * @param celular
      * @param tipoCliente
      */
-    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular,char tipoCliente){
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular,char tipoCliente){
         super(cedula,nombres,apellidos,user,contraseña,celular,tipoCliente);
         
     }
@@ -48,7 +48,7 @@ public class Cliente extends Usuario{
      * @param contraseña
      * @param celular
      */
-    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular){
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular){
         super(cedula,nombres,apellidos,user,contraseña,celular);
         
     }

@@ -29,7 +29,7 @@ public class Administrador extends Usuario {
      * @param celular
      * @param tipoUsuario 
      */
-    public Administrador(String cedula, String nombres, String apellidos, String user, String contraseña, String celular,char tipoUsuario){
+    public Administrador(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular,char tipoUsuario){
         super(cedula,nombres,apellidos,user,contraseña,celular,tipoUsuario);
     }
     

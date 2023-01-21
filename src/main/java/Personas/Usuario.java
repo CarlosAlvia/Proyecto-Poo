@@ -43,7 +43,7 @@ public abstract class Usuario {
     /**
      *
      */
-    protected String celular;
+    protected Celular celular;
 
     /**
      *
@@ -60,7 +60,7 @@ public abstract class Usuario {
      * @param celular
      * @param tipoUsuario
      */
-    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, String celular, char tipoUsuario){
+    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular, char tipoUsuario){
         this.cedula=cedula;
         this.nombres=nombres;
         this.apellidos=apellidos;
@@ -79,7 +79,7 @@ public abstract class Usuario {
      * @param contraseña
      * @param celular
      */
-    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, String celular){
+    public Usuario(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular){
         this.cedula=cedula;
         this.nombres=nombres;
         this.apellidos=apellidos;
@@ -132,7 +132,7 @@ public abstract class Usuario {
      *
      * @return
      */
-    public String getCelular(){
+    public Celular getCelular(){
         return this.celular;
     }
 
@@ -180,7 +180,7 @@ public abstract class Usuario {
      *
      * @param celular
      */
-    public void setCelular(String celular){
+    public void setCelular(Celular celular){
         this.celular=celular;
     }
 

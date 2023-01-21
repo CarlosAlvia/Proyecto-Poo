@@ -9,6 +9,7 @@ import java.util.Scanner;
 import Herramientas.Funcion;
 import Personas.Cliente;
 import Personas.Administrador;
+import Personas.Celular;
 /**
  *
  * @author CJAA
@@ -46,10 +47,10 @@ public class SistemaDeReservasTuristicas {
         ArrayList<Usuario> usuarios=new ArrayList();
         for (String[] ele:datosUsuarios){
             if (ele[6].equals("A")){
-                Usuario usuario=new Administrador(ele[0],ele[1],ele[2],ele[3],ele[4],ele[5],ele[6].charAt(0));
+                Usuario usuario=new Administrador(ele[0],ele[1],ele[2],ele[3],ele[4],new Celular(ele[5]),ele[6].charAt(0));
                 usuarios.add(usuario);
             }else{
-                Usuario usuario=new Cliente(ele[0],ele[1],ele[2],ele[3],ele[4],ele[5],ele[6].charAt(0));
+                Usuario usuario=new Cliente(ele[0],ele[1],ele[2],ele[3],ele[4],new Celular(ele[5]),ele[6].charAt(0));
                 usuarios.add(usuario);
             }
         }
