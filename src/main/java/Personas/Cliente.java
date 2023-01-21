@@ -355,7 +355,7 @@ public class Cliente extends Usuario{
         //La función calcularDias pide las fechas de inicio y fin de la reserva 
         // y devuelve una lista que en el indíce 0 tiene la cantidad de días que se calcularon,
         // la fecha de inicio de la reserva en el índice 1 y la fecha de fin de la reserva en el índice 2
-        ArrayList datos=Funcion.calcularDias();
+        ArrayList datos=Funcion.calcularDiasDeReserva();
         long diasReserva=(Long)datos.get(0);
         String fechaInicio=(String)datos.get(1);
         String fechaFin=(String)datos.get(2);
