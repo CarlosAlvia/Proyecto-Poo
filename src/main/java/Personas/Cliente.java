@@ -20,7 +20,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * Esta clase contiene variables y constructores que apoyan la creación de métodos
  */
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements InterfazPago, InterfazReservas, NewInterface{
     private int edad;
     private String tarjetaDeCredito;
     

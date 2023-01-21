@@ -18,34 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author User
  */
-public class DobleTest{
-    Doble habitacion= new Doble();
+public class IndividualTest {
+    
+    Individual individual=new Individual();
     ArrayList<Habitacion> habitaciones=new ArrayList<>();
-    public DobleTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-        
-
-        
-        
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
-     * Test of tipoHabitacion method, of class Doble.
+     * Test of tipoHabitacion method, of class Individual.
      */
     @Test
     public void testTipoHabitacion() {
@@ -64,9 +42,8 @@ public class DobleTest{
                 
                 System.out.println(hotElegido);
         ArrayList<String[]> habitacionString=Funcion.generarArreglo("habitaciones.txt");
-        habitacion.tipoHabitacion(habitacionString, hotElegido,  habitaciones,  3);
+        individual.tipoHabitacion(habitacionString, hotElegido,  habitaciones,  3);
         Assertions.assertTrue(habitaciones.isEmpty());
-
     }
     
 }
