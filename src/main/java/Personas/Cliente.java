@@ -20,7 +20,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * Esta clase contiene variables y constructores que apoyan la creación de métodos
  */
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements InterfazPago, InterfazReservas, NewInterface{
     private int edad;
     private String tarjetaDeCredito;
     
@@ -34,7 +34,7 @@ public class Cliente extends Usuario{
      * @param celular
      * @param tipoCliente
      */
-    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular,char tipoCliente){
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular,char tipoCliente){
         super(cedula,nombres,apellidos,user,contraseña,celular,tipoCliente);
         
     }
@@ -48,7 +48,7 @@ public class Cliente extends Usuario{
      * @param contraseña
      * @param celular
      */
-    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, String celular){
+    public Cliente(String cedula, String nombres, String apellidos, String user, String contraseña, Celular celular){
         super(cedula,nombres,apellidos,user,contraseña,celular);
         
     }
@@ -207,7 +207,7 @@ public class Cliente extends Usuario{
        System.out.println("2. DOBLE - 2 personas - 140.00");
        System.out.println("3. FAMILIAR - 4 persona - 350.00");
        // se crear un objeto que representará el tipo de la habitación escogida por el usuario
-       Habitacion habiElegida=new Habitacion();
+       Habitacion habiElegida=new Individual();
        System.out.println("Elija una opción: ");
        int op=sc.nextInt();
        sc.nextLine();
@@ -215,43 +215,19 @@ public class Cliente extends Usuario{
        //basandose en que sus caracterisiticas sean smiliares, y a su vez que esten disponibles
        switch(op){
                 case 1:
-                   
-                
-         for(int i=0;i<habitacionString.size();i++){
-             //para obtner la habitación necesita pasar por 3 requisitos, que pertenezca al hotel, que este disponible y que sea del tipo que el cliente solicito
-            if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("INDIVIDUAL")){
-                Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-                habitaciones.add(habi);
-                int numero = (int) (Math.random() *habitaciones.size()+ 1);
-                System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-                System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-                habiElegida=habitaciones.get(numero-1);
-            }
-         }      
+                    Individual ind = new Individual();
+                    ind.tipoHabitacion(habitacionString, hotElegido, habitaciones, dias);
+                    habiElegida = ind;
                     break;
                 case 2:
-            for(int i=0;i<habitacionString.size();i++){
-                if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("DOBLE")){
-                    Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-                    habitaciones.add(habi);
-                    int numero = (int) (Math.random() *habitaciones.size()+ 1);      
-                    System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-                    System.out.println("El costo del paquete a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-                    habiElegida=habitaciones.get(numero-1);
-                }
-              } 
+                    Doble db = new Doble();
+                    db.tipoHabitacion(habitacionString, hotElegido, habitaciones, dias);
+                    habiElegida = db;
                     break;
                 case 3:
-            for(int i=0;i<habitacionString.size();i++){
-                if(habitacionString.get(i)[0].equals(hotElegido.getCodigoHotel())&&habitacionString.get(i)[5].equals("DISPONIBLE")&&habitacionString.get(i)[1].equals("FAMILIAR")){
-                    Habitacion habi=new Habitacion(habitacionString.get(i)[0],TipoHabitacion.valueOf(habitacionString.get(i)[1]),Double.valueOf(habitacionString.get(i)[2]),Integer.parseInt (habitacionString.get(i)[3]), Integer.parseInt (habitacionString.get(i)[4]), Estado.valueOf(habitacionString.get(i)[5]));
-                    habitaciones.add(habi);
-                    int numero = (int) (Math.random() *habitaciones.size()+ 1);
-                    System.out.println("Usted ha elegido una habitación "+habitaciones.get(numero-1).getTipoHabitacion()+" para un total de "+dias+ " noche(s).");
-                    System.out.println("El costo a pagar es de: "+habitaciones.get(numero-1).getPrecio()*dias);
-                    habiElegida=habitaciones.get(numero-1);
-                     }
-                 }    
+                    Familiar fm = new Familiar();
+                    fm.tipoHabitacion(habitacionString, hotElegido, habitaciones, dias);
+                    habiElegida = fm;
                     break;
                 default:
                     //la opcion ingreada no esta dentro de las opciones del menu
@@ -379,7 +355,7 @@ public class Cliente extends Usuario{
         //La función calcularDias pide las fechas de inicio y fin de la reserva 
         // y devuelve una lista que en el indíce 0 tiene la cantidad de días que se calcularon,
         // la fecha de inicio de la reserva en el índice 1 y la fecha de fin de la reserva en el índice 2
-        ArrayList datos=Funcion.calcularDias();
+        ArrayList datos=Funcion.calcularDiasDeReserva();
         long diasReserva=(Long)datos.get(0);
         String fechaInicio=(String)datos.get(1);
         String fechaFin=(String)datos.get(2);
@@ -758,7 +734,7 @@ public class Cliente extends Usuario{
                                         if(hotel[1].equals(room[0])&&datosHospedaje[4].equals(room[4])){
                                             //Se crean: la habitación, el hotel y el hospedaje y este se añade a la lista
                                             //de servicios
-                                            Habitacion habitacionReservada=new Habitacion(room[0],TipoHabitacion.valueOf(room[1]),Double.valueOf(room[2]),Integer.valueOf(room[3]),Integer.valueOf(room[4]),Estado.valueOf(room[5]));
+                                            Habitacion habitacionReservada=new Doble(room[0],Double.valueOf(room[2]),Integer.valueOf(room[3]),Integer.valueOf(room[4]),Estado.valueOf(room[5]));
                                             Hotel hotelReserva=new Hotel(hotel[0],hotel[1],hotel[2],Integer.valueOf(hotel[3]),hotel[4],Boolean.valueOf(hotel[5]),Boolean.valueOf(hotel[6]),Boolean.valueOf(hotel[7]));
                                             hotelReserva.setHabitacion(habitacionReservada);
                                             Hospedaje hospedajeReservado=new Hospedaje(datosHospedaje[1],Double.valueOf(datosHospedaje[4]),hotelReserva);
